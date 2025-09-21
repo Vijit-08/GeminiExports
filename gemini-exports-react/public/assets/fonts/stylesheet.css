@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'AvantGarde';
+    src: url('AvantGardeBold.eot');
+    src: url('AvantGardeBold.eot?#iefix') format('embedded-opentype'),
+        url('AvantGardeBold.woff2') format('woff2'),
+        url('AvantGardeBold.woff') format('woff'),
+        url('AvantGardeBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
