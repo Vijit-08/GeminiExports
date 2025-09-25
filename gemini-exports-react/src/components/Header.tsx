@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ChevronDown, Menu, X, FlaskConical, MapPin, Users, Briefcase, Phone } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ChevronDown, Menu, X, MapPin, Users, Briefcase, Phone } from 'lucide-react'
 
 interface HeaderProps {
   isMenuOpen: boolean
@@ -40,7 +41,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
       <div style={containerStyle}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
             <img
               src="/assets/img/gemini-logo.png"
               alt="Gemini Exports Logo"
@@ -50,7 +51,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 objectFit: 'contain'
               }}
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav style={{
@@ -59,8 +60,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             gap: '32px',
             position: 'relative'
           }}>
-            <a
-              href="#"
+            <Link
+              to="/"
               style={{
                 color: '#374151',
                 fontWeight: '500',
@@ -72,9 +73,9 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
             >
               HOME
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/who-we-are"
               style={{
                 color: '#374151',
                 fontWeight: '500',
@@ -86,9 +87,9 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
             >
               WHO WE ARE
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/products"
               style={{
                 color: '#374151',
                 fontWeight: '500',
@@ -100,7 +101,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
             >
               PRODUCTS
-            </a>
+            </Link>
 
             {/* Our Reach Dropdown */}
             <div
@@ -144,8 +145,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   marginTop: '8px',
                   animation: 'fadeInDown 0.2s ease-out'
                 }}>
-                  <a
-                    href="#"
+                  <Link
+                    to="/manufacturers"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -167,9 +168,9 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   >
                     <Briefcase style={{ height: '16px', width: '16px' }} />
                     Manufacturers
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/worldwide-clients"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -191,31 +192,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   >
                     <MapPin style={{ height: '16px', width: '16px' }} />
                     Worldwide Clients
-                  </a>
-                  <a
-                    href="#"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      padding: '12px 20px',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      fontSize: '14px',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseOver={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
-                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
-                    }}
-                    onMouseOut={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
-                      ;(e.target as HTMLElement).style.color = '#374151'
-                    }}
-                  >
-                    <Users style={{ height: '16px', width: '16px' }} />
-                    Renowned Manufacturers
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -262,8 +239,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   marginTop: '8px',
                   animation: 'fadeInDown 0.2s ease-out'
                 }}>
-                  <a
-                    href="#"
+                  <Link
+                    to="/careers"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -285,9 +262,9 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   >
                     <Users style={{ height: '16px', width: '16px' }} />
                     Job Openings
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/contact"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -309,7 +286,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   >
                     <Phone style={{ height: '16px', width: '16px' }} />
                     Contact Information
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -360,14 +337,15 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
           padding: '16px 24px'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <a
-              href="#"
+            <Link
+              to="/"
               style={{
                 padding: '12px 16px',
                 color: '#374151',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                display: 'block'
               }}
               onMouseOver={(e) => {
                 (e.target as HTMLElement).style.color = '#1CAFD8'
@@ -377,17 +355,19 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 (e.target as HTMLElement).style.color = '#374151'
                 ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
               }}
+              onClick={() => setIsMenuOpen(false)}
             >
               HOME
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/who-we-are"
               style={{
                 padding: '12px 16px',
                 color: '#374151',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                display: 'block'
               }}
               onMouseOver={(e) => {
                 (e.target as HTMLElement).style.color = '#1CAFD8'
@@ -397,17 +377,19 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 (e.target as HTMLElement).style.color = '#374151'
                 ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
               }}
+              onClick={() => setIsMenuOpen(false)}
             >
               WHO WE ARE
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/products"
               style={{
                 padding: '12px 16px',
                 color: '#374151',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                display: 'block'
               }}
               onMouseOver={(e) => {
                 (e.target as HTMLElement).style.color = '#1CAFD8'
@@ -417,17 +399,19 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 (e.target as HTMLElement).style.color = '#374151'
                 ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
               }}
+              onClick={() => setIsMenuOpen(false)}
             >
               PRODUCTS
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/manufacturers"
               style={{
                 padding: '12px 16px',
                 color: '#374151',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                display: 'block'
               }}
               onMouseOver={(e) => {
                 (e.target as HTMLElement).style.color = '#1CAFD8'
@@ -437,17 +421,19 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 (e.target as HTMLElement).style.color = '#374151'
                 ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
               }}
+              onClick={() => setIsMenuOpen(false)}
             >
-              OUR REACH
-            </a>
-            <a
-              href="#"
+              MANUFACTURERS
+            </Link>
+            <Link
+              to="/worldwide-clients"
               style={{
                 padding: '12px 16px',
                 color: '#374151',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                display: 'block'
               }}
               onMouseOver={(e) => {
                 (e.target as HTMLElement).style.color = '#1CAFD8'
@@ -457,9 +443,54 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 (e.target as HTMLElement).style.color = '#374151'
                 ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
               }}
+              onClick={() => setIsMenuOpen(false)}
             >
-              CONTACT US
-            </a>
+              WORLDWIDE CLIENTS
+            </Link>
+            <Link
+              to="/careers"
+              style={{
+                padding: '12px 16px',
+                color: '#374151',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                transition: 'all 0.2s',
+                display: 'block'
+              }}
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.color = '#1CAFD8'
+                ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
+              }}
+              onMouseOut={(e) => {
+                (e.target as HTMLElement).style.color = '#374151'
+                ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              CAREERS
+            </Link>
+            <Link
+              to="/contact"
+              style={{
+                padding: '12px 16px',
+                color: '#374151',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                transition: 'all 0.2s',
+                display: 'block'
+              }}
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.color = '#1CAFD8'
+                ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
+              }}
+              onMouseOut={(e) => {
+                (e.target as HTMLElement).style.color = '#374151'
+                ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              CONTACT
+            </Link>
             <button
               style={{
                 ...buttonPrimaryStyle,

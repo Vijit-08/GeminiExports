@@ -1,42 +1,7 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Shield, ArrowRight, Play } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Shield, Award, Globe } from 'lucide-react'
 
 const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  const heroSlides = [
-    {
-      title: "Committed",
-      subtitle: "Excellence in Quality",
-      description: "Dedicated to excel in quality and processes",
-      image: "/assets/img/slide/slide-2.jpg",
-      cta: "Read More"
-    },
-    {
-      title: "Consistent",
-      subtitle: "Reliable Partnership",
-      description: "Strive for accuracy in our processes, to win customer satisfaction and maintain relationships with our network",
-      image: "/assets/img/slide/slide-3.jpg",
-      cta: "Read More"
-    },
-    {
-      title: "Collaborative",
-      subtitle: "Global Synergy",
-      description: "Aim to synergize with our team and partners across the globe to create value for our customers",
-      image: "/assets/img/slide/slide-1.jpg",
-      cta: "Read More"
-    }
-  ]
-
-  // Auto-slide functionality
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [heroSlides.length])
-
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -46,9 +11,10 @@ const Hero = () => {
   const buttonPrimaryStyle = {
     backgroundColor: '#1CAFD8',
     color: 'white',
-    padding: '16px 32px',
-    borderRadius: '12px',
+    padding: '12px 28px',
+    borderRadius: '8px',
     fontWeight: '600',
+    fontSize: '14px',
     border: 'none',
     cursor: 'pointer',
     transition: 'all 0.3s',
@@ -57,216 +23,213 @@ const Hero = () => {
     textDecoration: 'none'
   }
 
+  const buttonSecondaryStyle = {
+    backgroundColor: 'transparent',
+    color: '#1CAFD8',
+    padding: '12px 28px',
+    borderRadius: '8px',
+    fontWeight: '600',
+    fontSize: '14px',
+    border: '2px solid #1CAFD8',
+    cursor: 'pointer',
+    transition: 'all 0.3s',
+    display: 'inline-flex',
+    alignItems: 'center',
+    textDecoration: 'none',
+    marginLeft: '16px'
+  }
+
   return (
-    <section style={{ position: 'relative', height: '90vh', overflow: 'hidden', marginTop: '80px' }}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${heroSlides[currentSlide].image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
-          <div style={containerStyle}>
+    <section style={{
+      backgroundColor: '#ffffff',
+      paddingTop: '120px',
+      paddingBottom: '80px',
+      minHeight: '70vh',
+      display: 'flex',
+      alignItems: 'center'
+    }}>
+      <div style={containerStyle}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '48px',
+          alignItems: 'center'
+        }}>
+          {/* Content */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ maxWidth: '600px' }}
+          >
             <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               style={{
-                color: 'white',
-                maxWidth: '600px'
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '6px 14px',
+                backgroundColor: '#EBF8FF',
+                borderRadius: '20px',
+                marginBottom: '20px',
+                border: '1px solid #B3E5FC'
               }}
             >
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '8px 16px',
-                  backgroundColor: 'rgba(28, 175, 216, 0.2)',
-                  borderRadius: '20px',
-                  marginBottom: '24px',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(28, 175, 216, 0.3)'
-                }}
-              >
-                <motion.div
-                  // animate={{ rotate: 360 }}
-                  // transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <Shield style={{ height: '16px', width: '16px', marginRight: '8px', color: '#1CAFD8' }} />
-                </motion.div>
-                <span style={{ fontSize: '14px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  {heroSlides[currentSlide].subtitle}
-                </span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                style={{
-                  fontSize: window.innerWidth >= 768 ? '64px' : '48px',
-                  fontWeight: 'bold',
-                  lineHeight: '1.1',
-                  margin: '0 0 24px 0',
-                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
-                }}
-              >
-                {heroSlides[currentSlide].title}
-              </motion.h1>
-
-              <motion.p
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                style={{
-                  fontSize: '20px',
-                  lineHeight: '1.6',
-                  margin: '0 0 32px 0',
-                  color: '#e5e7eb',
-                  textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
-                }}
-              >
-                {heroSlides[currentSlide].description}
-              </motion.p>
-
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-                style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}
-              >
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                    backgroundColor: '#0EA5E9',
-                    boxShadow: '0 25px 50px -12px rgba(28, 175, 216, 0.4)'
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  style={buttonPrimaryStyle}
-                >
-                  {heroSlides[currentSlide].cta}
-                  <motion.div
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
-                    style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}
-                  >
-                    <ArrowRight style={{ height: '20px', width: '20px' }} />
-                  </motion.div>
-                </motion.button>
-                {/* <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    boxShadow: '0 15px 25px -3px rgba(0, 0, 0, 0.2)'
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    ...buttonPrimaryStyle,
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    backdropFilter: 'blur(12px)'
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ display: 'flex', alignItems: 'center', marginRight: '8px' }}
-                  >
-                    <Play style={{ height: '20px', width: '20px' }} />
-                  </motion.div>
-                  Watch Video
-                </motion.button> */}
-              </motion.div>
+              <Shield style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
+              <span style={{
+                fontSize: '12px',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                color: '#1CAFD8'
+              }}>
+                ISO Certified Since 1996
+              </span>
             </motion.div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
 
-      {/* Slide Indicators */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        style={{
-          position: 'absolute',
-          bottom: '32px',
-          left: '32px',
-          display: 'flex',
-          gap: '12px'
-        }}
-      >
-        {heroSlides.map((_, index) => (
-          <motion.button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            whileHover={{
-              scaleY: index === currentSlide ? 1.5 : 1.2,
-              backgroundColor: index === currentSlide ? '#1CAFD8' : 'rgba(255, 255, 255, 0.6)'
-            }}
-            whileTap={{ scale: 0.9 }}
-            animate={{
-              scaleY: index === currentSlide ? 1.5 : 1,
-              backgroundColor: index === currentSlide ? '#1CAFD8' : 'rgba(255, 255, 255, 0.3)'
-            }}
-            transition={{ duration: 0.3 }}
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              style={{
+                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontWeight: '700',
+                lineHeight: '1.1',
+                margin: '0 0 18px 0',
+                color: '#1F2937'
+              }}
+            >
+              Welcome to Gemini Exports
+            </motion.h1>
+
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                lineHeight: '1.4',
+                margin: '0 0 16px 0',
+                color: '#1CAFD8'
+              }}
+            >
+              Your Trusted Partner For High Quality APIs & More
+            </motion.p>
+
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                margin: '0 0 28px 0',
+                color: '#6B7280'
+              }}
+            >
+              Founded in 1996, Gemini Exports is an ISO-certified pharmaceutical trading company based in Mumbai, India. With over 30 years in the pharmaceutical industry, we have built lasting relationships with customers worldwide.
+            </motion.p>
+
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}
+            >
+              <motion.button
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: '#0EA5E9'
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                style={buttonPrimaryStyle}
+              >
+                Our Products
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: '#1CAFD8',
+                  color: 'white'
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                style={buttonSecondaryStyle}
+              >
+                Contact Us
+              </motion.button>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats/Highlights */}
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             style={{
-              width: '48px',
-              height: '4px',
-              border: 'none',
-              borderRadius: '2px',
-              cursor: 'pointer'
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '20px',
+              marginTop: window.innerWidth < 768 ? '40px' : '0'
             }}
-          />
-        ))}
-      </motion.div>
+          >
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #E5E7EB',
+                borderRadius: '12px',
+                padding: '24px',
+                textAlign: 'center',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+              }}
+            >
+              <Award style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
+              <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>30+</h3>
+              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Years Experience</p>
+            </motion.div>
 
-      {/* Slide Counter */}
-      {/* <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        style={{
-          position: 'absolute',
-          bottom: '32px',
-          right: '32px',
-          color: 'white',
-          fontSize: '14px',
-          fontWeight: '500',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          padding: '8px 16px',
-          borderRadius: '20px',
-          backdropFilter: 'blur(10px)'
-        }}
-      >
-        <motion.span
-          key={currentSlide}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {String(currentSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-        </motion.span> */}
-      {/* </motion.div> */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #E5E7EB',
+                borderRadius: '12px',
+                padding: '24px',
+                textAlign: 'center',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+              }}
+            >
+              <Globe style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
+              <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>30+</h3>
+              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Countries Served</p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #E5E7EB',
+                borderRadius: '12px',
+                padding: '24px',
+                textAlign: 'center',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                gridColumn: '1 / -1'
+              }}
+            >
+              <Shield style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
+              <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>ISO Certified</h3>
+              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Quality & Compliance Guaranteed</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

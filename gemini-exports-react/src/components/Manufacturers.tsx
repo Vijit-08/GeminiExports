@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Award } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Award, MapPin } from 'lucide-react'
 
 const Manufacturers = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -60,312 +61,255 @@ const Manufacturers = () => {
   }
 
   return (
-    <section style={{
-      padding: '80px 0',
-      backgroundColor: '#f1f5f9',
-      background: 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Background decorative elements */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '10%',
-        width: '150px',
-        height: '150px',
-        background: 'radial-gradient(circle, rgba(28, 175, 216, 0.06) 0%, transparent 70%)',
-        borderRadius: '50%'
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '30%',
-        right: '15%',
-        width: '200px',
-        height: '200px',
-        background: 'radial-gradient(circle, rgba(14, 165, 233, 0.04) 0%, transparent 70%)',
-        borderRadius: '50%'
-      }} />
-
+    <section style={{ padding: '80px 0', backgroundColor: '#F8FAFC' }}>
       <div style={containerStyle}>
-        <div style={{ textAlign: 'center', marginBottom: '64px', position: 'relative', zIndex: 1 }}>
+        {/* Section Header */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          style={{ textAlign: 'center', marginBottom: '60px' }}
+        >
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
-            padding: '8px 16px',
-            backgroundColor: 'rgba(28, 175, 216, 0.1)',
+            padding: '6px 14px',
+            backgroundColor: '#EBF8FF',
             borderRadius: '20px',
-            marginBottom: '16px'
+            marginBottom: '20px',
+            border: '1px solid #B3E5FC'
           }}>
-            <Award style={{ height: '16px', width: '16px', marginRight: '8px', color: '#1CAFD8' }} />
+            <Award style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
             <span style={{
-              fontSize: '14px',
+              fontSize: '12px',
               fontWeight: '600',
-              color: '#1CAFD8',
               textTransform: 'uppercase',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.5px',
+              color: '#1CAFD8'
             }}>
-              OUR MANUFACTURERS
+              Our Manufacturers
             </span>
           </div>
 
           <h2 style={{
-            fontSize: window.innerWidth >= 768 ? '48px' : '36px',
-            fontWeight: 'bold',
-            color: '#111827',
+            fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+            fontWeight: '700',
+            lineHeight: '1.2',
             margin: '0 0 16px 0',
-            lineHeight: '1.1'
+            color: '#1F2937'
           }}>
-            Trusted <span style={{ color: '#1CAFD8' }}>Manufacturing</span> Partners
+            Trusted Manufacturing Partners
           </h2>
 
           <p style={{
-            fontSize: '18px',
-            color: '#6b7280',
-            margin: '0 auto',
+            fontSize: '16px',
+            lineHeight: '1.6',
+            color: '#6B7280',
             maxWidth: '600px',
-            lineHeight: '1.6'
-          }}>
-            We collaborate with India's leading pharmaceutical manufacturers to deliver high-quality APIs and complex intermediates
-          </p>
-        </div>
-
-        {/* Manufacturers Carousel */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '24px',
-          padding: '48px',
-          border: '1px solid rgba(28, 175, 216, 0.1)',
-          boxShadow: '0 10px 40px -4px rgba(0, 0, 0, 0.08)',
-          position: 'relative',
-          overflow: 'hidden',
-          zIndex: 1
-        }}>
-          {/* Background pattern */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle at 80% 20%, rgba(28, 175, 216, 0.03) 0%, transparent 50%)',
-            borderRadius: '24px'
-          }} />
-
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: window.innerWidth >= 1024 ? 'repeat(4, 1fr)' : window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
-              gap: '32px',
-              minHeight: '200px',
-              alignItems: 'center'
-            }}>
-              {getVisibleLogos().map((manufacturer, index) => (
-                <div
-                  key={`${currentSlide}-${index}`}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '24px',
-                    borderRadius: '16px',
-                    border: '2px solid #f1f5f9',
-                    backgroundColor: '#fafbfc',
-                    transition: 'all 0.4s ease',
-                    cursor: 'pointer',
-                    animation: 'fadeInUp 0.6s ease-out',
-                    animationDelay: `${index * 0.1}s`,
-                    animationFillMode: 'both'
-                  }}
-                  onMouseOver={(e) => {
-                    const element = e.target as HTMLElement
-                    const container = element.closest('div') as HTMLElement
-                    if (container) {
-                      container.style.transform = 'translateY(-8px) scale(1.05)'
-                      container.style.borderColor = 'rgba(28, 175, 216, 0.3)'
-                      container.style.backgroundColor = 'white'
-                      container.style.boxShadow = '0 20px 40px -8px rgba(28, 175, 216, 0.15)'
-
-                      // Make logo colorful on hover
-                      const img = container.querySelector('img') as HTMLImageElement
-                      if (img) {
-                        img.style.filter = 'grayscale(0%) brightness(1.1)'
-                      }
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    const element = e.target as HTMLElement
-                    const container = element.closest('div') as HTMLElement
-                    if (container) {
-                      container.style.transform = 'translateY(0) scale(1)'
-                      container.style.borderColor = '#f1f5f9'
-                      container.style.backgroundColor = '#fafbfc'
-                      container.style.boxShadow = 'none'
-
-                      // Make logo grayscale when not hovering
-                      const img = container.querySelector('img') as HTMLImageElement
-                      if (img) {
-                        img.style.filter = 'grayscale(100%) brightness(0.7)'
-                      }
-                    }
-                  }}
-                >
-                  <div style={{
-                    width: '120px',
-                    height: '80px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '16px'
-                  }}>
-                    <img
-                      src={manufacturer.logo}
-                      alt={manufacturer.name}
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'contain',
-                        filter: 'grayscale(100%) brightness(0.7)',
-                        transition: 'all 0.4s ease'
-                      }}
-                    />
-                  </div>
-                  <h4 style={{
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: '#6b7280',
-                    margin: 0,
-                    textAlign: 'center',
-                    lineHeight: '1.4'
-                  }}>
-                    {manufacturer.name}
-                  </h4>
-                </div>
-              ))}
-            </div>
-
-            {/* Carousel Indicators */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '12px',
-              marginTop: '40px'
-            }}>
-              {Array.from({ length: Math.ceil(manufacturers.length / 4) }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
-                    border: 'none',
-                    backgroundColor: index === currentSlide ? '#1CAFD8' : 'rgba(107, 114, 128, 0.3)',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    transform: index === currentSlide ? 'scale(1.2)' : 'scale(1)'
-                  }}
-                  onMouseOver={(e) => {
-                    if (index !== currentSlide) {
-                      (e.target as HTMLElement).style.backgroundColor = 'rgba(107, 114, 128, 0.6)'
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (index !== currentSlide) {
-                      (e.target as HTMLElement).style.backgroundColor = 'rgba(107, 114, 128, 0.3)'
-                    }
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Additional Info */}
-        {/* <div style={{
-          textAlign: 'center',
-          marginTop: '48px',
-          position: 'relative',
-          zIndex: 1
-        }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: window.innerWidth >= 768 ? 'repeat(3, 1fr)' : '1fr',
-            gap: '24px',
-            maxWidth: '800px',
             margin: '0 auto'
           }}>
-            <div>
-              <div style={{
-                fontSize: '24px',
-                fontWeight: 'bold',
-                color: '#1CAFD8',
-                marginBottom: '8px'
-              }}>
-                15+
-              </div>
-              <div style={{
-                fontSize: '14px',
-                color: '#6b7280',
-                fontWeight: '500'
-              }}>
-                Manufacturing Partners
-              </div>
-            </div>
-            <div>
-              <div style={{
-                fontSize: '24px',
-                fontWeight: 'bold',
-                color: '#1CAFD8',
-                marginBottom: '8px'
-              }}>
-                ISO
-              </div>
-              <div style={{
-                fontSize: '14px',
-                color: '#6b7280',
-                fontWeight: '500'
-              }}>
-                Certified Quality
-              </div>
-            </div>
-            <div>
-              <div style={{
-                fontSize: '24px',
-                fontWeight: 'bold',
-                color: '#1CAFD8',
-                marginBottom: '8px'
-              }}>
-                300+
-              </div>
-              <div style={{
-                fontSize: '14px',
-                color: '#6b7280',
-                fontWeight: '500'
-              }}>
-                API Products
-              </div>
-            </div>
-          </div>
-        </div> */}
-      </div>
+            We collaborate with 180+ ISO-certified pharmaceutical manufacturers primarily from Gujarat, Andhra Pradesh, and Telangana, ensuring the highest quality standards.
+          </p>
+        </motion.div>
 
-      {/* Add CSS animations */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes fadeInUp {
-            0% {
-              transform: translateY(30px);
-              opacity: 0;
-            }
-            100% {
-              transform: translateY(0);
-              opacity: 1;
-            }
-          }
-        `
-      }} />
+        {/* Manufacturers Carousel */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            border: '1px solid #E5E7EB',
+            marginBottom: '40px'
+          }}
+        >
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth >= 1024 ? 'repeat(4, 1fr)' : window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+            gap: '32px',
+            minHeight: '180px',
+            alignItems: 'center'
+          }}>
+            {getVisibleLogos().map((manufacturer, index) => (
+              <motion.div
+                key={`${currentSlide}-${index}`}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.05 }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '24px',
+                  borderRadius: '12px',
+                  border: '1px solid #F3F4F6',
+                  backgroundColor: '#FAFBFC',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  const element = e.currentTarget as HTMLElement
+                  element.style.borderColor = '#1CAFD8'
+                  element.style.backgroundColor = '#ffffff'
+                  element.style.boxShadow = '0 10px 25px -3px rgba(28, 175, 216, 0.1)'
+
+                  const img = element.querySelector('img') as HTMLImageElement
+                  if (img) {
+                    img.style.filter = 'grayscale(0%) brightness(1.1)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const element = e.currentTarget as HTMLElement
+                  element.style.borderColor = '#F3F4F6'
+                  element.style.backgroundColor = '#FAFBFC'
+                  element.style.boxShadow = 'none'
+
+                  const img = element.querySelector('img') as HTMLImageElement
+                  if (img) {
+                    img.style.filter = 'grayscale(70%) brightness(0.9)'
+                  }
+                }}
+              >
+                <div style={{
+                  width: '100px',
+                  height: '60px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '12px'
+                }}>
+                  <img
+                    src={manufacturer.logo}
+                    alt={manufacturer.name}
+                    style={{
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      objectFit: 'contain',
+                      filter: 'grayscale(70%) brightness(0.9)',
+                      transition: 'all 0.3s ease'
+                    }}
+                  />
+                </div>
+                <h4 style={{
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  color: '#6B7280',
+                  margin: 0,
+                  textAlign: 'center',
+                  lineHeight: '1.4'
+                }}>
+                  {manufacturer.name}
+                </h4>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Carousel Indicators */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '8px',
+            marginTop: '32px'
+          }}>
+            {Array.from({ length: Math.ceil(manufacturers.length / 4) }).map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                animate={{
+                  backgroundColor: index === currentSlide ? '#1CAFD8' : '#E5E7EB',
+                  scale: index === currentSlide ? 1.2 : 1
+                }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Manufacturing Info */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '24px',
+            textAlign: 'center'
+          }}
+        >
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              backgroundColor: '#ffffff',
+              border: '1px solid #E5E7EB',
+              borderRadius: '12px',
+              padding: '24px'
+            }}
+          >
+            <MapPin style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
+            <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>180+</h3>
+            <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Manufacturing Partners</p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              backgroundColor: '#ffffff',
+              border: '1px solid #E5E7EB',
+              borderRadius: '12px',
+              padding: '24px'
+            }}
+          >
+            <Award style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
+            <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>100%</h3>
+            <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>ISO & GMP Certified</p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              backgroundColor: '#ffffff',
+              border: '1px solid #E5E7EB',
+              borderRadius: '12px',
+              padding: '24px'
+            }}
+          >
+            <div style={{
+              width: '32px',
+              height: '32px',
+              backgroundColor: '#EBF8FF',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 12px'
+            }}>
+              <span style={{ fontSize: '16px', fontWeight: '700', color: '#1CAFD8' }}>3</span>
+            </div>
+            <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>States</h3>
+            <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Gujarat, AP & Telangana</p>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }

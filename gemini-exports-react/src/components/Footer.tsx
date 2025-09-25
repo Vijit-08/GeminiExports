@@ -1,4 +1,4 @@
-import { FlaskConical, Mail, Phone, MapPin, Globe, Clock } from 'lucide-react'
+import { Mail, Phone, MapPin, Globe, Clock } from 'lucide-react'
 
 const Footer = () => {
   const containerStyle = {
