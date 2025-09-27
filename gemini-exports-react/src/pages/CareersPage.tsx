@@ -170,6 +170,8 @@ const CareersPage = () => {
         mode: 'no-cors' // This allows the request but we can't read the response
       })
 
+      console.log("Response for JOB form:", response)
+
       // console.log('Request sent successfully')
 
       // Success - show success message

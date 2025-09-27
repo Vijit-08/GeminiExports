@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, Menu, X, MapPin, Users, Briefcase, Phone } from 'lucide-react'
 
@@ -9,6 +9,22 @@ interface HeaderProps {
 
 const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = (dropdownName: string) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current)
+      dropdownTimeoutRef.current = null
+    }
+    setActiveDropdown(dropdownName)
+  }
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 150) // 150ms delay before closing
+  }
+
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -106,8 +122,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             {/* Our Reach Dropdown */}
             <div
               style={{ position: 'relative' }}
-              onMouseEnter={() => setActiveDropdown('reach')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter('reach')}
+              onMouseLeave={handleMouseLeave}
             >
               <a
                 href="#"
@@ -131,7 +147,10 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 }} />
               </a>
               {activeDropdown === 'reach' && (
-                <div style={{
+                <div
+                  onMouseEnter={() => handleMouseEnter('reach')}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
                   position: 'absolute',
                   top: '100%',
                   left: '0',
@@ -200,8 +219,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             {/* Contact Us Dropdown */}
             <div
               style={{ position: 'relative' }}
-              onMouseEnter={() => setActiveDropdown('contact')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => handleMouseEnter('contact')}
+              onMouseLeave={handleMouseLeave}
             >
               <a
                 href="#"
@@ -225,7 +244,10 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 }} />
               </a>
               {activeDropdown === 'contact' && (
-                <div style={{
+                <div
+                  onMouseEnter={() => handleMouseEnter('contact')}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
                   position: 'absolute',
                   top: '100%',
                   left: '0',
