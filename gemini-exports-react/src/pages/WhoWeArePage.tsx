@@ -2,10 +2,11 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Heart, Globe, Award, Shield, Users, MapPin, Clock } from 'lucide-react'
+import { Heart, Globe, Award, Shield, Users, MapPin, Clock, X } from 'lucide-react'
 
 const WhoWeArePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [previewImage, setPreviewImage] = useState<string | null>(null)
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -303,11 +304,172 @@ const WhoWeArePage = () => {
               </div>
             </motion.div>
 
-            {/* Statistics */}
+            {/* Our Credentials Section */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.0 }}
+              style={{
+                backgroundColor: '#F8FAFC',
+                borderRadius: '16px',
+                padding: '48px',
+                marginBottom: '60px'
+              }}
+            >
+              <h2 style={{
+                fontSize: '32px',
+                fontWeight: '700',
+                margin: '0 0 16px 0',
+                color: '#1F2937',
+                textAlign: 'center'
+              }}>
+                Our Credentials
+              </h2>
+              <p style={{
+                fontSize: '16px',
+                color: '#6B7280',
+                textAlign: 'center',
+                marginBottom: '40px',
+                maxWidth: '700px',
+                margin: '0 auto 40px'
+              }}>
+                Our credentials include FDA, ISO, and export licenses issued by Indian authorities, supporting our commitment to quality, reliability, and consistency in pharmaceutical trading.
+              </p>
+
+              {/* Credential Images Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '20px',
+                marginBottom: '40px'
+              }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setPreviewImage('/assets/img/credentials/GE-21B-FDA-Licence.jpg')}
+                >
+                  <img
+                    src="/assets/img/credentials/GE-21B-FDA-Licence.jpg"
+                    alt="FDA License Certificate"
+                    style={{
+                      width: '100%',
+                      height: '250px',
+                      objectFit: 'contain',
+                      padding: '15px',
+                      backgroundColor: '#ffffff'
+                    }}
+                  />
+                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
+                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
+                      FDA License
+                    </h3>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setPreviewImage('/assets/img/credentials/ISOQAR.jpg')}
+                >
+                  <img
+                    src="/assets/img/credentials/ISOQAR.jpg"
+                    alt="ISO QARI Certification"
+                    style={{
+                      width: '100%',
+                      height: '250px',
+                      objectFit: 'contain',
+                      padding: '15px',
+                      backgroundColor: '#ffffff'
+                    }}
+                  />
+                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
+                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
+                      ISO 9001:2015
+                    </h3>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setPreviewImage('/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg')}
+                >
+                  <img
+                    src="/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg"
+                    alt="One Star Export House Certificate"
+                    style={{
+                      width: '100%',
+                      height: '250px',
+                      objectFit: 'contain',
+                      padding: '15px',
+                      backgroundColor: '#ffffff'
+                    }}
+                  />
+                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
+                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
+                      One Star Export House
+                    </h3>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setPreviewImage('/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg')}
+                >
+                  <img
+                    src="/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg"
+                    alt="Mumbai Export License"
+                    style={{
+                      width: '100%',
+                      height: '250px',
+                      objectFit: 'contain',
+                      padding: '15px',
+                      backgroundColor: '#ffffff'
+                    }}
+                  />
+                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
+                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
+                      Export License
+                    </h3>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Statistics */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -353,6 +515,86 @@ const WhoWeArePage = () => {
       </main>
 
       <Footer />
+
+      {/* Image Preview Modal */}
+      {previewImage && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            cursor: 'pointer'
+          }}
+          onClick={() => setPreviewImage(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'relative',
+              width: '75vw',
+              height: '75vh',
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '20px',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'default'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setPreviewImage(null)}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                backgroundColor: '#F3F4F6',
+                border: 'none',
+                color: '#374151',
+                cursor: 'pointer',
+                padding: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '8px',
+                transition: 'all 0.2s',
+                zIndex: 10
+              }}
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.backgroundColor = '#E5E7EB'
+                ;(e.target as HTMLElement).style.transform = 'scale(1.1)'
+              }}
+              onMouseOut={(e) => {
+                (e.target as HTMLElement).style.backgroundColor = '#F3F4F6'
+                ;(e.target as HTMLElement).style.transform = 'scale(1)'
+              }}
+            >
+              <X size={24} />
+            </button>
+            <img
+              src={previewImage}
+              alt="Certificate Preview"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain'
+              }}
+            />
+          </motion.div>
+        </div>
+      )}
     </div>
   )
 }

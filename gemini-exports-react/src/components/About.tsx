@@ -150,62 +150,6 @@ const About = () => {
             <div style={{ fontSize: '24px', fontWeight: '700', color: '#1CAFD8' }}>FDA Licensed</div>
           </motion.div>
         </div>
-
-        {/* Credentials Section */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          style={{
-            backgroundColor: '#F8FAFC',
-            borderRadius: '16px',
-            padding: '40px',
-            textAlign: 'center'
-          }}
-        >
-          <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 24px 0', color: '#1F2937' }}>Our Credentials</h3>
-          <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6', marginBottom: '32px' }}>
-            Our credentials include FDA, ISO, and export licenses issued by Indian authorities, supporting our commitment to quality, reliability, and consistency.
-          </p>
-
-          {/* Core Values */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '24px',
-            marginTop: '32px'
-          }}>
-            {[
-              { title: 'Commitment', description: 'Dedication to work and responsibilities' },
-              { title: 'Competence', description: 'Expertise and skills for quality results' },
-              { title: 'Completeness', description: 'Thoroughness in all tasks' },
-              { title: 'Consistency', description: 'Reliability in performance' }
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                viewport={{ once: true }}
-                style={{
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #E5E7EB',
-                  borderRadius: '12px',
-                  padding: '24px',
-                  textAlign: 'center'
-                }}
-              >
-                <h4 style={{ fontSize: '18px', fontWeight: '600', margin: '0 0 8px 0', color: '#1CAFD8' }}>
-                  {value.title}
-                </h4>
-                <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.5', margin: 0 }}>
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )
