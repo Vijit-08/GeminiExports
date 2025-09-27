@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X, MapPin, Users, Briefcase, Phone } from 'lucide-react'
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
 const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const location = useLocation()
 
   const handleMouseEnter = (dropdownName: string) => {
     if (dropdownTimeoutRef.current) {
@@ -23,6 +24,14 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null)
     }, 150) // 150ms delay before closing
+  }
+
+  const isActiveLink = (path: string) => {
+    return location.pathname === path
+  }
+
+  const isActiveDropdownParent = (paths: string[]) => {
+    return paths.some(path => location.pathname === path)
   }
 
   const containerStyle = {
@@ -79,42 +88,45 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             <Link
               to="/"
               style={{
-                color: '#374151',
-                fontWeight: '500',
+                color: isActiveLink('/') ? '#1CAFD8' : '#374151',
+                fontWeight: isActiveLink('/') ? '600' : '500',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
-                padding: '8px 0'
+                padding: '8px 0',
+                borderBottom: isActiveLink('/') ? '2px solid #1CAFD8' : 'none'
               }}
               onMouseOver={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
-              onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
+              onMouseOut={(e) => (e.target as HTMLElement).style.color = isActiveLink('/') ? '#1CAFD8' : '#374151'}
             >
               HOME
             </Link>
             <Link
               to="/who-we-are"
               style={{
-                color: '#374151',
-                fontWeight: '500',
+                color: isActiveLink('/who-we-are') ? '#1CAFD8' : '#374151',
+                fontWeight: isActiveLink('/who-we-are') ? '600' : '500',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
-                padding: '8px 0'
+                padding: '8px 0',
+                borderBottom: isActiveLink('/who-we-are') ? '2px solid #1CAFD8' : 'none'
               }}
               onMouseOver={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
-              onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
+              onMouseOut={(e) => (e.target as HTMLElement).style.color = isActiveLink('/who-we-are') ? '#1CAFD8' : '#374151'}
             >
               WHO WE ARE
             </Link>
             <Link
               to="/products"
               style={{
-                color: '#374151',
-                fontWeight: '500',
+                color: isActiveLink('/products') ? '#1CAFD8' : '#374151',
+                fontWeight: isActiveLink('/products') ? '600' : '500',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
-                padding: '8px 0'
+                padding: '8px 0',
+                borderBottom: isActiveLink('/products') ? '2px solid #1CAFD8' : 'none'
               }}
               onMouseOver={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
-              onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
+              onMouseOut={(e) => (e.target as HTMLElement).style.color = isActiveLink('/products') ? '#1CAFD8' : '#374151'}
             >
               PRODUCTS
             </Link>
@@ -128,14 +140,15 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               <a
                 href="#"
                 style={{
-                  color: activeDropdown === 'reach' ? '#1CAFD8' : '#374151',
-                  fontWeight: '500',
+                  color: activeDropdown === 'reach' || isActiveDropdownParent(['/manufacturers', '/worldwide-clients']) ? '#1CAFD8' : '#374151',
+                  fontWeight: isActiveDropdownParent(['/manufacturers', '/worldwide-clients']) ? '600' : '500',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
                   padding: '8px 0',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px'
+                  gap: '4px',
+                  borderBottom: isActiveDropdownParent(['/manufacturers', '/worldwide-clients']) ? '2px solid #1CAFD8' : 'none'
                 }}
               >
                 OUR REACH
@@ -225,14 +238,15 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               <a
                 href="#"
                 style={{
-                  color: activeDropdown === 'contact' ? '#1CAFD8' : '#374151',
-                  fontWeight: '500',
+                  color: activeDropdown === 'contact' || isActiveDropdownParent(['/careers', '/contact']) ? '#1CAFD8' : '#374151',
+                  fontWeight: isActiveDropdownParent(['/careers', '/contact']) ? '600' : '500',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
                   padding: '8px 0',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px'
+                  gap: '4px',
+                  borderBottom: isActiveDropdownParent(['/careers', '/contact']) ? '2px solid #1CAFD8' : 'none'
                 }}
               >
                 CONTACT US
@@ -313,21 +327,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               )}
             </div>
 
-            <button
-              style={buttonPrimaryStyle}
-              onMouseOver={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = '#0EA5E9'
-                ;(e.target as HTMLElement).style.transform = 'translateY(-2px)'
-                ;(e.target as HTMLElement).style.boxShadow = '0 10px 15px -3px rgba(28, 175, 216, 0.25)'
-              }}
-              onMouseOut={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = '#1CAFD8'
-                ;(e.target as HTMLElement).style.transform = 'translateY(0)'
-                ;(e.target as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-              }}
-            >
-              Get Quote
-            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -513,17 +512,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             >
               CONTACT
             </Link>
-            <button
-              style={{
-                ...buttonPrimaryStyle,
-                width: '100%',
-                marginTop: '16px'
-              }}
-              onMouseOver={(e) => (e.target as HTMLElement).style.backgroundColor = '#0EA5E9'}
-              onMouseOut={(e) => (e.target as HTMLElement).style.backgroundColor = '#1CAFD8'}
-            >
-              Get Quote
-            </button>
           </div>
         </div>
       )}

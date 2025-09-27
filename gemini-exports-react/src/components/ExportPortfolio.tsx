@@ -274,31 +274,8 @@ const ExportPortfolio = () => {
               margin: '0 auto',
               maxWidth: '600px'
             }}>
-              All products come with full documentation and support from GMP and/or ISO-certified manufacturers.
-              Complete brochure available on request with detailed specifications and regulatory compliance information.
+              All products come with full documentation and support from GMP and/or ISO-certified manufacturers with detailed specifications and regulatory compliance information.
             </p>
-
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: '#0EA5E9'
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              style={{
-                backgroundColor: '#1CAFD8',
-                color: 'white',
-                padding: '12px 28px',
-                borderRadius: '8px',
-                fontWeight: '600',
-                fontSize: '14px',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '24px'
-              }}
-            >
-              Download Product Catalog
-            </motion.button>
           </div>
         </motion.div>
       </div>

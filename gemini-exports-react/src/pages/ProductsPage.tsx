@@ -2,10 +2,11 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Package, Download } from 'lucide-react'
+import { Package, Pill, Search, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity, X } from 'lucide-react'
 
 const ProductsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -13,10 +14,21 @@ const ProductsPage = () => {
     padding: '0 24px'
   }
 
+  // Filter products based on search query
+  const filterProducts = (drugs: any[]) => {
+    if (!searchQuery) return drugs
+    return drugs.filter(drug =>
+      drug.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      drug.cas.includes(searchQuery)
+    )
+  }
+
   const therapeuticAreas = [
     {
       name: 'CARDIOVASCULAR',
-      color: '#1CAFD8',
+      icon: Heart,
+      color: '#DC2626',
+      bgColor: '#FEE2E2',
       drugs: [
         { name: 'Atorvastatin / Atorvastatin Calcium Trihydrate', cas: '344423-98-9' },
         { name: 'Fenofibrate', cas: '49562-28-9' },
@@ -27,7 +39,9 @@ const ProductsPage = () => {
     },
     {
       name: 'RESPIRATORY',
-      color: '#1CAFD8',
+      icon: Activity,
+      color: '#059669',
+      bgColor: '#D1FAE5',
       drugs: [
         { name: 'Budesonide', cas: '51333-22-3' },
         { name: 'Montelukast/ Montelukast Sodium', cas: '151767-02-1' }
@@ -35,7 +49,9 @@ const ProductsPage = () => {
     },
     {
       name: 'GASTROINTESTINAL',
-      color: '#1CAFD8',
+      icon: Stethoscope,
+      color: '#7C3AED',
+      bgColor: '#EDE9FE',
       drugs: [
         { name: 'Esomeprazole/ Esomeprazole Magnesium Trihydrate', cas: '217087-09-7' },
         { name: 'Famotidine', cas: '76824-35-6' },
@@ -45,7 +61,9 @@ const ProductsPage = () => {
     },
     {
       name: 'NEUROLOGIC',
+      icon: Brain,
       color: '#1CAFD8',
+      bgColor: '#E0F2FE',
       drugs: [
         { name: 'Lamotrigine', cas: '84057-84-1' },
         { name: 'Meloxicam', cas: '71125-38-7' },
@@ -54,7 +72,9 @@ const ProductsPage = () => {
     },
     {
       name: 'PSYCHIATRIC',
-      color: '#1CAFD8',
+      icon: Brain,
+      color: '#F59E0B',
+      bgColor: '#FEF3C7',
       drugs: [
         { name: 'Amitriptyline/ Amitriptyline Hydrochloride', cas: '549-18-8' },
         { name: 'Olanzapine', cas: '132539-06-1' },
@@ -63,7 +83,9 @@ const ProductsPage = () => {
     },
     {
       name: 'ENDOCRINOLOGY',
-      color: '#1CAFD8',
+      icon: Beaker,
+      color: '#10B981',
+      bgColor: '#D1FAE5',
       drugs: [
         { name: 'Glimeperide', cas: '93479-97-1' },
         { name: 'Metformin/ Metformin Hydrochloride', cas: '1115-70-4' },
@@ -72,7 +94,9 @@ const ProductsPage = () => {
     },
     {
       name: 'UROLOGIC',
-      color: '#1CAFD8',
+      icon: Shield,
+      color: '#6366F1',
+      bgColor: '#E0E7FF',
       drugs: [
         { name: 'Sildenafil/ Sildenafil Citrate', cas: '171599-83-0' },
         { name: 'Tadalafil', cas: '171596-29-5' },
@@ -81,7 +105,9 @@ const ProductsPage = () => {
     },
     {
       name: 'RHEUMATOLOGIC',
-      color: '#1CAFD8',
+      icon: Activity,
+      color: '#8B5CF6',
+      bgColor: '#EDE9FE',
       drugs: [
         { name: 'Alendronate/ Sodium Alendronate Trihydrate', cas: '121268-17-5' },
         { name: 'Allopurinol', cas: '315-30-0' },
@@ -90,7 +116,9 @@ const ProductsPage = () => {
     },
     {
       name: 'OPHTHALMIC',
-      color: '#1CAFD8',
+      icon: Eye,
+      color: '#EC4899',
+      bgColor: '#FCE7F3',
       drugs: [
         { name: 'Brimonidine/ Brimonidine Tartrate', cas: '70359-46-5' },
         { name: 'Dorzolamide/ Dorzolamide Hydrochloride', cas: '130693-82-2' },
@@ -99,7 +127,9 @@ const ProductsPage = () => {
     },
     {
       name: 'INFECTIOUS DISEASE',
-      color: '#1CAFD8',
+      icon: Shield,
+      color: '#14B8A6',
+      bgColor: '#CCFBF1',
       drugs: [
         { name: 'Amoxicillin/ Amoxicillin Trihydrate', cas: '61336-70-7' },
         { name: 'Fluconazole', cas: '86386-73-4' },
@@ -123,13 +153,13 @@ const ProductsPage = () => {
 
       <main style={{ margin: 0, padding: 0, paddingTop: '80px' }}>
         {/* Hero Section */}
-        <section style={{ padding: '80px 0', backgroundColor: '#ffffff' }}>
+        <section style={{ padding: '60px 0 40px 0', backgroundColor: '#ffffff' }}>
           <div style={containerStyle}>
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center', marginBottom: '60px' }}
+              style={{ textAlign: 'center', marginBottom: '20px' }}
             >
               <div style={{
                 display: 'inline-flex',
@@ -165,178 +195,306 @@ const ProductsPage = () => {
           </div>
         </section>
 
-        {/* Product Introduction */}
-        <section style={{ padding: '80px 0', backgroundColor: '#F8FAFC' }}>
-          <div style={containerStyle}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-              gap: '60px',
-              alignItems: 'center'
-            }}>
-              <motion.div
-                initial={{ x: -30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-              >
-                <p style={{
-                  fontSize: '18px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  marginBottom: '24px'
-                }}>
-                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, Pellets, Direct Compression, Excipients, Probiotic Blends.
-                </p>
-                <p style={{
-                  fontSize: '18px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  marginBottom: '32px'
-                }}>
-                  Learn more about our capabilities by downloading our brochure.
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05, backgroundColor: '#0EA5E9' }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{
-                    backgroundColor: '#1CAFD8',
-                    color: 'white',
-                    padding: '16px 32px',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    fontSize: '16px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                >
-                  <Download style={{ height: '20px', width: '20px', marginRight: '8px' }} />
-                  DOWNLOAD BROCHURE
-                </motion.button>
-              </motion.div>
-
-              <motion.div
-                initial={{ x: 30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <img
-                  src="/assets/img/molecular-structure.jpg"
-                  alt="Molecular Structure"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '12px',
-                    boxShadow: '0 10px 25px -3px rgba(0, 0, 0, 0.1)'
-                  }}
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Therapeutic Areas */}
-        <section style={{ padding: '80px 0', backgroundColor: '#ffffff' }}>
+        {/* Product Portfolio Cards */}
+        <section style={{ padding: '', backgroundColor: '#ffffff' }}>
           <div style={containerStyle}>
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              style={{ marginBottom: '60px' }}
+              style={{ textAlign: 'center', marginBottom: '60px' }}
             >
               <h2 style={{
                 fontSize: '36px',
                 fontWeight: '700',
-                margin: '0 0 40px 0',
+                margin: '0 0 16px 0',
                 color: '#1F2937'
               }}>
-                Therapeutic areas
+                Comprehensive Product Range
               </h2>
+              <p style={{
+                fontSize: '18px',
+                lineHeight: '1.8',
+                color: '#6B7280',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, Pellets, Direct Compression, Excipients, Probiotic Blends.
+              </p>
             </motion.div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-              {therapeuticAreas.map((area, index) => (
+            {/* Portfolio Stats */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '24px',
+              marginBottom: '60px'
+            }}>
+              {[
+                { number: '300+', label: 'Active APIs', icon: Pill, color: '#1CAFD8' },
+                { number: '150+', label: 'Types of Pellets', icon: Package, color: '#059669' },
+                { number: '30+', label: 'Excipients', icon: Beaker, color: '#7C3AED' },
+                { number: '10+', label: 'Therapeutic Areas', icon: Heart, color: '#DC2626' }
+              ].map((stat, index) => (
                 <motion.div
-                  key={area.name}
+                  key={stat.label}
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   style={{
-                    display: 'grid',
-                    gridTemplateColumns: window.innerWidth >= 768 ? '300px 1fr' : '1fr',
-                    gap: '0',
-                    backgroundColor: '#ffffff',
-                    borderRadius: '8px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                    backgroundColor: 'white',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: '12px',
+                    padding: '24px',
+                    textAlign: 'center'
                   }}
                 >
-                  {/* Category Header */}
-                  <div style={{
-                    backgroundColor: area.color,
-                    color: 'white',
-                    padding: '24px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center'
+                  <stat.icon style={{
+                    height: '32px',
+                    width: '32px',
+                    color: stat.color,
+                    margin: '0 auto 16px'
+                  }} />
+                  <h3 style={{
+                    fontSize: '32px',
+                    fontWeight: '700',
+                    margin: '0 0 8px 0',
+                    color: stat.color
                   }}>
-                    <h3 style={{
-                      fontSize: '18px',
-                      fontWeight: '700',
-                      margin: 0,
-                      textShadow: '1px 1px rgba(0,0,0,0.3)'
-                    }}>
-                      {area.name}
-                    </h3>
-                  </div>
+                    {stat.number}
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6B7280',
+                    margin: 0
+                  }}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                  {/* Drugs List */}
-                  <div style={{
-                    backgroundColor: '#ffffff',
-                    padding: '24px'
-                  }}>
+        {/* Search Section */}
+        <section style={{ padding: '30px 0', backgroundColor: '#F8FAFC' }}>
+          <div style={containerStyle}>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              style={{
+                maxWidth: '600px',
+                margin: '0 auto'
+              }}
+            >
+              <div style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center'
+              }}>
+                <Search style={{
+                  position: 'absolute',
+                  left: '16px',
+                  height: '20px',
+                  width: '20px',
+                  color: '#6B7280'
+                }} />
+                <input
+                  type="text"
+                  placeholder="Search by product name or CAS number..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '16px 48px 16px 48px',
+                    fontSize: '16px',
+                    border: '2px solid #E5E7EB',
+                    borderRadius: '12px',
+                    backgroundColor: 'white',
+                    outline: 'none',
+                    transition: 'border-color 0.2s'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#1CAFD8'}
+                  onBlur={(e) => e.target.style.borderColor = '#E5E7EB'}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    style={{
+                      position: 'absolute',
+                      right: '16px',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      borderRadius: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'background-color 0.2s'
+                    }}
+                    onMouseOver={(e) => (e.target as HTMLElement).style.backgroundColor = '#F3F4F6'}
+                    onMouseOut={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+                  >
+                    <X style={{
+                      height: '18px',
+                      width: '18px',
+                      color: '#6B7280'
+                    }} />
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Therapeutic Areas */}
+        <section style={{ padding: '40px 0 80px 0', backgroundColor: '#F8FAFC' }}>
+          <div style={containerStyle}>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              style={{ textAlign: 'center', marginBottom: '60px' }}
+            >
+              <h2 style={{
+                fontSize: '36px',
+                fontWeight: '700',
+                margin: '0 0 16px 0',
+                color: '#1F2937'
+              }}>
+                Therapeutic Areas
+              </h2>
+              <p style={{
+                fontSize: '16px',
+                color: '#6B7280',
+                maxWidth: '600px',
+                margin: '0 auto'
+              }}>
+                Explore our comprehensive range of pharmaceutical products organized by therapeutic categories
+              </p>
+            </motion.div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
+              {therapeuticAreas.map((area, index) => {
+                const filteredDrugs = filterProducts(area.drugs)
+                if (searchQuery && filteredDrugs.length === 0) return null
+
+                return (
+                  <motion.div
+                    key={area.name}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.05 }}
+                    whileHover={{ y: -5 }}
+                    style={{
+                      backgroundColor: '#ffffff',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid #E5E7EB',
+                      transition: 'all 0.3s'
+                    }}
+                  >
+                    {/* Category Header with Icon */}
                     <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                      gap: '16px'
+                      backgroundColor: area.bgColor,
+                      padding: '20px',
+                      borderBottom: `3px solid ${area.color}`
                     }}>
-                      {area.drugs.map((drug, idx) => (
-                        <div key={idx} style={{
-                          display: 'grid',
-                          gridTemplateColumns: window.innerWidth >= 768 ? '2fr 1fr' : '1fr',
-                          gap: '16px',
-                          padding: '12px 0',
-                          borderBottom: idx === area.drugs.length - 1 ? 'none' : '1px solid #E5E7EB'
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{
+                          width: '48px',
+                          height: '48px',
+                          backgroundColor: area.color,
+                          borderRadius: '12px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
                         }}>
+                          <area.icon style={{ height: '28px', width: '28px', color: 'white' }} />
+                        </div>
+                        <div>
+                          <h3 style={{
+                            fontSize: '18px',
+                            fontWeight: '700',
+                            margin: 0,
+                            color: area.color
+                          }}>
+                            {area.name}
+                          </h3>
+                          <p style={{
+                            fontSize: '14px',
+                            color: '#6B7280',
+                            margin: '4px 0 0 0'
+                          }}>
+                            {filteredDrugs.length} Products
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Drugs List */}
+                    <div style={{
+                      padding: '20px',
+                      maxHeight: '400px',
+                      overflowY: 'auto'
+                    }}>
+                      {filteredDrugs.map((drug, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: idx * 0.02 }}
+                          style={{
+                            padding: '12px',
+                            marginBottom: idx === filteredDrugs.length - 1 ? '0' : '12px',
+                            backgroundColor: '#F9FAFB',
+                            borderRadius: '8px',
+                            border: '1px solid #E5E7EB',
+                            transition: 'all 0.2s'
+                          }}
+                          onMouseOver={(e) => {
+                            (e.currentTarget as HTMLElement).style.backgroundColor = '#F3F4F6'
+                            ;(e.currentTarget as HTMLElement).style.borderColor = area.color
+                          }}
+                          onMouseOut={(e) => {
+                            (e.currentTarget as HTMLElement).style.backgroundColor = '#F9FAFB'
+                            ;(e.currentTarget as HTMLElement).style.borderColor = '#E5E7EB'
+                          }}
+                        >
                           <div style={{
                             fontSize: '14px',
                             color: '#1F2937',
-                            fontWeight: '500'
+                            fontWeight: '500',
+                            marginBottom: '4px'
                           }}>
                             {drug.name}
                           </div>
                           <div style={{
-                            fontSize: '14px',
-                            color: '#1CAFD8',
-                            fontWeight: '600'
+                            fontSize: '13px',
+                            color: area.color,
+                            fontWeight: '600',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px'
                           }}>
                             <span style={{
-                              fontSize: '12px',
-                              color: '#6B7280',
-                              marginRight: '8px'
+                              fontSize: '11px',
+                              color: '#9CA3AF',
+                              fontWeight: '400'
                             }}>
-                              CAS No.
+                              CAS:
                             </span>
                             {drug.cas}
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                )
+              })}
             </div>
           </div>
         </section>
