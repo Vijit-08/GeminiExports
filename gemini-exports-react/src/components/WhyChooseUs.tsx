@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { CheckCircle, Truck, Clock, Users, Award, TrendingUp, Shield, Headphones, Package } from 'lucide-react'
+import { useState, MouseEvent } from 'react'
 
 const WhyChooseUs = () => {
   const containerStyle = {
@@ -10,58 +11,28 @@ const WhyChooseUs = () => {
 
   const reasons = [
     {
-      icon: Award,
-      title: 'Reliable Product Quality & Compliance',
-      description: 'All products meet rigorous international standards with full regulatory compliance',
+      icon: Headphones,
+      title: 'Post-Sales Support',
+      description: 'Comprehensive support after purchase ensuring smooth product implementation and ongoing assistance',
       color: '#1CAFD8'
     },
     {
-      icon: Headphones,
-      title: 'Strong Customer Support',
-      description: 'Comprehensive support before and after purchase with dedicated team assistance',
+      icon: Award,
+      title: 'Customer Service Excellence',
+      description: 'Dedicated team committed to providing exceptional service and building lasting relationships',
       color: '#059669'
     },
     {
-      icon: Truck,
-      title: 'Efficient Shipping & Logistics',
-      description: 'Streamlined shipping processes with consolidated shipments and timely delivery',
-      color: '#7C3AED'
-    },
-    {
       icon: Users,
-      title: 'Experienced & Responsive Team',
-      description: 'Knowledgeable professionals providing quick responses to all inquiries',
-      color: '#DC2626'
+      title: 'Customer Service Excellence',
+      description: 'Professional approach focused on understanding and meeting your unique needs',
+      color: '#7C3AED'
     },
     {
       icon: Clock,
       title: 'Rapid Response Time',
-      description: 'Fast turnaround on inquiries, orders, and customer service requests',
+      description: 'Fast turnaround on inquiries, orders, and customer service requests ensuring minimal delays',
       color: '#F59E0B'
-    },
-    {
-      icon: Package,
-      title: 'Consolidated Shipments',
-      description: 'Cost-effective shipping solutions combining multiple orders for efficiency',
-      color: '#8B5CF6'
-    },
-    {
-      icon: Shield,
-      title: 'Equal Focus on All Orders',
-      description: 'Same level of attention and quality service for both small and large orders',
-      color: '#06B6D4'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Product Improvement from Setbacks',
-      description: 'Learning from challenges to continuously improve products and services',
-      color: '#10B981'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Handling Rejected Items',
-      description: 'Efficient management of returns and rejections to maintain quality control',
-      color: '#EF4444'
     }
   ]
 
@@ -125,75 +96,106 @@ const WhyChooseUs = () => {
           gap: '32px',
           marginBottom: '60px'
         }}>
-          {reasons.map((reason, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '16px',
-                padding: '28px',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                const element = e.currentTarget as HTMLElement
-                element.style.boxShadow = '0 10px 25px -3px rgba(0, 0, 0, 0.1)'
-                element.style.borderColor = reason.color
-              }}
-              onMouseLeave={(e) => {
-                const element = e.currentTarget as HTMLElement
-                element.style.boxShadow = 'none'
-                element.style.borderColor = '#E5E7EB'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          {reasons.map((reason, index) => {
+            const TiltCard = () => {
+              const [isHovered, setIsHovered] = useState(false)
+              const x = useMotionValue(0)
+              const y = useMotionValue(0)
+
+              const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 })
+              const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 })
+
+              const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['5deg', '-5deg'])
+              const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-5deg', '5deg'])
+
+              const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+                const rect = e.currentTarget.getBoundingClientRect()
+                const width = rect.width
+                const height = rect.height
+                const mouseX = e.clientX - rect.left
+                const mouseY = e.clientY - rect.top
+                const xPct = mouseX / width - 0.5
+                const yPct = mouseY / height - 0.5
+                x.set(xPct)
+                y.set(yPct)
+              }
+
+              const handleMouseLeave = () => {
+                x.set(0)
+                y.set(0)
+                setIsHovered(false)
+              }
+
+              return (
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.15 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={handleMouseLeave}
                   style={{
-                    width: '48px',
-                    height: '48px',
-                    backgroundColor: `${reason.color}15`,
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '16px',
-                    flexShrink: 0
+                    rotateX,
+                    rotateY,
+                    transformStyle: 'preserve-3d',
+                    backgroundColor: '#ffffff',
+                    border: `1px solid ${isHovered ? reason.color : '#E5E7EB'}`,
+                    borderRadius: '16px',
+                    padding: '28px',
+                    cursor: 'pointer',
+                    boxShadow: isHovered ? '0 15px 35px -8px rgba(0, 0, 0, 0.12)' : 'none',
+                    transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
                   }}
                 >
-                  <reason.icon style={{ height: '24px', width: '24px', color: reason.color }} />
+                  <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        backgroundColor: `${reason.color}15`,
+                        borderRadius: '12px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: '16px',
+                        flexShrink: 0,
+                        transform: 'translateZ(30px)',
+                        transformStyle: 'preserve-3d'
+                      }}
+                    >
+                      <reason.icon style={{ height: '24px', width: '24px', color: reason.color }} />
+                    </motion.div>
+
+                    <div>
+                      <h3 style={{
+                        fontSize: '18px',
+                        fontWeight: '600',
+                        margin: '0 0 12px 0',
+                        color: '#1F2937',
+                        lineHeight: '1.4'
+                      }}>
+                        {reason.title}
+                      </h3>
+
+                      <p style={{
+                        fontSize: '14px',
+                        color: '#6B7280',
+                        lineHeight: '1.6',
+                        margin: 0
+                      }}>
+                        {reason.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
+              )
+            }
 
-                <div>
-                  <h3 style={{
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    margin: '0 0 12px 0',
-                    color: '#1F2937',
-                    lineHeight: '1.4'
-                  }}>
-                    {reason.title}
-                  </h3>
-
-                  <p style={{
-                    fontSize: '14px',
-                    color: '#6B7280',
-                    lineHeight: '1.6',
-                    margin: 0
-                  }}>
-                    {reason.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+            return <TiltCard key={index} />
+          })}
         </div>
 
         {/* Call to Action */}
@@ -216,7 +218,7 @@ const WhyChooseUs = () => {
             margin: '0 0 16px 0',
             color: '#1F2937'
           }}>
-            Ready to Partner with Us?
+            Get Started With Quality You Can Trust
           </h3>
 
           <p style={{
@@ -227,7 +229,7 @@ const WhyChooseUs = () => {
             maxWidth: '500px',
             margin: '0 auto 32px'
           }}>
-            Experience the difference of working with a trusted pharmaceutical partner. Contact us today to discuss your requirements.
+            Experience reliable pharmaceutical supply backed by 30 years of excellence. Contact us today to discuss your requirements.
           </p>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>

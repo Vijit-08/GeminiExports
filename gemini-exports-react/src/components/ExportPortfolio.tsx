@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Package, Pill, Beaker, Leaf, Droplets } from 'lucide-react'
+import { useState, MouseEvent } from 'react'
 
 const ExportPortfolio = () => {
   const containerStyle = {
@@ -113,83 +114,114 @@ const ExportPortfolio = () => {
           gap: '32px',
           marginBottom: '60px'
         }}>
-          {portfolioItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '16px',
-                padding: '32px',
-                textAlign: 'center',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                const element = e.currentTarget as HTMLElement
-                element.style.boxShadow = '0 10px 25px -3px rgba(0, 0, 0, 0.1)'
-                element.style.borderColor = item.color
-              }}
-              onMouseLeave={(e) => {
-                const element = e.currentTarget as HTMLElement
-                element.style.boxShadow = 'none'
-                element.style.borderColor = '#E5E7EB'
-              }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  width: '60px',
-                  height: '60px',
-                  backgroundColor: `${item.color}15`,
-                  borderRadius: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px'
-                }}
-              >
-                <item.icon style={{ height: '32px', width: '32px', color: item.color }} />
-              </motion.div>
+          {portfolioItems.map((item, index) => {
+            const TiltCard = () => {
+              const [isHovered, setIsHovered] = useState(false)
+              const x = useMotionValue(0)
+              const y = useMotionValue(0)
 
-              <h3 style={{
-                fontSize: '28px',
-                fontWeight: '700',
-                margin: '0 0 8px 0',
-                color: item.color
-              }}>
-                {item.title}
-              </h3>
+              const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 })
+              const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 })
 
-              <h4 style={{
-                fontSize: '18px',
-                fontWeight: '600',
-                margin: '0 0 12px 0',
-                color: '#1F2937'
-              }}>
-                {item.subtitle}
-              </h4>
+              const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7.5deg', '-7.5deg'])
+              const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg'])
 
-              <p style={{
-                fontSize: '14px',
-                color: '#6B7280',
-                lineHeight: '1.6',
-                margin: 0
-              }}>
-                {item.description}
-              </p>
-            </motion.div>
-          ))}
+              const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+                const rect = e.currentTarget.getBoundingClientRect()
+                const width = rect.width
+                const height = rect.height
+                const mouseX = e.clientX - rect.left
+                const mouseY = e.clientY - rect.top
+                const xPct = mouseX / width - 0.5
+                const yPct = mouseY / height - 0.5
+                x.set(xPct)
+                y.set(yPct)
+              }
+
+              const handleMouseLeave = () => {
+                x.set(0)
+                y.set(0)
+                setIsHovered(false)
+              }
+
+              return (
+                <motion.div
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.12 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    rotateX,
+                    rotateY,
+                    transformStyle: 'preserve-3d',
+                    backgroundColor: '#ffffff',
+                    border: `1px solid ${isHovered ? item.color : '#E5E7EB'}`,
+                    borderRadius: '16px',
+                    padding: '32px',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                    boxShadow: isHovered ? '0 20px 40px -10px rgba(0, 0, 0, 0.15)' : 'none',
+                    transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+                  }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      width: '60px',
+                      height: '60px',
+                      backgroundColor: `${item.color}15`,
+                      borderRadius: '16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 20px',
+                      transform: 'translateZ(50px)',
+                      transformStyle: 'preserve-3d'
+                    }}
+                  >
+                    <item.icon style={{ height: '32px', width: '32px', color: item.color }} />
+                  </motion.div>
+
+                  <h3 style={{
+                    fontSize: '28px',
+                    fontWeight: '700',
+                    margin: '0 0 8px 0',
+                    color: item.color
+                  }}>
+                    {item.title}
+                  </h3>
+
+                  <h4 style={{
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    margin: '0 0 12px 0',
+                    color: '#1F2937'
+                  }}>
+                    {item.subtitle}
+                  </h4>
+
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6B7280',
+                    lineHeight: '1.6',
+                    margin: 0
+                  }}>
+                    {item.description}
+                  </p>
+                </motion.div>
+              )
+            }
+
+            return <TiltCard key={index} />
+          })}
         </div>
 
         {/* Additional Information */}
-        <motion.div
+        {/* <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -277,7 +309,7 @@ const ExportPortfolio = () => {
               All products come with full documentation and support from GMP and/or ISO-certified manufacturers with detailed specifications and regulatory compliance information.
             </p>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

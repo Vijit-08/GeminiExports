@@ -1,7 +1,61 @@
-import { motion } from 'framer-motion'
-import { Shield, Award, Globe } from 'lucide-react'
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
+import { Shield } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 const Hero = () => {
+  const navigate = useNavigate()
+
+  // Image slideshow state
+  const [topImageIndex, setTopImageIndex] = useState(0)
+  const [bottomImageIndex, setBottomImageIndex] = useState(0)
+
+  const topImages = ['/assets/img/005A0206.jpg', '/assets/img/005A0301.JPG']
+  const bottomImages = ['/assets/img/005A0228.jpg', '/assets/img/005A0357.JPG']
+
+  // Auto-rotate images every 5 seconds
+  useEffect(() => {
+    const topInterval = setInterval(() => {
+      setTopImageIndex((prev) => (prev + 1) % topImages.length)
+    }, 5000)
+
+    const bottomInterval = setInterval(() => {
+      setBottomImageIndex((prev) => (prev + 1) % bottomImages.length)
+    }, 5000)
+
+    return () => {
+      clearInterval(topInterval)
+      clearInterval(bottomInterval)
+    }
+  }, [])
+
+  // Staggered text animation
+  const title = "Welcome to Gemini Exports"
+  const words = title.split(" ")
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.3
+      }
+    }
+  }
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -35,50 +89,46 @@ const Hero = () => {
     transition: 'all 0.3s',
     display: 'inline-flex',
     alignItems: 'center',
-    textDecoration: 'none',
-    marginLeft: '16px'
+    textDecoration: 'none'
   }
 
   return (
     <section style={{
-      backgroundColor: '#ffffff',
-      paddingTop: '120px',
-      paddingBottom: '80px',
-      minHeight: '70vh',
+      backgroundColor: 'transparent',
+      paddingTop: '140px',
+      paddingBottom: '120px',
+      minHeight: '90vh',
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+      position: 'relative',
+      overflow: 'hidden'
     }}>
       <div style={containerStyle}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '48px',
+          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gap: '60px',
           alignItems: 'center'
         }}>
           {/* Content */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ maxWidth: '600px' }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
           >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '6px 14px',
-                backgroundColor: '#EBF8FF',
-                borderRadius: '20px',
-                marginBottom: '20px',
-                border: '1px solid #B3E5FC'
-              }}
-            >
-              <Shield style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '8px 18px',
+              backgroundColor: '#EBF8FF',
+              borderRadius: '25px',
+              marginBottom: '24px',
+              border: '1px solid #B3E5FC'
+            }}>
+              <Shield style={{ height: '16px', width: '16px', marginRight: '8px', color: '#1CAFD8' }} />
               <span style={{
-                fontSize: '12px',
+                fontSize: '13px',
                 fontWeight: '600',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px',
@@ -86,66 +136,59 @@ const Hero = () => {
               }}>
                 ISO Certified Since 1996
               </span>
-            </motion.div>
+            </div>
 
             <motion.h1
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               style={{
                 fontSize: window.innerWidth >= 768 ? '48px' : '36px',
-                fontWeight: '700',
+                fontWeight: '800',
                 lineHeight: '1.1',
-                margin: '0 0 18px 0',
-                color: '#1F2937'
+                margin: '0 0 24px 0',
+                color: '#1F2937',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.25em'
               }}
             >
-              Welcome to Gemini Exports
+              {words.map((word, index) => (
+                <motion.span key={index} variants={wordVariants}>
+                  {word}
+                </motion.span>
+              ))}
             </motion.h1>
 
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              style={{
-                fontSize: '20px',
-                fontWeight: '600',
-                lineHeight: '1.4',
-                margin: '0 0 16px 0',
-                color: '#1CAFD8'
-              }}
-            >
+            <p style={{
+              fontSize: '20px',
+              fontWeight: '600',
+              lineHeight: '1.4',
+              margin: '0 0 16px 0',
+              color: '#1CAFD8'
+            }}>
               Your Trusted Partner For High Quality APIs & More
-            </motion.p>
+            </p>
 
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              style={{
-                fontSize: '16px',
-                lineHeight: '1.6',
-                margin: '0 0 28px 0',
-                color: '#6B7280'
-              }}
-            >
-              Founded in 1996, Gemini Exports is an ISO-certified pharmaceutical trading company based in Mumbai, India. With over 30 years in the pharmaceutical industry, we have built lasting relationships with customers worldwide.
-            </motion.p>
+            <p style={{
+              fontSize: '16px',
+              lineHeight: '1.7',
+              margin: '0 0 32px 0',
+              color: '#6B7280'
+            }}>
+              Founded in 1996, Gemini Exports is an ISO-certified pharmaceutical trading company based in Mumbai, India. With over 30 years in the pharmaceutical industry, we have built lasting relationships with customers worldwide. Throughout the years, we have always prioritized quality and punctuality, ensuring that our products reach clients on time and meet the highest standards.
+            </p>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}
-            >
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
               <motion.button
                 whileHover={{
                   scale: 1.02,
                   backgroundColor: '#0EA5E9'
                 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
                 style={buttonPrimaryStyle}
+                onClick={() => navigate('/products')}
               >
                 Our Products
               </motion.button>
@@ -156,76 +199,104 @@ const Hero = () => {
                   color: 'white'
                 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
                 style={buttonSecondaryStyle}
+                onClick={() => navigate('/contact-us')}
               >
                 Contact Us
               </motion.button>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Stats/Highlights */}
+          {/* Image Section with Rectangle Cards */}
           <motion.div
             initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true }}
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '20px',
-              marginTop: window.innerWidth < 768 ? '40px' : '0'
+              position: 'relative',
+              height: '550px',
+              display: window.innerWidth < 768 ? 'none' : 'block'
             }}
           >
+            {/* First Image - Top Right with z-index */}
             <motion.div
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
               style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '24px',
-                textAlign: 'center',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                position: 'absolute',
+                top: '0',
+                right: '0',
+                width: '380px',
+                height: '300px',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                border: '4px solid rgba(255, 255, 255, 0.9)',
+                zIndex: 2
               }}
             >
-              <Award style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
-              <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>30+</h3>
-              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Years Experience</p>
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={topImageIndex}
+                  src={topImages[topImageIndex]}
+                  alt=""
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0
+                  }}
+                />
+              </AnimatePresence>
             </motion.div>
 
+            {/* Second Image - Bottom Left with overlap */}
             <motion.div
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
               style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '24px',
-                textAlign: 'center',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                position: 'absolute',
+                bottom: '0',
+                left: '0',
+                width: '360px',
+                height: '280px',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                border: '4px solid rgba(255, 255, 255, 0.9)',
+                zIndex: 1
               }}
             >
-              <Globe style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
-              <h3 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>30+</h3>
-              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Countries Served</p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '24px',
-                textAlign: 'center',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-                gridColumn: '1 / -1'
-              }}
-            >
-              <Shield style={{ height: '32px', width: '32px', color: '#1CAFD8', margin: '0 auto 12px' }} />
-              <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '0 0 4px 0', color: '#1F2937' }}>ISO Certified</h3>
-              <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>Quality & Compliance Guaranteed</p>
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={bottomImageIndex}
+                  src={bottomImages[bottomImageIndex]}
+                  alt=""
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0
+                  }}
+                />
+              </AnimatePresence>
             </motion.div>
           </motion.div>
         </div>

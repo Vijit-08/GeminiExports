@@ -19,19 +19,15 @@ const Homepage = () => {
       margin: 0,
       padding: 0,
       fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      backgroundColor: 'white',
+      background: 'linear-gradient(180deg, #e0f2fe 0%, #ffffff 20%, #f7fee7 30%, #ffffff 40%, #ffffff 100%)',
       lineHeight: 1.5
     }}>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main style={{ margin: 0, padding: 0 }}>
         <Hero />
-        <About />
         <VisionMission />
         <ExportPortfolio />
-        <OurCustomers />
         <WhyChooseUs />
-        <Manufacturers />
-        <ContactUs />
       </main>
       <Footer />
     </div>

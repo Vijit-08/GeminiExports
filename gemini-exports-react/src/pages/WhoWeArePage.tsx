@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Heart, Globe, Award, Shield, Users, MapPin, Clock, X } from 'lucide-react'
+import { Heart, Globe, Award, Shield, Users, MapPin, Clock, X, Calendar } from 'lucide-react'
 
 const WhoWeArePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [previewImage, setPreviewImage] = useState<{ url: string; validity?: string } | null>(null)
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -14,39 +14,63 @@ const WhoWeArePage = () => {
     padding: '0 24px'
   }
 
+  const credentials = [
+    {
+      image: '/assets/img/credentials/GE-21B-FDA-Licence.jpg',
+      title: 'Export certificate issued by Government of India',
+      validity: 'Validity – March 31, 2028'
+    },
+    {
+      image: '/assets/img/credentials/ISOQAR.jpg',
+      title: 'FDA license issued by the Government of India',
+      validity: 'Validity – March 31, 2029'
+    },
+    {
+      image: '/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg',
+      title: 'One Star Export House',
+      validity: 'Valid until Dec 2024'
+    },
+    {
+      image: '/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg',
+      title: 'Export License',
+      validity: 'Valid until Jun 2026'
+    }
+  ]
+
   return (
     <div style={{
       minHeight: '100vh',
       margin: 0,
       padding: 0,
       fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      backgroundColor: 'white',
+      background: 'linear-gradient(165deg, #f0f9ff 0%, #ffffff 35%, #faf5ff 65%, #f0f9ff 100%)',
       lineHeight: 1.5
     }}>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <main style={{ margin: 0, padding: 0, paddingTop: '80px' }}>
         {/* Hero Section */}
-        <section style={{ padding: '80px 0', backgroundColor: '#ffffff' }}>
+        <section style={{ padding: '100px 0 80px', backgroundColor: 'transparent' }}>
           <div style={containerStyle}>
             <motion.div
               initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
               style={{ textAlign: 'center', marginBottom: '60px' }}
             >
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                padding: '6px 14px',
+                padding: '8px 18px',
                 backgroundColor: '#EBF8FF',
-                borderRadius: '20px',
-                marginBottom: '20px',
+                borderRadius: '25px',
+                marginBottom: '24px',
                 border: '1px solid #B3E5FC'
               }}>
-                <Heart style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
+                <Heart style={{ height: '16px', width: '16px', marginRight: '8px', color: '#1CAFD8' }} />
                 <span style={{
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: '600',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px',
@@ -57,8 +81,8 @@ const WhoWeArePage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
-                fontWeight: '700',
+                fontSize: window.innerWidth >= 768 ? '52px' : '36px',
+                fontWeight: '800',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',
                 color: '#1F2937'
@@ -70,80 +94,148 @@ const WhoWeArePage = () => {
                 fontSize: '20px',
                 lineHeight: '1.6',
                 color: '#6B7280',
-                maxWidth: '700px',
+                maxWidth: '750px',
                 margin: '0 auto'
               }}>
-                Founded in 1996, Gemini Exports is an ISO-certified pharmaceutical trading company based in Mumbai, India, with over 30 years of trusted experience in global pharmaceutical trade.
+                Founded in 1996, an ISO-certified pharmaceutical trading company based in Mumbai, India, with over 30 years of trusted experience in global pharmaceutical trade.
               </p>
             </motion.div>
 
-            {/* Company Overview */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              style={{
-                backgroundColor: '#F8FAFC',
-                borderRadius: '16px',
-                padding: '48px',
-                marginBottom: '60px'
-              }}
-            >
-              <h2 style={{
-                fontSize: '32px',
-                fontWeight: '700',
-                margin: '0 0 32px 0',
-                color: '#1F2937',
-                textAlign: 'center'
-              }}>
-                Our Company Overview
-              </h2>
+            {/* Expertise Section with Images */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+              gap: '60px',
+              alignItems: 'center',
+              marginBottom: '100px'
+            }}>
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                <h2 style={{
+                  fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+                  fontWeight: '800',
+                  lineHeight: '1.2',
+                  margin: '0 0 24px 0',
+                  color: '#1F2937'
+                }}>
+                  Our Expertise & Global Reach
+                </h2>
 
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '40px',
-                marginBottom: '40px'
-              }}>
-                <div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 16px 0', color: '#1CAFD8' }}>
-                    Our Foundation
-                  </h3>
-                  <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6' }}>
-                    Established in 1996 as a Mumbai-based ISO-certified trading company, we have built our reputation on quality, reliability, and consistent delivery over three decades.
+                <p style={{
+                  fontSize: '16px',
+                  lineHeight: '1.8',
+                  color: '#4B5563',
+                  marginBottom: '20px'
+                }}>
+                  Although our expertise lies in <strong>cardiovascular, gastrointestinal, endocrinology, ophthalmic and psychiatry</strong> needs, we also offer a wide range of other related products to clients in countries spanning across South/Central America, Middle East and South-East Asia, with a presence in over 30+ countries.
+                </p>
+
+                <p style={{
+                  fontSize: '16px',
+                  lineHeight: '1.8',
+                  color: '#4B5563',
+                  marginBottom: '20px'
+                }}>
+                  We partner with <strong>ISO Certified</strong>, quality manufacturers, to ensure we send quality products to our customers with the primary goal of promoting holistic well-being and healthier lives.
+                </p>
+
+                <div style={{
+                  padding: '20px',
+                  backgroundColor: 'rgba(28, 175, 216, 0.08)',
+                  borderLeft: '4px solid #1CAFD8',
+                  borderRadius: '8px',
+                  marginTop: '24px'
+                }}>
+                  <p style={{
+                    fontSize: '15px',
+                    color: '#1F2937',
+                    lineHeight: '1.7',
+                    margin: 0,
+                    fontStyle: 'italic'
+                  }}>
+                    The APIs and other product offerings add value to the finished formulations and health products used by our end customers.
                   </p>
                 </div>
+              </motion.div>
 
-                <div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 16px 0', color: '#1CAFD8' }}>
-                    Global Experience
-                  </h3>
-                  <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6' }}>
-                    With over 30 years in the pharmaceutical industry, we have built lasting relationships with customers worldwide, always prioritizing quality and punctuality.
-                  </p>
+              <motion.div
+                initial={{ x: 50, opacity: 0, scale: 0.9 }}
+                whileInView={{ x: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.2 }}
+                viewport={{ once: true }}
+                style={{
+                  position: 'relative',
+                  height: '500px',
+                  display: window.innerWidth < 768 ? 'none' : 'block'
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '0',
+                    right: '10%',
+                    width: '320px',
+                    height: '250px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    border: '4px solid rgba(255, 255, 255, 0.9)',
+                    zIndex: 2
+                  }}
+                >
+                  <img
+                    src="/assets/img/005A0357.JPG"
+                    alt=""
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
 
-                <div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 16px 0', color: '#1CAFD8' }}>
-                    Our Commitment
-                  </h3>
-                  <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6' }}>
-                    This dedication to reliability and excellence is the cornerstone of our reputation and customer trust across all our global operations.
-                  </p>
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '5%',
+                    left: '5%',
+                    width: '300px',
+                    height: '230px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    border: '4px solid rgba(255, 255, 255, 0.9)',
+                    zIndex: 1
+                  }}
+                >
+                  <img
+                    src="/assets/img/005A0374.JPG"
+                    alt=""
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Core Values - The 4 C's */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              style={{ marginBottom: '60px' }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              style={{ marginBottom: '100px' }}
             >
               <h2 style={{
-                fontSize: '32px',
-                fontWeight: '700',
+                fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+                fontWeight: '800',
                 margin: '0 0 16px 0',
                 color: '#1F2937',
                 textAlign: 'center'
@@ -154,9 +246,9 @@ const WhoWeArePage = () => {
                 fontSize: '16px',
                 color: '#6B7280',
                 textAlign: 'center',
-                marginBottom: '40px',
-                maxWidth: '600px',
-                margin: '0 auto 40px'
+                marginBottom: '50px',
+                maxWidth: '650px',
+                margin: '0 auto 50px'
               }}>
                 Our fundamental principles guide every decision and action we take in serving our global clients.
               </p>
@@ -194,39 +286,42 @@ const WhoWeArePage = () => {
                 ].map((value, index) => (
                   <motion.div
                     key={value.title}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ y: -5 }}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: index * 0.15 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    whileHover={{ y: -8 }}
                     style={{
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #E5E7EB',
-                      borderRadius: '16px',
-                      padding: '32px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(229, 231, 235, 0.8)',
+                      borderRadius: '20px',
+                      padding: '36px',
                       textAlign: 'center',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
                     }}
                   >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                       style={{
-                        width: '60px',
-                        height: '60px',
+                        width: '70px',
+                        height: '70px',
                         backgroundColor: `${value.color}15`,
-                        borderRadius: '16px',
+                        borderRadius: '20px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 20px'
+                        margin: '0 auto 24px'
                       }}
                     >
-                      <value.icon style={{ height: '32px', width: '32px', color: value.color }} />
+                      <value.icon style={{ height: '36px', width: '36px', color: value.color }} />
                     </motion.div>
-                    <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 16px 0', color: '#1F2937' }}>
+                    <h3 style={{ fontSize: '22px', fontWeight: '700', margin: '0 0 16px 0', color: '#1F2937' }}>
                       {value.title}
                     </h3>
-                    <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6', margin: 0 }}>
+                    <p style={{ fontSize: '15px', color: '#6B7280', lineHeight: '1.6', margin: 0 }}>
                       {value.description}
                     </p>
                   </motion.div>
@@ -234,280 +329,93 @@ const WhoWeArePage = () => {
               </div>
             </motion.div>
 
-            {/* Our Mission */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '16px',
-                padding: '48px',
-                marginBottom: '60px'
-              }}
-            >
-              <h2 style={{
-                fontSize: '32px',
-                fontWeight: '700',
-                margin: '0 0 24px 0',
-                color: '#1F2937',
-                textAlign: 'center'
-              }}>
-                Our Mission
-              </h2>
-              <p style={{
-                fontSize: '18px',
-                color: '#6B7280',
-                lineHeight: '1.6',
-                textAlign: 'center',
-                marginBottom: '32px',
-                maxWidth: '800px',
-                margin: '0 auto 32px'
-              }}>
-                To deliver consistent, high-quality results that ensure customer satisfaction and trust.
-              </p>
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '32px'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                  <div style={{
-                    width: '8px',
-                    height: '8px',
-                    backgroundColor: '#1CAFD8',
-                    borderRadius: '50%',
-                    marginTop: '8px',
-                    marginRight: '16px',
-                    flexShrink: 0
-                  }} />
-                  <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6', margin: 0 }}>
-                    We source and supply reliable active pharma ingredients & excipients by upholding the highest standards of quality and compliance.
-                  </p>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                  <div style={{
-                    width: '8px',
-                    height: '8px',
-                    backgroundColor: '#1CAFD8',
-                    borderRadius: '50%',
-                    marginTop: '8px',
-                    marginRight: '16px',
-                    flexShrink: 0
-                  }} />
-                  <p style={{ fontSize: '16px', color: '#6B7280', lineHeight: '1.6', margin: 0 }}>
-                    We aim to be the trusted partner for healthcare providers, pharmacies, and other institutions.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Our Credentials Section */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
               style={{
-                backgroundColor: '#F8FAFC',
-                borderRadius: '16px',
-                padding: '48px',
-                marginBottom: '60px'
+                marginBottom: '80px'
               }}
             >
               <h2 style={{
-                fontSize: '32px',
-                fontWeight: '700',
-                margin: '0 0 16px 0',
+                fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+                fontWeight: '800',
+                margin: '0 0 20px 0',
                 color: '#1F2937',
                 textAlign: 'center'
               }}>
                 Our Credentials
               </h2>
               <p style={{
-                fontSize: '16px',
-                color: '#6B7280',
+                fontSize: '17px',
+                color: '#4B5563',
                 textAlign: 'center',
-                marginBottom: '40px',
-                maxWidth: '700px',
-                margin: '0 auto 40px'
+                marginBottom: '50px',
+                maxWidth: '800px',
+                margin: '0 auto 50px',
+                lineHeight: '1.7'
               }}>
-                Our credentials include FDA, ISO, and export licenses issued by Indian authorities, supporting our commitment to quality, reliability, and consistency in pharmaceutical trading.
+                Our credentials include <strong>FDA, ISO, and export licenses</strong> issued by Indian authorities, supporting our commitment to quality, reliability, and consistency in pharmaceutical trading.
               </p>
 
               {/* Credential Images Grid */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '20px',
-                marginBottom: '40px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '30px'
               }}>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => setPreviewImage('/assets/img/credentials/GE-21B-FDA-Licence.jpg')}
-                >
-                  <img
-                    src="/assets/img/credentials/GE-21B-FDA-Licence.jpg"
-                    alt="FDA License Certificate"
+                {credentials.map((credential, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    whileHover={{ y: -8, scale: 1.02 }}
                     style={{
-                      width: '100%',
-                      height: '250px',
-                      objectFit: 'contain',
-                      padding: '15px',
-                      backgroundColor: '#ffffff'
+                      backgroundColor: '#ffffff',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      border: '1px solid #E5E7EB'
                     }}
-                  />
-                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
-                      FDA License
-                    </h3>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => setPreviewImage('/assets/img/credentials/ISOQAR.jpg')}
-                >
-                  <img
-                    src="/assets/img/credentials/ISOQAR.jpg"
-                    alt="ISO QARI Certification"
-                    style={{
-                      width: '100%',
-                      height: '250px',
-                      objectFit: 'contain',
-                      padding: '15px',
-                      backgroundColor: '#ffffff'
-                    }}
-                  />
-                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
-                      ISO 9001:2015
-                    </h3>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => setPreviewImage('/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg')}
-                >
-                  <img
-                    src="/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg"
-                    alt="One Star Export House Certificate"
-                    style={{
-                      width: '100%',
-                      height: '250px',
-                      objectFit: 'contain',
-                      padding: '15px',
-                      backgroundColor: '#ffffff'
-                    }}
-                  />
-                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
-                      One Star Export House
-                    </h3>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => setPreviewImage('/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg')}
-                >
-                  <img
-                    src="/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg"
-                    alt="Mumbai Export License"
-                    style={{
-                      width: '100%',
-                      height: '250px',
-                      objectFit: 'contain',
-                      padding: '15px',
-                      backgroundColor: '#ffffff'
-                    }}
-                  />
-                  <div style={{ padding: '15px', textAlign: 'center', borderTop: '1px solid #E5E7EB' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: '600', margin: 0, color: '#1F2937' }}>
-                      Export License
-                    </h3>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Statistics */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '32px',
-                textAlign: 'center'
-              }}
-            >
-              <div style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '32px'
-              }}>
-                <Users style={{ height: '40px', width: '40px', color: '#1CAFD8', margin: '0 auto 16px' }} />
-                <h3 style={{ fontSize: '32px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>50+</h3>
-                <p style={{ fontSize: '16px', color: '#6B7280', margin: 0 }}>Team Members</p>
-              </div>
-
-              <div style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '32px'
-              }}>
-                <MapPin style={{ height: '40px', width: '40px', color: '#1CAFD8', margin: '0 auto 16px' }} />
-                <h3 style={{ fontSize: '32px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>Mumbai</h3>
-                <p style={{ fontSize: '16px', color: '#6B7280', margin: 0 }}>Lower Parel Office</p>
-              </div>
-
-              <div style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E5E7EB',
-                borderRadius: '12px',
-                padding: '32px'
-              }}>
-                <Globe style={{ height: '40px', width: '40px', color: '#1CAFD8', margin: '0 auto 16px' }} />
-                <h3 style={{ fontSize: '32px', fontWeight: '700', margin: '0 0 8px 0', color: '#1CAFD8' }}>30+</h3>
-                <p style={{ fontSize: '16px', color: '#6B7280', margin: 0 }}>Countries Served</p>
+                    onClick={() => setPreviewImage({ url: credential.image, validity: credential.validity })}
+                  >
+                    <div style={{
+                      height: '280px',
+                      backgroundColor: '#F9FAFB',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '20px'
+                    }}>
+                      <img
+                        src={credential.image}
+                        alt={credential.title}
+                        style={{
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                          objectFit: 'contain'
+                        }}
+                      />
+                    </div>
+                    <div style={{ padding: '20px', borderTop: '1px solid #E5E7EB' }}>
+                      <h3 style={{ fontSize: '18px', fontWeight: '600', margin: '0 0 8px 0', color: '#1F2937' }}>
+                        {credential.title}
+                      </h3>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <Calendar style={{ height: '14px', width: '14px', color: '#059669' }} />
+                        <span style={{ fontSize: '14px', color: '#059669', fontWeight: '500' }}>
+                          {credential.validity}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -517,84 +425,115 @@ const WhoWeArePage = () => {
       <Footer />
 
       {/* Image Preview Modal */}
-      {previewImage && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 9999,
-            cursor: 'pointer'
-          }}
-          onClick={() => setPreviewImage(null)}
-        >
+      <AnimatePresence>
+        {previewImage && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{
-              position: 'relative',
-              width: '75vw',
-              height: '75vh',
-              backgroundColor: 'white',
-              borderRadius: '12px',
-              padding: '20px',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: 'default'
+              zIndex: 9999,
+              cursor: 'pointer',
+              padding: '20px'
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={() => setPreviewImage(null)}
           >
-            <button
-              onClick={() => setPreviewImage(null)}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
               style={{
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-                backgroundColor: '#F3F4F6',
-                border: 'none',
-                color: '#374151',
-                cursor: 'pointer',
-                padding: '8px',
+                position: 'relative',
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                backgroundColor: 'white',
+                borderRadius: '16px',
+                padding: '30px',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'default'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setPreviewImage(null)}
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  backgroundColor: '#F3F4F6',
+                  border: 'none',
+                  color: '#374151',
+                  cursor: 'pointer',
+                  padding: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '8px',
+                  transition: 'all 0.2s',
+                  zIndex: 10
+                }}
+                onMouseOver={(e) => {
+                  (e.target as HTMLElement).style.backgroundColor = '#E5E7EB'
+                }}
+                onMouseOut={(e) => {
+                  (e.target as HTMLElement).style.backgroundColor = '#F3F4F6'
+                }}
+              >
+                <X size={24} />
+              </button>
+
+              <div style={{
+                flex: 1,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius: '8px',
-                transition: 'all 0.2s',
-                zIndex: 10
-              }}
-              onMouseOver={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = '#E5E7EB'
-                ;(e.target as HTMLElement).style.transform = 'scale(1.1)'
-              }}
-              onMouseOut={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = '#F3F4F6'
-                ;(e.target as HTMLElement).style.transform = 'scale(1)'
-              }}
-            >
-              <X size={24} />
-            </button>
-            <img
-              src={previewImage}
-              alt="Certificate Preview"
-              style={{
-                maxWidth: '100%',
-                maxHeight: '100%',
-                objectFit: 'contain'
-              }}
-            />
+                overflow: 'auto'
+              }}>
+                <img
+                  src={previewImage.url}
+                  alt="Certificate Preview"
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    objectFit: 'contain'
+                  }}
+                />
+              </div>
+
+              {previewImage.validity && (
+                <div style={{
+                  marginTop: '20px',
+                  padding: '16px',
+                  backgroundColor: '#F0FDF4',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  border: '1px solid #BBF7D0'
+                }}>
+                  <Calendar style={{ height: '18px', width: '18px', color: '#059669' }} />
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: '#059669' }}>
+                    {previewImage.validity}
+                  </span>
+                </div>
+              )}
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   )
 }

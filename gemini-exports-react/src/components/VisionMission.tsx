@@ -1,7 +1,44 @@
-import { motion } from 'framer-motion'
-import { Eye, Target, Users, TrendingUp } from 'lucide-react'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { Target, Heart, Shield } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+
+// Counter component
+const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) => {
+  const [count, setCount] = useState(from)
+  const nodeRef = useRef<HTMLDivElement>(null)
+  const inViewRef = useRef(false)
+
+  useEffect(() => {
+    const node = nodeRef.current
+    if (!node) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !inViewRef.current) {
+            inViewRef.current = true
+            const controls = animate(from, to, {
+              duration,
+              onUpdate(value) {
+                setCount(Math.floor(value))
+              }
+            })
+            return () => controls.stop()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [from, to, duration])
+
+  return <div ref={nodeRef}>{count}+</div>
+}
 
 const VisionMission = () => {
+
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -9,265 +46,349 @@ const VisionMission = () => {
   }
 
   return (
-    <section style={{ padding: '80px 0', backgroundColor: '#F8FAFC' }}>
+    <section style={{ padding: '120px 0', backgroundColor: 'transparent', position: 'relative', overflow: 'hidden' }}>
       <div style={containerStyle}>
-        {/* Section Header */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '60px' }}
-        >
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: '6px 14px',
-            backgroundColor: '#EBF8FF',
-            borderRadius: '20px',
-            marginBottom: '20px',
-            border: '1px solid #B3E5FC'
-          }}>
-            <Target style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
-            <span style={{
-              fontSize: '12px',
-              fontWeight: '600',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              color: '#1CAFD8'
-            }}>
-              Vision & Mission
-            </span>
-          </div>
-
-          <h2 style={{
-            fontSize: window.innerWidth >= 768 ? '36px' : '28px',
-            fontWeight: '700',
-            lineHeight: '1.2',
-            margin: '0 0 16px 0',
-            color: '#1F2937'
-          }}>
-            Driving Excellence Through Purpose
-          </h2>
-
-          <p style={{
-            fontSize: '16px',
-            lineHeight: '1.6',
-            color: '#6B7280',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            Our vision and mission guide every decision we make, focusing on global growth, quality delivery, and customer trust.
-          </p>
-        </motion.div>
-
-        {/* Vision & Mission Cards */}
+        {/* Mission First - With Image */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '40px',
-          marginBottom: '60px'
+          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gap: '60px',
+          alignItems: 'center',
+          marginBottom: '120px'
         }}>
-          {/* Vision Card */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
-            style={{
-              backgroundColor: '#ffffff',
-              borderRadius: '20px',
-              padding: '40px',
-              border: '1px solid #E5E7EB',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
           >
-            {/* Background gradient */}
             <div style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              width: '100px',
-              height: '100px',
-              background: 'linear-gradient(135deg, rgba(28, 175, 216, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%)',
-              borderRadius: '50%',
-              transform: 'translate(30px, -30px)'
-            }} />
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '8px 18px',
+              backgroundColor: '#FEF3C7',
+              borderRadius: '25px',
+              marginBottom: '24px',
+              border: '1px solid #FCD34D'
+            }}>
+              <Target style={{ height: '16px', width: '16px', marginRight: '8px', color: '#F59E0B' }} />
+              <span style={{
+                fontSize: '13px',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                color: '#D97706'
+              }}>
+                Our Mission
+              </span>
+            </div>
 
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-              style={{ marginBottom: '24px' }}
-            >
-              <Eye style={{ height: '48px', width: '48px', color: '#1CAFD8' }} />
-            </motion.div>
-
-            <h3 style={{
-              fontSize: '24px',
-              fontWeight: '700',
-              margin: '0 0 16px 0',
+            <h2 style={{
+              fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+              fontWeight: '800',
+              lineHeight: '1.2',
+              margin: '0 0 24px 0',
               color: '#1F2937'
             }}>
-              Our Vision
-            </h3>
+              Delivering Excellence in Every Shipment
+            </h2>
 
             <p style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
-              color: '#6B7280',
-              marginBottom: '20px'
+              fontSize: '18px',
+              lineHeight: '1.8',
+              color: '#4B5563',
+              marginBottom: '24px',
+              fontWeight: '400'
             }}>
-              To grow our global reach by building strong partnerships, improving how we source products, and offering a wider range of high-quality pharmaceutical ingredients and formulations.
+              To consistently deliver high-quality pharmaceutical ingredients that meet rigorous international standards, ensuring customer satisfaction and trust.
             </p>
 
-            {/* Vision Highlights */}
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '12px',
-              marginTop: '24px'
+              padding: '24px',
+              backgroundColor: 'rgba(255, 255, 255, 0.6)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '20px',
+              border: '1px solid rgba(28, 175, 216, 0.2)',
+              marginTop: '32px'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <TrendingUp style={{ height: '16px', width: '16px', color: '#1CAFD8', marginRight: '8px' }} />
-                <span style={{ fontSize: '14px', color: '#6B7280' }}>Global Growth</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '16px' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: '#EBF8FF',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Shield style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1F2937', margin: '0 0 6px 0' }}>
+                    Quality & Compliance
+                  </h4>
+                  <p style={{ fontSize: '14px', color: '#6B7280', margin: 0, lineHeight: '1.5' }}>
+                    Sourcing reliable APIs & excipients with highest quality standards
+                  </p>
+                </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Users style={{ height: '16px', width: '16px', color: '#1CAFD8', marginRight: '8px' }} />
-                <span style={{ fontSize: '14px', color: '#6B7280' }}>Strong Partnerships</span>
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: '#EBF8FF',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Heart style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1F2937', margin: '0 0 6px 0' }}>
+                    Trusted Partnership
+                  </h4>
+                  <p style={{ fontSize: '14px', color: '#6B7280', margin: 0, lineHeight: '1.5' }}>
+                    Supporting healthcare providers and institutions worldwide
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Mission Card */}
           <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ x: 50, opacity: 0, scale: 0.9 }}
+            whileInView={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true }}
             style={{
-              backgroundColor: '#ffffff',
-              borderRadius: '20px',
-              padding: '40px',
-              border: '1px solid #E5E7EB',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
               position: 'relative',
-              overflow: 'hidden'
+              height: '500px',
+              display: window.innerWidth < 768 ? 'none' : 'block'
             }}
           >
-            {/* Background gradient */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100px',
-              height: '100px',
-              background: 'linear-gradient(135deg, rgba(28, 175, 216, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%)',
-              borderRadius: '50%',
-              transform: 'translate(-30px, -30px)'
-            }} />
-
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-              style={{ marginBottom: '24px' }}
+            <div
+              style={{
+                position: 'absolute',
+                top: '10%',
+                right: '10%',
+                width: '350px',
+                height: '350px',
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                overflow: 'hidden',
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)',
+                border: '5px solid rgba(255, 255, 255, 0.8)'
+              }}
             >
-              <Target style={{ height: '48px', width: '48px', color: '#1CAFD8' }} />
-            </motion.div>
+              <img
+                src="/assets/img/005A0228.jpg"
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
 
-            <h3 style={{
-              fontSize: '24px',
-              fontWeight: '700',
-              margin: '0 0 16px 0',
-              color: '#1F2937'
-            }}>
-              Our Mission
-            </h3>
-
-            <p style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
-              color: '#6B7280',
-              marginBottom: '20px'
-            }}>
-              To consistently deliver high-quality products that meet rigorous standards, ensuring customer satisfaction and trust.
-            </p>
-
-            {/* Mission Points */}
-            <div style={{ marginTop: '24px' }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                marginBottom: '12px'
-              }}>
-                <div style={{
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: '#1CAFD8',
-                  borderRadius: '50%',
-                  marginTop: '8px',
-                  marginRight: '12px',
-                  flexShrink: 0
-                }} />
-                <span style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.5' }}>
-                  We source and supply reliable active pharmaceutical ingredients & excipients by upholding the highest standards of quality and compliance.
-                </span>
-              </div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                marginBottom: '12px'
-              }}>
-                <div style={{
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: '#1CAFD8',
-                  borderRadius: '50%',
-                  marginTop: '8px',
-                  marginRight: '12px',
-                  flexShrink: 0
-                }} />
-                <span style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.5' }}>
-                  We aim to be the trusted partner for healthcare providers, pharmacies, and other institutions.
-                </span>
-              </div>
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '5%',
+                left: '5%',
+                width: '280px',
+                height: '280px',
+                borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%',
+                overflow: 'hidden',
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)',
+                border: '5px solid rgba(255, 255, 255, 0.8)'
+              }}
+            >
+              <img
+                src="/assets/img/005A0301.JPG"
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
             </div>
           </motion.div>
         </div>
 
-        {/* Additional Info */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          style={{
-            backgroundColor: '#ffffff',
-            borderRadius: '16px',
-            padding: '32px',
-            textAlign: 'center',
-            border: '1px solid #E5E7EB'
-          }}
-        >
-          <h3 style={{
-            fontSize: '20px',
-            fontWeight: '600',
-            margin: '0 0 16px 0',
-            color: '#1F2937'
-          }}>
-            Our Commitment to Excellence
-          </h3>
-          <p style={{
-            fontSize: '16px',
-            lineHeight: '1.6',
-            color: '#6B7280',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            Throughout the years, we have always prioritized quality and punctuality, ensuring that our products reach clients on time and meet the highest standards. This dedication to reliability and excellence is the cornerstone of our reputation and customer trust.
-          </p>
-        </motion.div>
+        {/* Vision - Image First */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gap: '60px',
+          alignItems: 'center'
+        }}>
+          <motion.div
+            initial={{ x: -50, opacity: 0, scale: 0.9 }}
+            whileInView={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            style={{
+              position: 'relative',
+              height: '450px',
+              order: window.innerWidth >= 768 ? 0 : 1,
+              display: window.innerWidth < 768 ? 'none' : 'block'
+            }}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                top: '0%',
+                left: '10%',
+                width: '320px',
+                height: '320px',
+                borderRadius: '70% 30% 30% 70% / 60% 40% 60% 40%',
+                overflow: 'hidden',
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)',
+                border: '5px solid rgba(255, 255, 255, 0.8)'
+              }}
+            >
+              <img
+                src="/assets/img/005A0357.JPG"
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '10%',
+                right: '0%',
+                width: '260px',
+                height: '260px',
+                borderRadius: '40% 60% 60% 40% / 60% 30% 70% 40%',
+                overflow: 'hidden',
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)',
+                border: '5px solid rgba(255, 255, 255, 0.8)'
+              }}
+            >
+              <img
+                src="/assets/img/005A0374.JPG"
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true }}
+            style={{ order: window.innerWidth >= 768 ? 1 : 0 }}
+          >
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '8px 18px',
+              backgroundColor: '#F0F9FF',
+              borderRadius: '25px',
+              marginBottom: '24px',
+              border: '1px solid #BAE6FD'
+            }}>
+              <Target style={{ height: '16px', width: '16px', marginRight: '8px', color: '#0EA5E9' }} />
+              <span style={{
+                fontSize: '13px',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                color: '#0284C7'
+              }}>
+                Our Vision
+              </span>
+            </div>
+
+            <h2 style={{
+              fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+              fontWeight: '800',
+              lineHeight: '1.2',
+              margin: '0 0 24px 0',
+              color: '#1F2937'
+            }}>
+              Growing Together, Reaching Further
+            </h2>
+
+            <p style={{
+              fontSize: '18px',
+              lineHeight: '1.8',
+              color: '#4B5563',
+              marginBottom: '32px',
+              fontWeight: '400'
+            }}>
+              To expand our global reach by building strong partnerships, improving sourcing capabilities, and offering a diverse range of high-quality pharmaceutical ingredients and formulations.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '16px'
+            }}>
+              <div style={{
+                padding: '20px',
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(14, 165, 233, 0.2)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '32px',
+                  fontWeight: '800',
+                  color: '#1CAFD8',
+                  marginBottom: '8px'
+                }}>
+                  <Counter from={0} to={30} duration={2} />
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#6B7280'
+                }}>Countries Served</div>
+              </div>
+
+              <div style={{
+                padding: '20px',
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(14, 165, 233, 0.2)',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '32px',
+                  fontWeight: '800',
+                  color: '#1CAFD8',
+                  marginBottom: '8px'
+                }}>
+                  <Counter from={0} to={30} duration={2} />
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#6B7280'
+                }}>Years Experience</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
