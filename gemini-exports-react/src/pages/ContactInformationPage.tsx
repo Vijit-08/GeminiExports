@@ -475,6 +475,19 @@ const ContactInformationPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Map Section */}
+        <section style={{ padding: 0 }}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.578303019887!2d72.82909521489988!3d18.99422228713487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef3836311c1%3A0x8cfa9225e0aa9bca!2sMarathon%20Futurex!5e0!3m2!1sen!2sin!4v1635874673684!5m2!1sen!2sin"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            title="Gemini Exports Location"
+          />
+        </section>
       </main>
 
       <Footer />
