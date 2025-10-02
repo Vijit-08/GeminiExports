@@ -5,7 +5,9 @@
       "Bash(npx create-vite:*)",
       "Bash(npm install)",
       "Bash(npm install:*)",
-      "Bash(npx tailwindcss init:*)"
+      "Bash(npx tailwindcss init:*)",
+      "WebSearch",
+      "Bash(curl -o globe.json https://assets.aceternity.com/globe.json)"
     ],
     "deny": [],
     "ask": []

@@ -386,9 +386,19 @@ const ProductsPage = () => {
                 fontSize: '16px',
                 color: '#6B7280',
                 maxWidth: '600px',
-                margin: '0 auto 40px'
+                margin: '0 auto 16px'
               }}>
                 Explore our comprehensive range of pharmaceutical products organized by therapeutic categories
+              </p>
+
+              <p style={{
+                fontSize: '15px',
+                color: '#1CAFD8',
+                fontWeight: '500',
+                maxWidth: '600px',
+                margin: '0 auto 40px'
+              }}>
+                For a comprehensive list of products please contact us for more information.
               </p>
 
               {/* Search Bar */}
