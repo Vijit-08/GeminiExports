@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Building, Globe } from 'lucide-react'
+import { Send, MessageCircle } from 'lucide-react'
 
 const ContactInformationPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -148,7 +148,7 @@ const ContactInformationPage = () => {
             </motion.div>
 
             {/* Contact Cards */}
-            <motion.div
+            {/* <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -246,7 +246,7 @@ const ContactInformationPage = () => {
                   ))}
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </div>
         </section>
 
@@ -446,89 +446,31 @@ const ContactInformationPage = () => {
                 </form>
               </motion.div>
 
-              {/* Company Information */}
+              {/* Logo */}
               <motion.div
                 initial={{ x: 30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '16px',
+                  padding: '60px',
+                  border: '1px solid #E5E7EB',
                   display: 'flex',
-                  flexDirection: 'column',
-                  gap: '32px'
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
-                {/* Company Overview */}
-                <div style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: '16px',
-                  padding: '32px',
-                  border: '1px solid #E5E7EB'
-                }}>
-                  <div style={{
-                    width: '50px',
-                    height: '50px',
-                    backgroundColor: '#1CAFD815',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '20px'
-                  }}>
-                    <Globe style={{ height: '24px', width: '24px', color: '#1CAFD8' }} />
-                  </div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 16px 0', color: '#1F2937' }}>
-                    Gemini Exports
-                  </h3>
-                  <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: '1.6' }}>
-                    ISO-certified pharmaceutical trading company established in 1996. We serve 150+ customers across 30+ countries with a commitment to quality, reliability, and excellence in pharmaceutical exports.
-                  </p>
-                </div>
-
-                {/* Key Statistics */}
-                <div style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: '16px',
-                  padding: '32px',
-                  border: '1px solid #E5E7EB'
-                }}>
-                  <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 20px 0', color: '#1F2937' }}>
-                    Quick Facts
-                  </h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                    <div style={{ textAlign: 'center' }}>
-                      <h4 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1CAFD8' }}>30+</h4>
-                      <p style={{ fontSize: '12px', color: '#6B7280', margin: 0 }}>Years Experience</p>
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                      <h4 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1CAFD8' }}>150+</h4>
-                      <p style={{ fontSize: '12px', color: '#6B7280', margin: 0 }}>Global Customers</p>
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                      <h4 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1CAFD8' }}>200+</h4>
-                      <p style={{ fontSize: '12px', color: '#6B7280', margin: 0 }}>Products</p>
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                      <h4 style={{ fontSize: '24px', fontWeight: '700', margin: '0 0 4px 0', color: '#1CAFD8' }}>180+</h4>
-                      <p style={{ fontSize: '12px', color: '#6B7280', margin: 0 }}>Manufacturers</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Response Time */}
-                <div style={{
-                  backgroundColor: '#F8FAFC',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  textAlign: 'center'
-                }}>
-                  <Clock style={{ height: '24px', width: '24px', color: '#1CAFD8', margin: '0 auto 12px' }} />
-                  <h4 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 8px 0', color: '#1F2937' }}>
-                    Quick Response
-                  </h4>
-                  <p style={{ fontSize: '14px', color: '#6B7280', margin: 0 }}>
-                    We typically respond to inquiries within 24 hours during business days.
-                  </p>
-                </div>
+                <img
+                  src="/assets/img/gemini-logo.png"
+                  alt="Gemini Exports Logo"
+                  style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    height: 'auto',
+                    objectFit: 'contain'
+                  }}
+                />
               </motion.div>
             </div>
           </div>

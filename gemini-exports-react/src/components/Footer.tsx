@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Globe, Clock } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
   const containerStyle = {
@@ -66,7 +66,7 @@ const Footer = () => {
                   marginBottom: '24px',
                   maxWidth: '400px'
                 }}>
-                  ISO certified pharmaceutical trading company with 30+ years of excellence in quality products and global delivery to 50+ countries worldwide.
+                  ISO certified pharmaceutical trading company with 30+ years of excellence in quality products and global delivery to 30+ countries worldwide.
                 </p>
 
                 <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -98,7 +98,7 @@ const Footer = () => {
                     borderRadius: '20px',
                     border: '1px solid rgba(28, 175, 216, 0.2)'
                   }}>
-                    <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>50+ Countries</span>
+                    <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>30+ Countries</span>
                   </div>
                 </div>
               </div>
@@ -114,15 +114,23 @@ const Footer = () => {
                   Quick Links
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {['Home', 'Who We Are', 'Products', 'Our Reach', 'Quality', 'Downloads', 'Contact Us'].map((link, index) => (
+                  {[
+                    { label: 'Home', href: '/' },
+                    { label: 'Who We Are', href: '/who-we-are' },
+                    { label: 'Products', href: '/products' },
+                    { label: 'Manufacturers', href: '/manufacturers' },
+                    { label: 'Worldwide Clients', href: '/worldwide-clients' },
+                    { label: 'Careers', href: '/careers' },
+                    { label: 'Contact', href: '/contact' }
+                  ].map((link, index) => (
                     <a
                       key={index}
-                      href="#"
+                      href={link.href}
                       style={linkStyle}
                       onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
                       onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
                     >
-                      {link}
+                      {link.label}
                     </a>
                   ))}
                 </div>
@@ -136,111 +144,87 @@ const Footer = () => {
                   marginBottom: '24px',
                   color: 'white'
                 }}>
-                  Contact Information
+                  Get in Touch
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                     <div style={{
-                      width: '36px',
-                      height: '36px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.1)',
-                      borderRadius: '8px',
+                      width: '40px',
+                      height: '40px',
+                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0
                     }}>
-                      <MapPin style={{ height: '18px', width: '18px', color: '#1CAFD8' }} />
+                      <MapPin style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
                     <div>
-                      <p style={{ color: '#d1d5db', fontSize: '14px', margin: 0, lineHeight: '1.5' }}>
+                      <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                        Address
+                      </p>
+                      <p style={{ color: '#e5e7eb', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
                         Tower A-704, Marathon Future X<br />
                         Mumbai, Maharashtra, India
                       </p>
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                     <div style={{
-                      width: '36px',
-                      height: '36px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.1)',
-                      borderRadius: '8px',
+                      width: '40px',
+                      height: '40px',
+                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <Phone style={{ height: '18px', width: '18px', color: '#1CAFD8' }} />
+                      <Phone style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
-                    <a
-                      href="tel:+91-22-XXXXXXXX"
-                      style={{ ...linkStyle, fontSize: '14px' }}
-                      onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
-                      onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
-                    >
-                      +91-22-XXXXXXXX
-                    </a>
+                    <div>
+                      <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                        Phone
+                      </p>
+                      <a
+                        href="tel:+912240508080"
+                        style={{ ...linkStyle, fontSize: '14px', color: '#e5e7eb' }}
+                        onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
+                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#e5e7eb'}
+                      >
+                        +91 22 4050 8080
+                      </a>
+                    </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                     <div style={{
-                      width: '36px',
-                      height: '36px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.1)',
-                      borderRadius: '8px',
+                      width: '40px',
+                      height: '40px',
+                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <Mail style={{ height: '18px', width: '18px', color: '#1CAFD8' }} />
+                      <Mail style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
-                    <a
-                      href="mailto:info@geminiexports.in"
-                      style={{ ...linkStyle, fontSize: '14px' }}
-                      onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
-                      onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
-                    >
-                      info@geminiexports.in
-                    </a>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '36px',
-                      height: '36px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.1)',
-                      borderRadius: '8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <Globe style={{ height: '18px', width: '18px', color: '#1CAFD8' }} />
+                    <div>
+                      <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                        Email
+                      </p>
+                      <a
+                        href="mailto:gemini@geminiexports.in"
+                        style={{ ...linkStyle, fontSize: '14px', color: '#e5e7eb' }}
+                        onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
+                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#e5e7eb'}
+                      >
+                        gemini@geminiexports.in
+                      </a>
                     </div>
-                    <a
-                      href="https://geminiexports.in"
-                      style={{ ...linkStyle, fontSize: '14px' }}
-                      onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
-                      onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
-                    >
-                      geminiexports.in
-                    </a>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '36px',
-                      height: '36px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.1)',
-                      borderRadius: '8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      <Clock style={{ height: '18px', width: '18px', color: '#1CAFD8' }} />
-                    </div>
-                    <p style={{ color: '#d1d5db', fontSize: '14px', margin: 0 }}>
-                      24/7 Customer Support
-                    </p>
                   </div>
                 </div>
               </div>
@@ -295,8 +279,8 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div style={{
-          borderTop: '1px solid #374151',
-          padding: '24px 0'
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '32px 0'
         }}>
           <div style={containerStyle}>
             <div style={{
@@ -304,15 +288,18 @@ const Footer = () => {
               flexDirection: window.innerWidth >= 768 ? 'row' : 'column',
               justifyContent: 'space-between',
               alignItems: 'center',
-              gap: '16px'
+              gap: '16px',
+              textAlign: window.innerWidth >= 768 ? 'left' : 'center'
             }}>
-              <p style={{ color: '#9ca3af', fontSize: '14px', margin: 0 }}>
-                © 2024 Gemini Exports. All rights reserved. | ISO Certified Pharmaceutical Trading Company
+              <p style={{ color: '#9ca3af', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
+                © {new Date().getFullYear()} Gemini Exports. All rights reserved.
+                <span style={{ margin: '0 8px', color: '#4b5563' }}>•</span>
+                ISO Certified Pharmaceutical Trading Company
               </p>
-              <div style={{ display: 'flex', gap: '24px' }}>
+              <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a
                   href="#"
-                  style={{ ...linkStyle, fontSize: '14px' }}
+                  style={{ ...linkStyle, fontSize: '13px', fontWeight: '500' }}
                   onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
                   onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
                 >
@@ -320,7 +307,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  style={{ ...linkStyle, fontSize: '14px' }}
+                  style={{ ...linkStyle, fontSize: '13px', fontWeight: '500' }}
                   onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
                   onMouseOut={(e) => (e.target as HTMLElement).style.color = linkStyle.color}
                 >
