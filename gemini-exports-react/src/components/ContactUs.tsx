@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone, Send, Download } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ContactUs = () => {
+  const { isLg } = useBreakpoint()
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',

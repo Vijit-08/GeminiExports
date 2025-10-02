@@ -2,16 +2,18 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { Shield } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const Hero = () => {
   const navigate = useNavigate()
+  const { isMd } = useBreakpoint()
 
   // Image slideshow state
   const [topImageIndex, setTopImageIndex] = useState(0)
   const [bottomImageIndex, setBottomImageIndex] = useState(0)
 
-  const topImages = ['/assets/img/005A0206.jpg', '/assets/img/005A0301.JPG']
-  const bottomImages = ['/assets/img/005A0228.jpg', '/assets/img/005A0357.JPG']
+  const topImages = ['/assets/img/compressedImages/group1.jpg', '/assets/img/compressedImages/reception.JPG']
+  const bottomImages = ['/assets/img/compressedImages/group.jpg', '/assets/img/compressedImages/office.JPG']
 
   // Auto-rotate images every 5 seconds
   useEffect(() => {
@@ -38,8 +40,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.3
+        staggerChildren: 0.05,
+        delayChildren: 0.2
       }
     }
   }
@@ -50,7 +52,7 @@ const Hero = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -106,7 +108,7 @@ const Hero = () => {
       <div style={containerStyle}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
           gap: '60px',
           alignItems: 'center'
         }}>
@@ -114,7 +116,7 @@ const Hero = () => {
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <div style={{
@@ -144,7 +146,7 @@ const Hero = () => {
               whileInView="visible"
               viewport={{ once: true }}
               style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '800',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',
@@ -211,19 +213,19 @@ const Hero = () => {
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             style={{
               position: 'relative',
               height: '550px',
-              display: window.innerWidth < 768 ? 'none' : 'block'
+              display: isMd ? 'block' : 'none'
             }}
           >
             {/* First Image - Top Right with z-index */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
               style={{
                 position: 'absolute',
@@ -238,15 +240,16 @@ const Hero = () => {
                 zIndex: 2
               }}
             >
-              <AnimatePresence initial={false}>
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.img
                   key={topImageIndex}
                   src={topImages[topImageIndex]}
                   alt=""
+                  loading="lazy"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
+                  transition={{ duration: 0.5 }}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -263,7 +266,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
               style={{
                 position: 'absolute',
@@ -278,15 +281,16 @@ const Hero = () => {
                 zIndex: 1
               }}
             >
-              <AnimatePresence initial={false}>
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.img
                   key={bottomImageIndex}
                   src={bottomImages[bottomImageIndex]}
                   alt=""
+                  loading="lazy"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
+                  transition={{ duration: 0.5 }}
                   style={{
                     width: '100%',
                     height: '100%',

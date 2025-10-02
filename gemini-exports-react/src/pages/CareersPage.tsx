@@ -3,9 +3,11 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 import { Briefcase, Users, Clock, MapPin, GraduationCap, Send, ChevronDown, Upload, CheckCircle } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const CareersPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMd } = useBreakpoint()
   const [activeJob, setActiveJob] = useState('job1')
   const [formData, setFormData] = useState({
     firstName: '',
@@ -251,7 +253,7 @@ const CareersPage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',

@@ -3,10 +3,12 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 import { Heart, Globe, Award, Shield, Users, MapPin, Clock, X, Calendar } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const WhoWeArePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [previewImage, setPreviewImage] = useState<{ url: string; validity?: string } | null>(null)
+  const { isMd } = useBreakpoint()
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -81,7 +83,7 @@ const WhoWeArePage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '52px' : '36px',
+                fontSize: isMd ? '52px' : '36px',
                 fontWeight: '800',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',
@@ -104,7 +106,7 @@ const WhoWeArePage = () => {
             {/* Expertise Section with Images */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+              gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
               gap: '60px',
               alignItems: 'center',
               marginBottom: '100px'
@@ -116,7 +118,7 @@ const WhoWeArePage = () => {
                 viewport={{ once: true }}
               >
                 <h2 style={{
-                  fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+                  fontSize: isMd ? '36px' : '28px',
                   fontWeight: '800',
                   lineHeight: '1.2',
                   margin: '0 0 24px 0',
@@ -170,7 +172,7 @@ const WhoWeArePage = () => {
                 style={{
                   position: 'relative',
                   height: '500px',
-                  display: window.innerWidth < 768 ? 'none' : 'block'
+                  display: !isMd ? 'none' : 'block'
                 }}
               >
                 <div
@@ -188,7 +190,7 @@ const WhoWeArePage = () => {
                   }}
                 >
                   <img
-                    src="/assets/img/005A0357.JPG"
+                    src="/assets/img/compressedImages/group.jpg"
                     alt=""
                     style={{
                       width: '100%',
@@ -213,7 +215,7 @@ const WhoWeArePage = () => {
                   }}
                 >
                   <img
-                    src="/assets/img/005A0374.JPG"
+                    src="/assets/img/compressedImages/people1.JPG"
                     alt=""
                     style={{
                       width: '100%',
@@ -234,7 +236,7 @@ const WhoWeArePage = () => {
               style={{ marginBottom: '100px' }}
             >
               <h2 style={{
-                fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+                fontSize: isMd ? '42px' : '32px',
                 fontWeight: '800',
                 margin: '0 0 16px 0',
                 color: '#1F2937',
@@ -340,7 +342,7 @@ const WhoWeArePage = () => {
               }}
             >
               <h2 style={{
-                fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+                fontSize: isMd ? '42px' : '32px',
                 fontWeight: '800',
                 margin: '0 0 20px 0',
                 color: '#1F2937',

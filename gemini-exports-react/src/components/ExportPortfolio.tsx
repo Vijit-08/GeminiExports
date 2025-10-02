@@ -1,8 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Package, Pill, Beaker, Leaf, Droplets } from 'lucide-react'
 import { useState, MouseEvent } from 'react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ExportPortfolio = () => {
+  const { isMd } = useBreakpoint()
+
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -87,7 +90,7 @@ const ExportPortfolio = () => {
           </div>
 
           <h2 style={{
-            fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+            fontSize: isMd ? '36px' : '28px',
             fontWeight: '700',
             lineHeight: '1.2',
             margin: '0 0 16px 0',

@@ -4,15 +4,17 @@ import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
 import { Package, Pill, Search, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity, X } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ProductsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMd } = useBreakpoint()
   const [searchQuery, setSearchQuery] = useState('')
   const [leftImageIndex, setLeftImageIndex] = useState(0)
   const [rightImageIndex, setRightImageIndex] = useState(0)
 
-  const leftImages = ['/assets/img/005A0206.jpg', '/assets/img/005A0228.jpg']
-  const rightImages = ['/assets/img/005A0301.JPG', '/assets/img/005A0357.JPG']
+  const leftImages = ['/assets/img/compressedImages/office.JPG', '/assets/img/compressedImages/reception1.JPG']
+  const rightImages = ['/assets/img/compressedImages/reception1.JPG', '/assets/img/compressedImages/office.JPG']
 
   // Auto-rotate images every 5 seconds
   useEffect(() => {
@@ -205,7 +207,7 @@ const ProductsPage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',
@@ -225,7 +227,7 @@ const ProductsPage = () => {
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+              gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
               gap: '60px',
               alignItems: 'center'
             }}>
@@ -237,7 +239,7 @@ const ProductsPage = () => {
                 style={{
                   position: 'relative',
                   height: '500px',
-                  display: window.innerWidth < 768 ? 'none' : 'block'
+                  display: !isMd ? 'none' : 'block'
                 }}
               >
                 {/* Top Left Image */}
@@ -326,7 +328,7 @@ const ProductsPage = () => {
                 transition={{ duration: 1, delay: 0.2 }}
               >
                 <h2 style={{
-                  fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+                  fontSize: isMd ? '42px' : '32px',
                   fontWeight: '700',
                   lineHeight: '1.2',
                   margin: '0 0 24px 0',

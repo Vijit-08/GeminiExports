@@ -4,11 +4,13 @@ import Footer from '../components/Footer'
 import { useState } from 'react'
 import { Globe } from '../components/ui/globe'
 import createGlobe from 'cobe'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 type COBEOptions = Parameters<typeof createGlobe>[1]
 
 const WorldwideClientsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMd } = useBreakpoint()
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -93,7 +95,7 @@ const WorldwideClientsPage = () => {
               style={{ textAlign: 'center', marginBottom: '50px' }}
             >
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 margin: '0 0 16px 0',

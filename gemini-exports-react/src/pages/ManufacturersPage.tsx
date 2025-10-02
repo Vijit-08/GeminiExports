@@ -4,9 +4,11 @@ import Footer from '../components/Footer'
 import Manufacturers from '../components/Manufacturers'
 import { useState } from 'react'
 import { Building, Award, MapPin, Factory, Users } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ManufacturersPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMd } = useBreakpoint()
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null)
 
   const containerStyle = {
@@ -139,7 +141,7 @@ const ManufacturersPage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',
@@ -303,7 +305,7 @@ const ManufacturersPage = () => {
               {/* Key Points Grid */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+                gridTemplateColumns: isMd ? 'repeat(2, 1fr)' : '1fr',
                 gap: '20px',
                 maxWidth: '1000px',
                 margin: '0 auto 60px',

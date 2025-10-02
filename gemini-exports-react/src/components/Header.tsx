@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X, MapPin, Users, Briefcase, Phone } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 interface HeaderProps {
   isMenuOpen: boolean
@@ -11,6 +12,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const location = useLocation()
+  const { isLg } = useBreakpoint()
 
   const handleMouseEnter = (dropdownName: string) => {
     if (dropdownTimeoutRef.current) {
@@ -80,7 +82,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav style={{
-            display: window.innerWidth >= 1024 ? 'flex' : 'none',
+            display: isLg ? 'flex' : 'none',
             alignItems: 'center',
             gap: '32px',
             position: 'relative'
@@ -332,7 +334,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             style={{
-              display: window.innerWidth >= 1024 ? 'none' : 'block',
+              display: isLg ? 'none' : 'block',
               padding: '8px',
               border: 'none',
               background: 'none',
@@ -350,9 +352,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
+      {isMenuOpen && !isLg && (
         <div style={{
-          display: window.innerWidth >= 1024 ? 'none' : 'block',
           backgroundColor: 'white',
           borderTop: '1px solid #f3f4f6',
           padding: '16px 24px'

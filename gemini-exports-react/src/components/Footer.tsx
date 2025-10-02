@@ -1,6 +1,9 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const Footer = () => {
+  const { isMd, isLg } = useBreakpoint()
+
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -42,11 +45,11 @@ const Footer = () => {
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: window.innerWidth >= 1024 ? 'repeat(4, 1fr)' : window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+              gridTemplateColumns: isLg ? 'repeat(4, 1fr)' : isMd ? 'repeat(2, 1fr)' : '1fr',
               gap: '48px'
             }}>
               {/* Company Info */}
-              <div style={{ gridColumn: window.innerWidth >= 1024 ? 'span 2' : 'span 1' }}>
+              <div style={{ gridColumn: isLg ? 'span 2' : 'span 1' }}>
                 <div style={{ marginBottom: '24px' }}>
                   <img
                     src="/assets/img/gemini-logo-grey.png"
@@ -243,7 +246,7 @@ const Footer = () => {
               </h4>
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: window.innerWidth >= 1024 ? 'repeat(5, 1fr)' : window.innerWidth >= 768 ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)',
+                gridTemplateColumns: isLg ? 'repeat(5, 1fr)' : isMd ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)',
                 gap: '16px',
                 textAlign: 'center'
               }}>
@@ -285,11 +288,11 @@ const Footer = () => {
           <div style={containerStyle}>
             <div style={{
               display: 'flex',
-              flexDirection: window.innerWidth >= 768 ? 'row' : 'column',
+              flexDirection: isMd ? 'row' : 'column',
               justifyContent: 'space-between',
               alignItems: 'center',
               gap: '16px',
-              textAlign: window.innerWidth >= 768 ? 'left' : 'center'
+              textAlign: isMd ? 'left' : 'center'
             }}>
               <p style={{ color: '#9ca3af', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
                 © {new Date().getFullYear()} Gemini Exports. All rights reserved.

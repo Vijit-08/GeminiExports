@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Users, MapPin, Clock, Headphones } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const OurCustomers = () => {
+  const { isMd } = useBreakpoint()
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
@@ -42,7 +44,7 @@ const OurCustomers = () => {
           </div>
 
           <h2 style={{
-            fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+            fontSize: isMd ? '36px' : '28px',
             fontWeight: '700',
             lineHeight: '1.2',
             margin: '0 0 16px 0',

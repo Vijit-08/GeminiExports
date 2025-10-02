@@ -6,10 +6,12 @@ import ManufacturersPage from './pages/ManufacturersPage'
 import WorldwideClientsPage from './pages/WorldwideClientsPage'
 import CareersPage from './pages/CareersPage'
 import ContactInformationPage from './pages/ContactInformationPage'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/who-we-are" element={<WhoWeArePage />} />

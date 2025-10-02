@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Award, MapPin } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const Manufacturers = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const { isMd, isLg } = useBreakpoint()
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -93,7 +95,7 @@ const Manufacturers = () => {
           </div>
 
           <h2 style={{
-            fontSize: window.innerWidth >= 768 ? '36px' : '28px',
+            fontSize: isMd ? '36px' : '28px',
             fontWeight: '700',
             lineHeight: '1.2',
             margin: '0 0 16px 0',
@@ -129,7 +131,7 @@ const Manufacturers = () => {
         >
           <div style={{
             display: 'grid',
-            gridTemplateColumns: window.innerWidth >= 1024 ? 'repeat(4, 1fr)' : window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+            gridTemplateColumns: isLg ? 'repeat(4, 1fr)' : isMd ? 'repeat(2, 1fr)' : '1fr',
             gap: '32px',
             minHeight: '180px',
             alignItems: 'center'

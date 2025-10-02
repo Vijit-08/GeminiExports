@@ -3,9 +3,11 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 import { Send, MessageCircle } from 'lucide-react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ContactInformationPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMd } = useBreakpoint()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -127,7 +129,7 @@ const ContactInformationPage = () => {
               </div>
 
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
+                fontSize: isMd ? '48px' : '36px',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 margin: '0 0 24px 0',

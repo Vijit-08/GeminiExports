@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { Target, Heart, Shield } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useBreakpoint } from '../hooks/useMediaQuery'
 
 // Counter component
 const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) => {
@@ -38,6 +39,7 @@ const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duratio
 }
 
 const VisionMission = () => {
+  const { isMd } = useBreakpoint()
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -51,7 +53,7 @@ const VisionMission = () => {
         {/* Mission First - With Image */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
           gap: '60px',
           alignItems: 'center',
           marginBottom: '120px'
@@ -59,7 +61,7 @@ const VisionMission = () => {
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <div style={{
@@ -84,7 +86,7 @@ const VisionMission = () => {
             </div>
 
             <h2 style={{
-              fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+              fontSize: isMd ? '42px' : '32px',
               fontWeight: '800',
               lineHeight: '1.2',
               margin: '0 0 24px 0',
@@ -105,8 +107,8 @@ const VisionMission = () => {
 
             <div style={{
               padding: '24px',
-              backgroundColor: 'rgba(255, 255, 255, 0.6)',
-              backdropFilter: 'blur(10px)',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               borderRadius: '20px',
               border: '1px solid rgba(28, 175, 216, 0.2)',
               marginTop: '32px'
@@ -160,14 +162,14 @@ const VisionMission = () => {
           </motion.div>
 
           <motion.div
-            initial={{ x: 50, opacity: 0, scale: 0.9 }}
-            whileInView={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             style={{
               position: 'relative',
               height: '500px',
-              display: window.innerWidth < 768 ? 'none' : 'block'
+              display: !isMd ? 'none' : 'block'
             }}
           >
             <div
@@ -184,8 +186,9 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/005A0228.jpg"
+                src="/assets/img/compressedImages/reception1.JPG"
                 alt=""
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -208,8 +211,9 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/005A0301.JPG"
+                src="/assets/img/compressedImages/people1.JPG"
                 alt=""
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -223,20 +227,20 @@ const VisionMission = () => {
         {/* Vision - Image First */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+          gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
           gap: '60px',
           alignItems: 'center'
         }}>
           <motion.div
-            initial={{ x: -50, opacity: 0, scale: 0.9 }}
-            whileInView={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             style={{
               position: 'relative',
               height: '450px',
-              order: window.innerWidth >= 768 ? 0 : 1,
-              display: window.innerWidth < 768 ? 'none' : 'block'
+              order: isMd ? 0 : 1,
+              display: !isMd ? 'none' : 'block'
             }}
           >
             <div
@@ -253,8 +257,9 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/005A0357.JPG"
+                src="/assets/img/compressedImages/group3.JPG"
                 alt=""
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -277,8 +282,9 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/005A0374.JPG"
+                src="/assets/img/compressedImages/people2.JPG"
                 alt=""
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -291,9 +297,9 @@ const VisionMission = () => {
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            style={{ order: window.innerWidth >= 768 ? 1 : 0 }}
+            style={{ order: isMd ? 1 : 0 }}
           >
             <div style={{
               display: 'inline-flex',
@@ -317,7 +323,7 @@ const VisionMission = () => {
             </div>
 
             <h2 style={{
-              fontSize: window.innerWidth >= 768 ? '42px' : '32px',
+              fontSize: isMd ? '42px' : '32px',
               fontWeight: '800',
               lineHeight: '1.2',
               margin: '0 0 24px 0',
@@ -343,8 +349,8 @@ const VisionMission = () => {
             }}>
               <div style={{
                 padding: '20px',
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                backdropFilter: 'blur(10px)',
+                backgroundColor: '#FFFFFF',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                 borderRadius: '16px',
                 border: '1px solid rgba(14, 165, 233, 0.2)',
                 textAlign: 'center'
@@ -366,8 +372,8 @@ const VisionMission = () => {
 
               <div style={{
                 padding: '20px',
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                backdropFilter: 'blur(10px)',
+                backgroundColor: '#FFFFFF',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                 borderRadius: '16px',
                 border: '1px solid rgba(14, 165, 233, 0.2)',
                 textAlign: 'center'
