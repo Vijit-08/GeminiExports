@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import Header from './Header'
 import Hero from './Hero'
-import About from './About'
 import VisionMission from './VisionMission'
 import ExportPortfolio from './ExportPortfolio'
-import OurCustomers from './OurCustomers'
 import WhyChooseUs from './WhyChooseUs'
-import Manufacturers from './Manufacturers'
-import ContactUs from './ContactUs'
 import Footer from './Footer'
 
 const Homepage = () => {

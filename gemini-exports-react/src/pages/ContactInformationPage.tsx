@@ -16,7 +16,7 @@ const ContactInformationPage = () => {
     subject: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [, setIsSubmitting] = useState(false)
 
   const containerStyle = {
     maxWidth: '1280px',
@@ -59,7 +59,7 @@ const ContactInformationPage = () => {
       console.log('Form data:', Object.fromEntries(formDataToSend.entries()))
 
       // POST to the actual PHP backend
-      const response = await fetch(endpoint, {
+      await fetch(endpoint, {
         method: 'POST',
         body: formDataToSend,
         mode: 'no-cors' // This allows the request but we can't read the response

@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
-import { Package, Pill, Search, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity, X } from 'lucide-react'
+import { Package, Search, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity, X } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ProductsPage = () => {

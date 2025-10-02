@@ -200,7 +200,7 @@ const CareersPage = () => {
       // Provide user-friendly error messages
       if (error instanceof TypeError) {
         alert('Network error. Please check your internet connection and try again.')
-      } else if (error.message.includes('CORS')) {
+      } else if (error instanceof Error && error.message.includes('CORS')) {
         alert('There was a connection issue. Your application may have been submitted successfully. Please check with our team if you don\'t receive a confirmation.')
       } else {
         alert('There was an error submitting your application. Please try again or contact us directly at hrd@geminiexports.in')

@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { motion, animate } from 'framer-motion'
 import { Target, Heart, Shield } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useBreakpoint } from '../hooks/useMediaQuery'

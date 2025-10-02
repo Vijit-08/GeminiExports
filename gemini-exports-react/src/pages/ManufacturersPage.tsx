@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Manufacturers from '../components/Manufacturers'
 import { useState } from 'react'
-import { Building, Award, MapPin, Factory, Users } from 'lucide-react'
+import { Building } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ManufacturersPage = () => {
@@ -91,12 +91,6 @@ const ManufacturersPage = () => {
     { id: 'city44', name: 'Kolhapur', top: '68%', left: '26%' },
     { id: 'city45', name: 'Jamnagar', top: '52%', left: '14%' }
   ]
-
-  const getCityColor = () => {
-    // Random vibrant colors for scattered cities
-    const colors = ['#60A5FA', '#34D399', '#A78BFA', '#F87171', '#FBBF24', '#F472B6', '#2DD4BF']
-    return colors[Math.floor(Math.random() * colors.length)]
-  }
 
   return (
     <div style={{

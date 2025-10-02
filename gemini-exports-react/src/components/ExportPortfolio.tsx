@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Package, Pill, Beaker, Leaf, Droplets } from 'lucide-react'
-import { useState, MouseEvent } from 'react'
+import { useState, type MouseEvent } from 'react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ExportPortfolio = () => {

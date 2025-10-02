@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const dropdownTimeoutRef = useRef<number | null>(null)
   const location = useLocation()
   const { isLg } = useBreakpoint()
 
@@ -23,7 +23,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   }
 
   const handleMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
+    dropdownTimeoutRef.current = window.setTimeout(() => {
       setActiveDropdown(null)
     }, 150) // 150ms delay before closing
   }
@@ -40,18 +40,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
     maxWidth: '1280px',
     margin: '0 auto',
     padding: '0 24px'
-  }
-
-  const buttonPrimaryStyle = {
-    backgroundColor: '#1CAFD8',
-    color: 'white',
-    padding: '10px 24px',
-    borderRadius: '8px',
-    fontWeight: '600',
-    border: 'none',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
   }
 
   return (

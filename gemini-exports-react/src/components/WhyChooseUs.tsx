@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { CheckCircle, Truck, Clock, Users, Award, TrendingUp, Shield, Headphones, Package } from 'lucide-react'
-import { useState, MouseEvent } from 'react'
+import { CheckCircle, Clock, Users, Award, Headphones } from 'lucide-react'
+import { useState, type MouseEvent } from 'react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const WhyChooseUs = () => {

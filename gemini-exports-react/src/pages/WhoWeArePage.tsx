@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Heart, Globe, Award, Shield, Users, MapPin, Clock, X, Calendar } from 'lucide-react'
+import { Heart, Award, Shield, Clock, X, Calendar } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const WhoWeArePage = () => {

@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Shield } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -53,7 +53,7 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: [0.17, 0.67, 0.83, 0.67] as [number, number, number, number]
       }
     }
   }

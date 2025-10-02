@@ -57,6 +57,9 @@ const WorldwideClientsPage = () => {
 
   // Globe configuration - light mode with cyan markers
   const globeConfig: COBEOptions = {
+    width: 800,
+    height: 800,
+    onRender: () => {},
     devicePixelRatio: 2,
     phi: 0,
     theta: 0.3,
