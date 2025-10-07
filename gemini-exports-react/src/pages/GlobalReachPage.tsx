@@ -3,7 +3,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 import { Globe as GlobeIcon, MapPin } from 'lucide-react'
-import Globe from 'react-globe.gl'
 
 const GlobalReachPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -215,7 +214,7 @@ const GlobalReachPage = () => {
               gap: '60px',
               alignItems: 'center'
             }}>
-              {/* Globe on Left */}
+              {/* Globe Placeholder on Left */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -228,14 +227,17 @@ const GlobalReachPage = () => {
                   minHeight: window.innerWidth >= 768 ? '500px' : '300px'
                 }}
               >
-                <Globe
-                  globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-                  backgroundColor="rgba(0,0,0,0)"
-                  width={window.innerWidth >= 768 ? 500 : 300}
-                  height={window.innerWidth >= 768 ? 500 : 300}
-                  atmosphereColor="#1CAFD8"
-                  atmosphereAltitude={0.2}
-                />
+                <div style={{
+                  width: window.innerWidth >= 768 ? '500px' : '300px',
+                  height: window.innerWidth >= 768 ? '500px' : '300px',
+                  backgroundColor: '#F0F9FF',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <GlobeIcon size={100} color="#1CAFD8" />
+                </div>
               </motion.div>
 
               {/* Regions on Right */}

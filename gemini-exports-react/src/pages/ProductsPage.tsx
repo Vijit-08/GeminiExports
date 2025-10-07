@@ -1,16 +1,16 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
-import { Package, Search, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity, X } from 'lucide-react'
+import { Package, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ProductsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isMd } = useBreakpoint()
-  const [searchQuery, setSearchQuery] = useState('')
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const searchQuery: string = '' // Placeholder for future search functionality
 
   const carouselImages = [
     '/assets/img/compressedImages/office.JPG',

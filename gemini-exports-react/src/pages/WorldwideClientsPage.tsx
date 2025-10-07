@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Globe as GlobeIcon, MapPin } from 'lucide-react'
 import { Globe } from '../components/ui/globe'
 import createGlobe from 'cobe'
 

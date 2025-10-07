@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Building2, Globe, Shield } from 'lucide-react'
+import { Building2, Shield } from 'lucide-react'
 
 const WhoWeArePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
