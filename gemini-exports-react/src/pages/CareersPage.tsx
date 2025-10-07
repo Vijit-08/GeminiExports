@@ -14,7 +14,8 @@ const CareersPage = () => {
     lastName: '',
     position: '',
     message: '',
-    resume: null as File | null
+    resume: null as File | null,
+    referral: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -184,7 +185,8 @@ const CareersPage = () => {
         lastName: '',
         position: '',
         message: '',
-        resume: null
+        resume: null,
+        referral: ''
       })
       // Reset file input element
       const fileInputs = document.querySelectorAll('input[type="file"]')
@@ -737,7 +739,7 @@ const CareersPage = () => {
                     </div>
                   </div>
 
-                  <div style={{ marginBottom: '32px' }}>
+                  <div style={{ marginBottom: '20px' }}>
                     <textarea
                       name="message"
                       value={formData.message}
@@ -753,6 +755,27 @@ const CareersPage = () => {
                         fontSize: '16px',
                         outline: 'none',
                         resize: 'vertical',
+                        transition: 'border-color 0.2s'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#1CAFD8'}
+                      onBlur={(e) => e.target.style.borderColor = '#E5E7EB'}
+                    />
+                  </div>
+
+                  <div style={{ marginBottom: '32px' }}>
+                    <input
+                      type="text"
+                      name="referral"
+                      value={formData.referral}
+                      onChange={handleInputChange}
+                      placeholder="Were you referred to us by someone? If yes, who?"
+                      style={{
+                        width: '100%',
+                        padding: '16px',
+                        border: '1px solid #E5E7EB',
+                        borderRadius: '8px',
+                        fontSize: '16px',
+                        outline: 'none',
                         transition: 'border-color 0.2s'
                       }}
                       onFocus={(e) => e.target.style.borderColor = '#1CAFD8'}

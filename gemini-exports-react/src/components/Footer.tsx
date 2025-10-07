@@ -12,7 +12,7 @@ const Footer = () => {
   }
 
   const linkStyle = {
-    color: '#4B5563',
+    color: '#9CA3AF',
     textDecoration: 'none',
     transition: 'color 0.3s'
   }
@@ -23,9 +23,9 @@ const Footer = () => {
 
   return (
     <footer style={{
-      backgroundColor: '#F8FAFC',
-      background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
-      color: '#1F2937',
+      backgroundColor: '#0F172A',
+      background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+      color: '#E2E8F0',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -36,7 +36,7 @@ const Footer = () => {
         left: '0',
         width: '100%',
         height: '100%',
-        background: 'radial-gradient(circle at 20% 20%, rgba(28, 175, 216, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 50%)',
+        background: 'radial-gradient(circle at 20% 20%, rgba(28, 175, 216, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%)',
         pointerEvents: 'none'
       }} />
 
@@ -64,7 +64,7 @@ const Footer = () => {
                   <span style={{
                     fontSize: '18px',
                     fontWeight: '700',
-                    color: '#1F2937',
+                    color: '#F1F5F9',
                     letterSpacing: '0.5px'
                   }}>
                     GEMINI EXPORTS
@@ -73,7 +73,7 @@ const Footer = () => {
 
                 <p style={{
                   fontSize: '16px',
-                  color: '#6B7280',
+                  color: '#94A3B8',
                   lineHeight: '1.6',
                   marginBottom: '24px',
                   maxWidth: '400px'
@@ -86,9 +86,9 @@ const Footer = () => {
                     display: 'flex',
                     alignItems: 'center',
                     padding: '8px 16px',
-                    backgroundColor: 'rgba(28, 175, 216, 0.1)',
+                    backgroundColor: 'rgba(28, 175, 216, 0.15)',
                     borderRadius: '20px',
-                    border: '1px solid rgba(28, 175, 216, 0.2)'
+                    border: '1px solid rgba(28, 175, 216, 0.3)'
                   }}>
                     <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>ISO Certified</span>
                   </div>
@@ -96,9 +96,9 @@ const Footer = () => {
                     display: 'flex',
                     alignItems: 'center',
                     padding: '8px 16px',
-                    backgroundColor: 'rgba(28, 175, 216, 0.1)',
+                    backgroundColor: 'rgba(28, 175, 216, 0.15)',
                     borderRadius: '20px',
-                    border: '1px solid rgba(28, 175, 216, 0.2)'
+                    border: '1px solid rgba(28, 175, 216, 0.3)'
                   }}>
                     <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>Nearly 30 Years</span>
                   </div>
@@ -106,9 +106,9 @@ const Footer = () => {
                     display: 'flex',
                     alignItems: 'center',
                     padding: '8px 16px',
-                    backgroundColor: 'rgba(28, 175, 216, 0.1)',
+                    backgroundColor: 'rgba(28, 175, 216, 0.15)',
                     borderRadius: '20px',
-                    border: '1px solid rgba(28, 175, 216, 0.2)'
+                    border: '1px solid rgba(28, 175, 216, 0.3)'
                   }}>
                     <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>30+ Countries</span>
                   </div>
@@ -121,7 +121,7 @@ const Footer = () => {
                   fontSize: '18px',
                   fontWeight: '600',
                   marginBottom: '24px',
-                  color: '#1F2937'
+                  color: '#F1F5F9'
                 }}>
                   Quick Links
                 </h4>
@@ -154,7 +154,7 @@ const Footer = () => {
                   fontSize: '18px',
                   fontWeight: '600',
                   marginBottom: '24px',
-                  color: '#1F2937'
+                  color: '#F1F5F9'
                 }}>
                   Get in Touch
                 </h4>
@@ -163,7 +163,7 @@ const Footer = () => {
                     <div style={{
                       width: '40px',
                       height: '40px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      backgroundColor: 'rgba(28, 175, 216, 0.2)',
                       borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
@@ -173,10 +173,10 @@ const Footer = () => {
                       <MapPin style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
                     <div>
-                      <p style={{ color: '#6B7280', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                      <p style={{ color: '#94A3B8', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
                         Address
                       </p>
-                      <p style={{ color: '#374151', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ color: '#CBD5E1', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
                         Tower A-704, Marathon Future X<br />
                         Mumbai, Maharashtra, India
                       </p>
@@ -187,7 +187,7 @@ const Footer = () => {
                     <div style={{
                       width: '40px',
                       height: '40px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      backgroundColor: 'rgba(28, 175, 216, 0.2)',
                       borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
@@ -197,14 +197,14 @@ const Footer = () => {
                       <Phone style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
                     <div>
-                      <p style={{ color: '#6B7280', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                      <p style={{ color: '#94A3B8', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
                         Phone
                       </p>
                       <a
                         href="tel:+912240508080"
-                        style={{ ...linkStyle, fontSize: '14px', color: '#374151' }}
+                        style={{ ...linkStyle, fontSize: '14px', color: '#CBD5E1' }}
                         onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
-                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
+                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#CBD5E1'}
                       >
                         +91 22 4050 8080
                       </a>
@@ -215,7 +215,7 @@ const Footer = () => {
                     <div style={{
                       width: '40px',
                       height: '40px',
-                      backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                      backgroundColor: 'rgba(28, 175, 216, 0.2)',
                       borderRadius: '10px',
                       display: 'flex',
                       alignItems: 'center',
@@ -225,14 +225,14 @@ const Footer = () => {
                       <Mail style={{ height: '20px', width: '20px', color: '#1CAFD8' }} />
                     </div>
                     <div>
-                      <p style={{ color: '#6B7280', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
+                      <p style={{ color: '#94A3B8', fontSize: '12px', margin: '0 0 4px 0', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '500' }}>
                         Email
                       </p>
                       <a
                         href="mailto:gemini@geminiexports.in"
-                        style={{ ...linkStyle, fontSize: '14px', color: '#374151' }}
+                        style={{ ...linkStyle, fontSize: '14px', color: '#CBD5E1' }}
                         onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
-                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#374151'}
+                        onMouseOut={(e) => (e.target as HTMLElement).style.color = '#CBD5E1'}
                       >
                         gemini@geminiexports.in
                       </a>
@@ -290,7 +290,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{
+        {/* <div style={{
           borderTop: '1px solid #E5E7EB',
           padding: '32px 0'
         }}>
@@ -328,7 +328,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   )

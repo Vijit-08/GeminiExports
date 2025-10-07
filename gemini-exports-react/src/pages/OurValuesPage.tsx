@@ -85,34 +85,6 @@ const OurValuesPage = () => {
               transition={{ duration: 0.6 }}
               style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
             >
-              <motion.div
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.8, type: 'spring' }}
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 20px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  borderRadius: '30px',
-                  marginBottom: '24px',
-                  border: '2px solid rgba(16, 185, 129, 0.2)',
-                  boxShadow: '0 4px 12px rgba(16, 185, 129, 0.1)'
-                }}
-              >
-                <span style={{
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  background: 'linear-gradient(135deg, #10B981 0%, #1CAFD8 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}>
-                  About Us
-                </span>
-              </motion.div>
-
               <h1 style={{
                 fontSize: window.innerWidth >= 768 ? '56px' : '40px',
                 fontWeight: '700',

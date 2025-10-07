@@ -14,8 +14,7 @@ const ContactInformationPage = () => {
     phone: '',
     company: '',
     subject: '',
-    message: '',
-    referral: ''
+    message: ''
   })
   const [, setIsSubmitting] = useState(false)
 
@@ -76,8 +75,7 @@ const ContactInformationPage = () => {
         phone: '',
         company: '',
         subject: '',
-        message: '',
-        referral: ''
+        message: ''
       })
 
     } catch (error) {
@@ -422,27 +420,6 @@ const ContactInformationPage = () => {
                         resize: 'vertical'
                       }}
                       placeholder="Please provide details about your inquiry..."
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{ fontSize: '14px', fontWeight: '500', color: '#1F2937', marginBottom: '6px', display: 'block' }}>
-                      Were you referred to us by someone? If yes, who?
-                    </label>
-                    <input
-                      type="text"
-                      name="referral"
-                      value={formData.referral}
-                      onChange={handleInputChange}
-                      style={{
-                        width: '100%',
-                        padding: '12px',
-                        border: '1px solid #E5E7EB',
-                        borderRadius: '8px',
-                        fontSize: '16px',
-                        outline: 'none'
-                      }}
-                      placeholder="Name of person or company who referred you..."
                     />
                   </div>
 

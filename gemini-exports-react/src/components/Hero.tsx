@@ -77,7 +77,8 @@ const Hero = () => {
       background: 'linear-gradient(135deg, #0891B2 0%, #0E7490 100%)',
       paddingTop: window.innerWidth >= 768 ? '140px' : '100px',
       paddingBottom: window.innerWidth >= 768 ? '100px' : '60px',
-      minHeight: window.innerWidth >= 768 ? '80vh' : 'auto',
+      height: window.innerWidth >= 768 ? '80vh' : 'auto',
+      minHeight: window.innerWidth >= 768 ? '700px' : 'auto',
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden'
@@ -89,7 +90,7 @@ const Hero = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='50' cy='15' r='2.5'/%3E%3Ccircle cx='80' cy='25' r='3'/%3E%3Ccircle cx='35' cy='45' r='2'/%3E%3Ccircle cx='65' cy='50' r='3.5'/%3E%3Ccircle cx='15' cy='70' r='2.5'/%3E%3Ccircle cx='50' cy='80' r='3'/%3E%3Ccircle cx='85' cy='75' r='2'/%3E%3Cline x1='20' y1='20' x2='50' y2='15' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='50' y1='15' x2='80' y2='25' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='20' y1='20' x2='35' y2='45' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='35' y1='45' x2='65' y2='50' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='65' y1='50' x2='85' y2='75' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='35' y1='45' x2='15' y2='70' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3Cline x1='15' y1='70' x2='50' y2='80' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='50' cy='15' r='2.5'/%3E%3Ccircle cx='80' cy='25' r='3'/%3E%3Ccircle cx='35' cy='45' r='2'/%3E%3Ccircle cx='65' cy='50' r='3.5'/%3E%3Ccircle cx='15' cy='70' r='2.5'/%3E%3Ccircle cx='50' cy='80' r='3'/%3E%3Ccircle cx='85' cy='75' r='2'/%3E%3Cline x1='20' y1='20' x2='50' y2='15' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='50' y1='15' x2='80' y2='25' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='20' y1='20' x2='35' y2='45' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='35' y1='45' x2='65' y2='50' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='65' y1='50' x2='85' y2='75' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='35' y1='45' x2='15' y2='70' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3Cline x1='15' y1='70' x2='50' y2='80' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.04'/%3E%3C/g%3E%3C/svg%3E")`,
         opacity: 1,
         zIndex: 1
       }} />
