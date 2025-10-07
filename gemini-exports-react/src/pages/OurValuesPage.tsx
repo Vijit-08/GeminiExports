@@ -30,13 +30,13 @@ const OurValuesPage = () => {
       title: 'Completeness',
       description: 'From sourcing to delivery, we manage the entire supply chain. Our 150+ product portfolio ensures our clients find everything they need under one trusted roof.',
       icon: Package,
-      color: '#8B5CF6'
+      color: '#0891B2'
     },
     {
       title: 'Consistency',
-      description: 'Quality isn\'t a one-time achievement—it\'s our standard. We deliver the same excellence, order after order, year after year, because healthcare can\'t afford anything less.',
+      description: 'Quality isn\'t a one-time achievement—it\'s our standard. We deliver the same excellence, order after order, year after order, because healthcare can\'t afford anything less.',
       icon: Clock,
-      color: '#F59E0B'
+      color: '#14B8A6'
     }
   ]
 
@@ -50,27 +50,87 @@ const OurValuesPage = () => {
 
       <main style={{ paddingTop: '80px' }}>
         {/* Hero Section */}
-        <section style={{ padding: '80px 0 60px', backgroundColor: '#F9FAFB' }}>
-          <div style={containerStyle}>
+        <section style={{
+          padding: '80px 0 60px',
+          background: 'linear-gradient(135deg, #ECFDF5 0%, #F0F9FF 50%, #EBF8FF 100%)',
+          position: 'relative' as const,
+          overflow: 'hidden'
+        }}>
+          {/* Decorative Elements */}
+          <div style={{
+            position: 'absolute',
+            top: '15%',
+            right: '10%',
+            width: '100px',
+            height: '100px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+            zIndex: 1
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '20%',
+            left: '5%',
+            width: '90px',
+            height: '90px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(28, 175, 216, 0.1) 0%, transparent 70%)',
+            zIndex: 1
+          }} />
+
+          <div style={{ ...containerStyle, position: 'relative' as const, zIndex: 2 }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
             >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8, type: 'spring' }}
+                style={{
+                  display: 'inline-block',
+                  padding: '8px 20px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '30px',
+                  marginBottom: '24px',
+                  border: '2px solid rgba(16, 185, 129, 0.2)',
+                  boxShadow: '0 4px 12px rgba(16, 185, 129, 0.1)'
+                }}
+              >
+                <span style={{
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  background: 'linear-gradient(135deg, #10B981 0%, #1CAFD8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>
+                  About Us
+                </span>
+              </motion.div>
+
               <h1 style={{
-                fontSize: window.innerWidth >= 768 ? '48px' : '36px',
-                fontWeight: '500',
-                margin: '0 0 20px 0',
-                color: '#1F2937'
+                fontSize: window.innerWidth >= 768 ? '56px' : '40px',
+                fontWeight: '700',
+                margin: '0 0 24px 0',
+                background: 'linear-gradient(135deg, #10B981 0%, #1CAFD8 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                lineHeight: '1.2'
               }}>
                 Our Core Values
               </h1>
               <p style={{
-                fontSize: '18px',
+                fontSize: '19px',
                 lineHeight: '1.7',
-                color: '#6B7280',
-                margin: 0
+                color: '#4B5563',
+                margin: 0,
+                fontWeight: '400'
               }}>
                 In an industry where trust is everything, our values define how we operate and serve our global partners.
               </p>
