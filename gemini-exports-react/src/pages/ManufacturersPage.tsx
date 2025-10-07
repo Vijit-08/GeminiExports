@@ -141,7 +141,7 @@ const ManufacturersPage = () => {
                 margin: '0 0 24px 0',
                 color: '#1F2937'
               }}>
-                Trusted Manufacturing Partners
+                Trusted manufacturing partners
               </h1>
 
               <p style={{
@@ -293,7 +293,7 @@ const ManufacturersPage = () => {
                 margin: '0 0 32px 0',
                 color: '#1F2937'
               }}>
-                Manufacturing Network Across India
+                Manufacturing network across India
               </h2>
 
               {/* Key Points Grid */}
@@ -332,13 +332,10 @@ const ManufacturersPage = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexShrink: 0
+                      flexShrink: 0,
+                      fontSize: '20px'
                     }}>
-                      <span style={{
-                        fontSize: '24px',
-                        fontWeight: '700',
-                        color: '#60A5FA'
-                      }}>180+</span>
+                      🏭
                     </div>
                     <div>
                       <h3 style={{
@@ -446,7 +443,7 @@ const ManufacturersPage = () => {
                       flexShrink: 0,
                       fontSize: '20px'
                     }}>
-                      ✓
+                      🤝
                     </div>
                     <div>
                       <h3 style={{

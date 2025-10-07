@@ -14,7 +14,8 @@ const ContactInformationPage = () => {
     phone: '',
     company: '',
     subject: '',
-    message: ''
+    message: '',
+    referral: ''
   })
   const [, setIsSubmitting] = useState(false)
 
@@ -75,7 +76,8 @@ const ContactInformationPage = () => {
         phone: '',
         company: '',
         subject: '',
-        message: ''
+        message: '',
+        referral: ''
       })
 
     } catch (error) {
@@ -135,7 +137,7 @@ const ContactInformationPage = () => {
                 margin: '0 0 24px 0',
                 color: '#1F2937'
               }}>
-                Contact Information
+                Contact information
               </h1>
 
               <p style={{
@@ -256,14 +258,13 @@ const ContactInformationPage = () => {
         <section style={{ padding: '80px 0', backgroundColor: '#F8FAFC' }}>
           <div style={containerStyle}>
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-              gap: '60px'
+              maxWidth: '800px',
+              margin: '0 auto'
             }}>
               {/* Contact Form */}
               <motion.div
-                initial={{ x: -30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 style={{
                   backgroundColor: '#ffffff',
@@ -424,6 +425,27 @@ const ContactInformationPage = () => {
                     />
                   </div>
 
+                  <div>
+                    <label style={{ fontSize: '14px', fontWeight: '500', color: '#1F2937', marginBottom: '6px', display: 'block' }}>
+                      Were you referred to us by someone? If yes, who?
+                    </label>
+                    <input
+                      type="text"
+                      name="referral"
+                      value={formData.referral}
+                      onChange={handleInputChange}
+                      style={{
+                        width: '100%',
+                        padding: '12px',
+                        border: '1px solid #E5E7EB',
+                        borderRadius: '8px',
+                        fontSize: '16px',
+                        outline: 'none'
+                      }}
+                      placeholder="Name of person or company who referred you..."
+                    />
+                  </div>
+
                   <motion.button
                     whileHover={{ scale: 1.02, backgroundColor: '#0EA5E9' }}
                     whileTap={{ scale: 0.98 }}
@@ -446,33 +468,6 @@ const ContactInformationPage = () => {
                     Send Message
                   </motion.button>
                 </form>
-              </motion.div>
-
-              {/* Logo */}
-              <motion.div
-                initial={{ x: 30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: '16px',
-                  padding: '60px',
-                  border: '1px solid #E5E7EB',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <img
-                  src="/assets/img/gemini-logo.png"
-                  alt="Gemini Exports Logo"
-                  style={{
-                    width: '100%',
-                    maxWidth: '400px',
-                    height: 'auto',
-                    objectFit: 'contain'
-                  }}
-                />
               </motion.div>
             </div>
           </div>

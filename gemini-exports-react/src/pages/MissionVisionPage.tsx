@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Building2, Globe, Shield } from 'lucide-react'
+import { Target, Eye } from 'lucide-react'
 
-const WhoWeArePage = () => {
+const MissionVisionPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const containerStyle = {
@@ -37,7 +37,7 @@ const WhoWeArePage = () => {
                 margin: '0 0 20px 0',
                 color: '#1F2937'
               }}>
-                Our Story
+                Mission & Vision
               </h1>
               <p style={{
                 fontSize: '18px',
@@ -45,13 +45,13 @@ const WhoWeArePage = () => {
                 color: '#6B7280',
                 margin: 0
               }}>
-                Founded in 1996, we are an ISO-certified pharmaceutical trading company based in Mumbai, India, with nearly 30 years of trusted experience in global pharmaceutical trade. For nearly three decades, we've been the trusted bridge connecting leading pharmaceutical manufacturers with healthcare companies across 30+ countries, sourcing, quality-checking, and delivering 150+ premium APIs and specialty ingredients that power better health outcomes worldwide. From cardiovascular care to gastrointestinal solutions, we do not just trade pharmaceuticals, we collaborate with healthcare institutions and industry players, ensuring quality ingredients reach those who need them most.
+                Our commitment to excellence and our vision for the future
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Main Story Section */}
+        {/* Mission Section */}
         <section style={{ padding: '80px 0' }}>
           <div style={containerStyle}>
             <div style={{
@@ -76,7 +76,7 @@ const WhoWeArePage = () => {
                   justifyContent: 'center',
                   marginBottom: '24px'
                 }}>
-                  <Building2 size={32} color="#1CAFD8" />
+                  <Target size={32} color="#1CAFD8" />
                 </div>
                 <h2 style={{
                   fontSize: '36px',
@@ -84,7 +84,7 @@ const WhoWeArePage = () => {
                   margin: '0 0 20px 0',
                   color: '#1F2937'
                 }}>
-                  Expertise & Global Reach
+                  Our Mission
                 </h2>
                 <p style={{
                   fontSize: '17px',
@@ -92,7 +92,7 @@ const WhoWeArePage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  Our core expertise spans cardiovascular, gastrointestinal, endocrinology, ophthalmic, and psychiatry therapeutic areas, though our portfolio extends far beyond. We serve clients across South and Central America, the Middle East, and South-East Asia, maintaining a strong presence in over 30 countries.
+                  To deliver consistent, high-quality results that ensure customer satisfaction and trust. We source and supply reliable active pharmaceutical ingredients and excipients by upholding the highest standards of quality and compliance. Our aim is clear: to be the trusted partner for healthcare providers, pharmacies, and institutions worldwide connecting them with the pharmaceutical ingredients that make a difference in patient care.
                 </p>
               </motion.div>
 
@@ -105,7 +105,7 @@ const WhoWeArePage = () => {
               >
                 <img
                   src="/assets/img/compressedImages/office.JPG"
-                  alt="Our Story"
+                  alt="Mission"
                   style={{
                     width: '100%',
                     height: 'auto',
@@ -118,9 +118,8 @@ const WhoWeArePage = () => {
           </div>
         </section>
 
-
-        {/* Commitment to Quality Section */}
-        <section style={{ padding: '80px 0' }}>
+        {/* Vision Section */}
+        <section style={{ padding: '80px 0', backgroundColor: '#F9FAFB' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -130,6 +129,25 @@ const WhoWeArePage = () => {
             }}>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                style={{ display: window.innerWidth < 768 ? 'none' : 'block', order: window.innerWidth >= 768 ? 0 : 1 }}
+              >
+                <img
+                  src="/assets/img/compressedImages/group.jpg"
+                  alt="Vision"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  }}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
@@ -144,7 +162,7 @@ const WhoWeArePage = () => {
                   justifyContent: 'center',
                   marginBottom: '24px'
                 }}>
-                  <Shield size={32} color="#8B5CF6" />
+                  <Eye size={32} color="#8B5CF6" />
                 </div>
                 <h2 style={{
                   fontSize: '36px',
@@ -152,43 +170,16 @@ const WhoWeArePage = () => {
                   margin: '0 0 20px 0',
                   color: '#1F2937'
                 }}>
-                  Commitment to Quality
+                  Our Vision
                 </h2>
-                <p style={{
-                  fontSize: '17px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  margin: '0 0 20px 0'
-                }}>
-                  We collaborate exclusively with ISO-certified manufacturers to ensure every product we supply meets the highest quality standards. Our mission is simple: promote holistic well-being and healthier lives through reliable access to premium pharmaceutical ingredients.
-                </p>
                 <p style={{
                   fontSize: '17px',
                   lineHeight: '1.8',
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  The APIs and specialty products we supply add critical value to the finished formulations and health solutions that ultimately reach patients worldwide.
+                  As we evolve, our vision focuses on expanding our global footprint by forging stronger partnerships, advancing our sourcing strategies, and broadening our product range.
                 </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                style={{ display: window.innerWidth < 768 ? 'none' : 'block' }}
-              >
-                <img
-                  src="/assets/img/compressedImages/people1.JPG"
-                  alt="Commitment to Quality"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '12px',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                  }}
-                />
               </motion.div>
             </div>
           </div>
@@ -200,4 +191,4 @@ const WhoWeArePage = () => {
   )
 }
 
-export default WhoWeArePage
+export default MissionVisionPage

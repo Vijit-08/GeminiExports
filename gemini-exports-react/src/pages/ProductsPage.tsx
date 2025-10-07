@@ -51,8 +51,8 @@ const ProductsPage = () => {
     {
       name: 'CARDIOVASCULAR',
       icon: Heart,
-      color: '#F87171',
-      bgColor: '#FEF2F2',
+      color: '#1CAFD8',
+      bgColor: '#EBF8FF',
       drugs: [
         { name: 'Atorvastatin / Atorvastatin Calcium Trihydrate', cas: '344423-98-9' },
         { name: 'Fenofibrate', cas: '49562-28-9' },
@@ -213,7 +213,7 @@ const ProductsPage = () => {
                 margin: '0 0 24px 0',
                 color: '#1F2937'
               }}>
-                PRODUCTS
+                Our product portfolio
               </h1>
             </motion.div>
           </div>
@@ -334,7 +334,7 @@ const ProductsPage = () => {
                   margin: '0 0 24px 0',
                   color: '#1F2937'
                 }}>
-                  Comprehensive Product Range
+                  Comprehensive product range
                 </h2>
                 <p style={{
                   fontSize: '18px',
@@ -382,7 +382,7 @@ const ProductsPage = () => {
                 margin: '0 0 16px 0',
                 color: '#1F2937'
               }}>
-                Therapeutic Areas
+                Therapeutic areas
               </h2>
               <p style={{
                 fontSize: '16px',
@@ -395,16 +395,54 @@ const ProductsPage = () => {
 
               <p style={{
                 fontSize: '15px',
-                color: '#1CAFD8',
+                color: '#6B7280',
                 fontWeight: '500',
                 maxWidth: '600px',
-                margin: '0 auto 40px'
+                margin: '0 auto 16px'
               }}>
                 For a comprehensive list of products please contact us for more information.
               </p>
 
+              {/* Request Catalog Button */}
+              {/* <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                style={{
+                  marginBottom: '40px'
+                }}
+              >
+                <a
+                  href="mailto:gemini@geminiexports.in?subject=Request%20for%20Complete%20Product%20Catalog&body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20the%20complete%20product%20catalog.%0D%0A%0D%0AThank%20you."
+                  style={{
+                    display: 'inline-block',
+                    padding: '14px 28px',
+                    backgroundColor: '#1CAFD8',
+                    color: 'white',
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    boxShadow: '0 4px 6px -1px rgba(28, 175, 216, 0.3)'
+                  }}
+                  onMouseOver={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = '#1599BB'
+                    ;(e.target as HTMLElement).style.transform = 'translateY(-2px)'
+                    ;(e.target as HTMLElement).style.boxShadow = '0 6px 10px -1px rgba(28, 175, 216, 0.4)'
+                  }}
+                  onMouseOut={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = '#1CAFD8'
+                    ;(e.target as HTMLElement).style.transform = 'translateY(0)'
+                    ;(e.target as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(28, 175, 216, 0.3)'
+                  }}
+                >
+                  Request Complete Product Catalog
+                </a>
+              </motion.div> */}
+
               {/* Search Bar */}
-              <motion.div
+              {/* <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -427,7 +465,7 @@ const ProductsPage = () => {
                   }} />
                   <input
                     type="text"
-                    placeholder="Search by product name or CAS number..."
+                    placeholder="Search by product name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     style={{
@@ -470,7 +508,7 @@ const ProductsPage = () => {
                     </button>
                   )}
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
