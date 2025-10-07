@@ -10,26 +10,21 @@ const ProductsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isMd } = useBreakpoint()
   const [searchQuery, setSearchQuery] = useState('')
-  const [leftImageIndex, setLeftImageIndex] = useState(0)
-  const [rightImageIndex, setRightImageIndex] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  const leftImages = ['/assets/img/compressedImages/office.JPG', '/assets/img/compressedImages/reception1.JPG']
-  const rightImages = ['/assets/img/compressedImages/reception1.JPG', '/assets/img/compressedImages/office.JPG']
+  const carouselImages = [
+    '/assets/img/compressedImages/office.JPG',
+    '/assets/img/compressedImages/reception1.JPG',
+    '/assets/img/compressedImages/group.jpg'
+  ]
 
-  // Auto-rotate images every 5 seconds
+  // Auto-rotate images every 4 seconds
   useEffect(() => {
-    const leftInterval = setInterval(() => {
-      setLeftImageIndex((prev) => (prev + 1) % leftImages.length)
-    }, 5000)
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length)
+    }, 4000)
 
-    const rightInterval = setInterval(() => {
-      setRightImageIndex((prev) => (prev + 1) % rightImages.length)
-    }, 5000)
-
-    return () => {
-      clearInterval(leftInterval)
-      clearInterval(rightInterval)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   const containerStyle = {
@@ -64,7 +59,7 @@ const ProductsPage = () => {
     {
       name: 'RESPIRATORY',
       icon: Activity,
-      color: '#34D399',
+      color: '#10B981',
       bgColor: '#ECFDF5',
       drugs: [
         { name: 'Budesonide', cas: '51333-22-3' },
@@ -74,8 +69,8 @@ const ProductsPage = () => {
     {
       name: 'GASTROINTESTINAL',
       icon: Stethoscope,
-      color: '#A78BFA',
-      bgColor: '#F5F3FF',
+      color: '#0891B2',
+      bgColor: '#CFFAFE',
       drugs: [
         { name: 'Esomeprazole/ Esomeprazole Magnesium Trihydrate', cas: '217087-09-7' },
         { name: 'Famotidine', cas: '76824-35-6' },
@@ -86,8 +81,8 @@ const ProductsPage = () => {
     {
       name: 'NEUROLOGIC',
       icon: Brain,
-      color: '#60A5FA',
-      bgColor: '#EFF6FF',
+      color: '#0E7490',
+      bgColor: '#E0F2FE',
       drugs: [
         { name: 'Lamotrigine', cas: '84057-84-1' },
         { name: 'Meloxicam', cas: '71125-38-7' },
@@ -97,8 +92,8 @@ const ProductsPage = () => {
     {
       name: 'PSYCHIATRIC',
       icon: Brain,
-      color: '#FBBF24',
-      bgColor: '#FFFBEB',
+      color: '#14B8A6',
+      bgColor: '#CCFBF1',
       drugs: [
         { name: 'Amitriptyline/ Amitriptyline Hydrochloride', cas: '549-18-8' },
         { name: 'Olanzapine', cas: '132539-06-1' },
@@ -109,7 +104,7 @@ const ProductsPage = () => {
       name: 'ENDOCRINOLOGY',
       icon: Beaker,
       color: '#34D399',
-      bgColor: '#ECFDF5',
+      bgColor: '#D1FAE5',
       drugs: [
         { name: 'Glimeperide', cas: '93479-97-1' },
         { name: 'Metformin/ Metformin Hydrochloride', cas: '1115-70-4' },
@@ -119,8 +114,8 @@ const ProductsPage = () => {
     {
       name: 'UROLOGIC',
       icon: Shield,
-      color: '#818CF8',
-      bgColor: '#EEF2FF',
+      color: '#06B6D4',
+      bgColor: '#CFFAFE',
       drugs: [
         { name: 'Sildenafil/ Sildenafil Citrate', cas: '171599-83-0' },
         { name: 'Tadalafil', cas: '171596-29-5' },
@@ -130,8 +125,8 @@ const ProductsPage = () => {
     {
       name: 'RHEUMATOLOGIC',
       icon: Activity,
-      color: '#A78BFA',
-      bgColor: '#F5F3FF',
+      color: '#059669',
+      bgColor: '#D1FAE5',
       drugs: [
         { name: 'Alendronate/ Sodium Alendronate Trihydrate', cas: '121268-17-5' },
         { name: 'Allopurinol', cas: '315-30-0' },
@@ -141,8 +136,8 @@ const ProductsPage = () => {
     {
       name: 'OPHTHALMIC',
       icon: Eye,
-      color: '#F472B6',
-      bgColor: '#FDF2F8',
+      color: '#0284C7',
+      bgColor: '#E0F2FE',
       drugs: [
         { name: 'Brimonidine/ Brimonidine Tartrate', cas: '70359-46-5' },
         { name: 'Dorzolamide/ Dorzolamide Hydrochloride', cas: '130693-82-2' },
@@ -231,93 +226,110 @@ const ProductsPage = () => {
               gap: '60px',
               alignItems: 'center'
             }}>
-              {/* Left Side - Images */}
+              {/* Left Side - Carousel Image */}
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
                 style={{
                   position: 'relative',
-                  height: '500px',
-                  display: !isMd ? 'none' : 'block'
+                  display: !isMd ? 'none' : 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  minHeight: '450px'
                 }}
               >
-                {/* Top Left Image */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '320px',
-                    height: '280px',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                    border: '4px solid rgba(255, 255, 255, 0.9)',
-                    zIndex: 2
-                  }}
-                >
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={leftImageIndex}
-                      src={leftImages[leftImageIndex]}
-                      alt=""
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
+                {/* Dotted Grid Pattern - Top Left */}
+                <div style={{
+                  position: 'absolute',
+                  top: '10px',
+                  left: '10px',
+                  zIndex: 1,
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(5, 6px)',
+                  gridTemplateRows: 'repeat(5, 6px)',
+                  gap: '12px'
+                }}>
+                  {Array.from({ length: 25 }).map((_, index) => (
+                    <motion.div
+                      key={`dot-tl-${index}`}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.02 }}
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(28, 175, 216, 0.4)'
                       }}
                     />
-                  </AnimatePresence>
-                </motion.div>
+                  ))}
+                </div>
 
-                {/* Bottom Right Image */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  style={{
-                    position: 'absolute',
-                    bottom: '0',
-                    right: '0',
-                    width: '340px',
-                    height: '300px',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                    border: '4px solid rgba(255, 255, 255, 0.9)',
-                    zIndex: 1
-                  }}
-                >
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={rightImageIndex}
-                      src={rightImages[rightImageIndex]}
-                      alt=""
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
+                {/* Dotted Grid Pattern - Bottom Right */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  zIndex: 1,
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(5, 6px)',
+                  gridTemplateRows: 'repeat(5, 6px)',
+                  gap: '12px'
+                }}>
+                  {Array.from({ length: 25 }).map((_, index) => (
+                    <motion.div
+                      key={`dot-br-${index}`}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.02 }}
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(28, 175, 216, 0.4)'
                       }}
                     />
-                  </AnimatePresence>
+                  ))}
+                </div>
+
+                {/* Centered Carousel Image */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  style={{
+                    position: 'relative',
+                    zIndex: 2,
+                    width: '420px',
+                    height: '320px',
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    border: '6px solid rgba(255, 255, 255, 0.9)',
+                    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)'
+                  }}
+                >
+                  {carouselImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: currentImageIndex === index ? 1 : 0,
+                        scale: currentImageIndex === index ? 1 : 1.1
+                      }}
+                      transition={{ duration: 0.8 }}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundImage: `url(${image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
+                    />
+                  ))}
                 </motion.div>
               </motion.div>
 

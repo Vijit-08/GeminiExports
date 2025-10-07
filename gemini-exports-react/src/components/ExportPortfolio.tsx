@@ -25,21 +25,21 @@ const ExportPortfolio = () => {
       title: '30+',
       subtitle: 'Active Pharmaceutical Ingredients',
       description: 'High-quality APIs across therapeutic categories',
-      color: '#059669'
+      color: '#10B981'
     },
     {
       icon: Beaker,
       title: '15+',
       subtitle: 'Excipients',
       description: 'Essential excipients for pharmaceutical formulations',
-      color: '#7C3AED'
+      color: '#0891B2'
     },
     {
       icon: Package,
       title: '10+',
       subtitle: 'Direct Compression Materials',
       description: 'Materials for direct compression tablet manufacturing',
-      color: '#DC2626'
+      color: '#14B8A6'
     },
     {
       icon: Leaf,
@@ -53,7 +53,7 @@ const ExportPortfolio = () => {
       title: 'Essential',
       subtitle: 'Oils & Probiotic Blends',
       description: 'Specialized oils and probiotic formulations',
-      color: '#1CAFD8'
+      color: '#06B6D4'
     }
   ]
 
