@@ -65,24 +65,29 @@ const QualityCertificationsPage = () => {
 
   const certifications = [
     {
-      image: '/assets/img/credentials/GE-21B-FDA-Licence.jpg',
+      image: '/assets/img/credentials/FDA.png',
+      title: 'FDA license issued by the Government of India',
+      validity: 'Validity – May 31, 2028'
+    },
+    {
+      image: '/assets/img/credentials/EXPORT.png',
       title: 'Export certificate issued by Government of India',
       validity: 'Validity – March 31, 2028'
     },
     {
-      image: '/assets/img/credentials/ISOQAR.jpg',
-      title: 'FDA license issued by the Government of India',
-      validity: 'Validity – March 31, 2029'
+      image: '/assets/img/credentials/ISO.png',
+      title: 'ISO certificate',
+      validity: 'Validity – May 31, 2025, renewed until May 31, 2028'
     },
     {
-      image: '/assets/img/credentials/ONE-STAR-EXPORT-HOUSE-CERTIFICAT-1.jpg',
-      title: 'One Star Export House',
-      validity: 'Valid until Dec 2024'
+      image: '/assets/img/credentials/WAREHOUSE1.png',
+      title: 'FDA license issued by the Government of India for both our warehouses',
+      validity: 'Validity – March 30, 2029'
     },
     {
-      image: '/assets/img/credentials/Mumbai-_INAAAFG3731E1F232_GEMINIEXPO_T1.jpg',
-      title: 'Export License',
-      validity: 'Valid until Jun 2026'
+      image: '/assets/img/credentials/CUSTOMS.png',
+      title: 'Certificate issued by the Custom Authorities of India',
+      validity: 'Validity – April 16, 2026'
     }
   ]
 

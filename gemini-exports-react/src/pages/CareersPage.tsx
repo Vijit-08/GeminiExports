@@ -313,19 +313,19 @@ const CareersPage = () => {
                     title: 'Professional Growth',
                     description: 'Continuous learning opportunities in the pharmaceutical industry',
                     icon: GraduationCap,
-                    color: '#059669'
+                    color: '#10B981'
                   },
                   {
                     title: 'Quality Focus',
                     description: 'Work with ISO-certified processes and maintain highest standards',
                     icon: Users,
-                    color: '#7C3AED'
+                    color: '#0891B2'
                   },
                   {
                     title: 'Flexible Environment',
                     description: 'Collaborative work culture with work-life balance',
                     icon: Clock,
-                    color: '#DC2626'
+                    color: '#14B8A6'
                   }
                 ].map((benefit, index) => (
                   <motion.div
@@ -585,20 +585,20 @@ const CareersPage = () => {
                   <CheckCircle style={{
                     height: '64px',
                     width: '64px',
-                    color: '#16A34A',
+                    color: '#10B981',
                     margin: '0 auto 24px'
                   }} />
                   <h3 style={{
                     fontSize: '24px',
                     fontWeight: '600',
                     margin: '0 0 16px 0',
-                    color: '#15803D'
+                    color: '#059669'
                   }}>
                     Application Received!
                   </h3>
                   <p style={{
                     fontSize: '16px',
-                    color: '#166534',
+                    color: '#047857',
                     lineHeight: '1.6',
                     maxWidth: '500px',
                     margin: '0 auto 24px'
@@ -610,7 +610,7 @@ const CareersPage = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsSubmitted(false)}
                     style={{
-                      backgroundColor: '#16A34A',
+                      backgroundColor: '#10B981',
                       color: 'white',
                       padding: '12px 24px',
                       borderRadius: '8px',

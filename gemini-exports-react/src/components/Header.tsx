@@ -100,78 +100,23 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               Home
             </Link>
 
-            {/* About Us Dropdown */}
-            <div
-              style={{ position: 'relative' }}
-              onMouseEnter={() => handleMouseEnter('about')}
-              onMouseLeave={handleMouseLeave}
+            {/* About Us Link */}
+            <Link
+              to="/about-us"
+              style={{
+                color: isActiveLink('/about-us') ? '#1CAFD8' : '#374151',
+                fontWeight: isActiveLink('/about-us') ? '600' : '500',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+                padding: '8px 0',
+                borderBottom: isActiveLink('/about-us') ? '2px solid #1CAFD8' : 'none',
+                fontFamily: 'system-ui, -apple-system, sans-serif'
+              }}
+              onMouseOver={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
+              onMouseOut={(e) => (e.target as HTMLElement).style.color = isActiveLink('/about-us') ? '#1CAFD8' : '#374151'}
             >
-              <a
-                href="#"
-                style={{
-                  color: activeDropdown === 'about' || isActiveDropdownParent(['/about-us']) ? '#1CAFD8' : '#374151',
-                  fontWeight: isActiveDropdownParent(['/about-us']) ? '600' : '500',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                  padding: '8px 0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  borderBottom: isActiveDropdownParent(['/about-us']) ? '2px solid #1CAFD8' : 'none',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-              >
-                About Us
-                <ChevronDown style={{
-                  height: '16px',
-                  width: '16px',
-                  transform: activeDropdown === 'about' ? 'rotate(180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.2s'
-                }} />
-              </a>
-              {activeDropdown === 'about' && (
-                <div
-                  onMouseEnter={() => handleMouseEnter('about')}
-                  onMouseLeave={handleMouseLeave}
-                  style={{
-                  position: 'absolute',
-                  top: '100%',
-                  left: '0',
-                  backgroundColor: 'white',
-                  borderRadius: '12px',
-                  boxShadow: '0 10px 25px -3px rgba(0, 0, 0, 0.1)',
-                  border: '1px solid #f3f4f6',
-                  padding: '16px 0',
-                  minWidth: '220px',
-                  zIndex: 50,
-                  marginTop: '8px',
-                  animation: 'fadeInDown 0.2s ease-out'
-                }}>
-                  <Link
-                    to="/about-us"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      fontSize: '14px',
-                      transition: 'all 0.2s',
-                      fontFamily: 'system-ui, -apple-system, sans-serif'
-                    }}
-                    onMouseOver={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
-                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
-                    }}
-                    onMouseOut={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
-                      ;(e.target as HTMLElement).style.color = '#374151'
-                    }}
-                  >
-                    About Us
-                  </Link>
-                </div>
-              )}
-            </div>
+              About Us
+            </Link>
 
             <Link
               to="/products"
@@ -394,43 +339,31 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               Home
             </Link>
 
-            {/* About Us Section */}
-            <div style={{ paddingLeft: '16px', marginTop: '8px' }}>
-              <div style={{
-                fontSize: '12px',
-                fontWeight: '600',
-                color: '#9CA3AF',
-                padding: '8px 0',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
+            {/* About Us Link */}
+            <Link
+              to="/about-us"
+              style={{
+                padding: '12px 16px',
+                color: '#374151',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                transition: 'all 0.2s',
+                display: 'block',
+                marginTop: '8px',
                 fontFamily: 'system-ui, -apple-system, sans-serif'
-              }}>
-                About Us
-              </div>
-              <Link
-                to="/about-us"
-                style={{
-                  padding: '12px 16px',
-                  color: '#374151',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s',
-                  display: 'block',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-                onMouseOver={(e) => {
-                  (e.target as HTMLElement).style.color = '#1CAFD8'
-                  ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
-                }}
-                onMouseOut={(e) => {
-                  (e.target as HTMLElement).style.color = '#374151'
-                  ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
-                }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Us
-              </Link>
-            </div>
+              }}
+              onMouseOver={(e) => {
+                (e.target as HTMLElement).style.color = '#1CAFD8'
+                ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
+              }}
+              onMouseOut={(e) => {
+                (e.target as HTMLElement).style.color = '#374151'
+                ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About Us
+            </Link>
 
             <Link
               to="/products"

@@ -319,7 +319,7 @@ const WhyChooseUsPage = () => {
         </section>
 
         {/* Customer Success Section with Image */}
-        <section style={{ padding: '80px 0' }}>
+        {/* <section style={{ padding: '80px 0' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -384,7 +384,7 @@ const WhyChooseUsPage = () => {
               </motion.div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />
