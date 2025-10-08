@@ -136,7 +136,7 @@ const MissionVisionPage = () => {
                 style={{ display: window.innerWidth < 768 ? 'none' : 'block' }}
               >
                 <img
-                  src="/assets/img/compressedImages/office.JPG"
+                  src="/assets/img/compressedImages/visionmission1.JPG"
                   alt="Mission"
                   style={{
                     width: '100%',
@@ -167,7 +167,7 @@ const MissionVisionPage = () => {
                 style={{ display: window.innerWidth < 768 ? 'none' : 'block', order: window.innerWidth >= 768 ? 0 : 1 }}
               >
                 <img
-                  src="/assets/img/compressedImages/group.jpg"
+                  src="/assets/img/compressedImages/visionmission2.JPG"
                   alt="Vision"
                   style={{
                     width: '100%',

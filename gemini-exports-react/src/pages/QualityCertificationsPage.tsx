@@ -166,7 +166,7 @@ const QualityCertificationsPage = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src="/assets/img/compressedImages/office.JPG"
+                  src="/assets/img/compressedImages/ourstory2.JPG"
                   alt="ISO Certification"
                   style={{
                     width: '100%',
@@ -197,7 +197,7 @@ const QualityCertificationsPage = () => {
                 style={{ order: window.innerWidth >= 768 ? 1 : 2 }}
               >
                 <img
-                  src="/assets/img/compressedImages/group.jpg"
+                  src="/assets/img/compressedImages/ourstory1.JPG"
                   alt="Manufacturing Partners"
                   style={{
                     width: '100%',

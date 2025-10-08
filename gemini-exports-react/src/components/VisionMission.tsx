@@ -186,7 +186,7 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/compressedImages/reception1.JPG"
+                src="/assets/img/compressedImages/visionmission1.JPG"
                 alt=""
                 loading="lazy"
                 style={{
@@ -211,7 +211,7 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/compressedImages/people1.JPG"
+                src="/assets/img/compressedImages/visionmission2.JPG"
                 alt=""
                 loading="lazy"
                 style={{
@@ -257,7 +257,7 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/compressedImages/group3.JPG"
+                src="/assets/img/compressedImages/home2.JPG"
                 alt=""
                 loading="lazy"
                 style={{
@@ -282,7 +282,7 @@ const VisionMission = () => {
               }}
             >
               <img
-                src="/assets/img/compressedImages/people2.JPG"
+                src="/assets/img/compressedImages/home3.jpg"
                 alt=""
                 loading="lazy"
                 style={{

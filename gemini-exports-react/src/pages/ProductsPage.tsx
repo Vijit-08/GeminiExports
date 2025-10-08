@@ -13,9 +13,9 @@ const ProductsPage = () => {
   const searchQuery: string = '' // Placeholder for future search functionality
 
   const carouselImages = [
-    '/assets/img/compressedImages/office.JPG',
-    '/assets/img/compressedImages/reception1.JPG',
-    '/assets/img/compressedImages/group.jpg'
+    '/assets/img/compressedImages/products1.jpg',
+    '/assets/img/compressedImages/products2.jpg',
+    '/assets/img/compressedImages/products3.jpg'
   ]
 
   // Auto-rotate images every 4 seconds
@@ -172,44 +172,62 @@ const ProductsPage = () => {
 
       <main style={{ margin: 0, padding: 0, paddingTop: '80px' }}>
         {/* Hero Section */}
-        <section style={{ padding: '60px 0 40px 0', backgroundColor: '#ffffff' }}>
-          <div style={containerStyle}>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              style={{ textAlign: 'center', marginBottom: '20px' }}
-            >
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '6px 14px',
-                backgroundColor: '#EBF8FF',
-                borderRadius: '20px',
-                marginBottom: '20px',
-                border: '1px solid #B3E5FC'
-              }}>
-                <Package style={{ height: '14px', width: '14px', marginRight: '6px', color: '#1CAFD8' }} />
-                <span style={{
-                  fontSize: '12px',
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  color: '#1CAFD8'
-                }}>
-                  Our Products
-                </span>
-              </div>
+        <section style={{
+          padding: '80px 0 60px',
+          background: 'linear-gradient(135deg, #EBF8FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
+          position: 'relative' as const,
+          overflow: 'hidden'
+        }}>
+          {/* Decorative Elements */}
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            left: '5%',
+            width: '80px',
+            height: '80px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(28, 175, 216, 0.1) 0%, transparent 70%)',
+            zIndex: 1
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '15%',
+            right: '8%',
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+            zIndex: 1
+          }} />
 
+          <div style={{ ...containerStyle, position: 'relative' as const, zIndex: 2 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
+            >
               <h1 style={{
-                fontSize: isMd ? '48px' : '36px',
+                fontSize: isMd ? '56px' : '40px',
                 fontWeight: '700',
-                lineHeight: '1.1',
                 margin: '0 0 24px 0',
-                color: '#1F2937'
+                background: 'linear-gradient(135deg, #1CAFD8 0%, #10B981 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                lineHeight: '1.2'
               }}>
-                Our product portfolio
+                Our Products
               </h1>
+              <p style={{
+                fontSize: isMd ? '18px' : '17px',
+                lineHeight: '1.7',
+                color: '#4B5563',
+                margin: 0,
+                fontWeight: '400'
+              }}>
+                Comprehensive portfolio of high-quality pharmaceutical ingredients and formulations
+              </p>
             </motion.div>
           </div>
         </section>
@@ -349,25 +367,26 @@ const ProductsPage = () => {
                   Comprehensive product range
                 </h2>
                 <p style={{
-                  fontSize: '18px',
+                  fontSize: '17px',
                   lineHeight: '1.8',
-                  color: '#4B5563',
+                  color: '#6B7280',
                   marginBottom: '20px'
                 }}>
                   With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, Pellets, Direct Compression, Excipients, Probiotic Blends.
                 </p>
                 <p style={{
-                  fontSize: '16px',
-                  lineHeight: '1.7',
+                  fontSize: '17px',
+                  lineHeight: '1.8',
                   color: '#6B7280',
                   marginBottom: '20px'
                 }}>
                   Our extensive product range spans across multiple therapeutic categories, ensuring we meet the diverse needs of pharmaceutical manufacturers and healthcare providers worldwide. Each product is sourced from ISO and GMP-certified facilities, guaranteeing the highest standards of quality and compliance.
                 </p>
                 <p style={{
-                  fontSize: '16px',
-                  lineHeight: '1.7',
-                  color: '#6B7280'
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  color: '#6B7280',
+                  margin: 0
                 }}>
                   From cardiovascular to neurological treatments, our comprehensive portfolio includes over 300 active pharmaceutical ingredients, 150+ types of pellets, and essential excipients. We pride ourselves on delivering products that meet rigorous international standards with complete documentation and regulatory support.
                 </p>

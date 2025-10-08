@@ -195,7 +195,7 @@ const WhyChooseUsPage = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src="/assets/img/compressedImages/group.jpg"
+                  src="/assets/img/compressedImages/whychooseus.JPG"
                   alt="Our Team"
                   style={{
                     width: '100%',
@@ -335,7 +335,7 @@ const WhyChooseUsPage = () => {
                 style={{ order: window.innerWidth >= 768 ? 1 : 2 }}
               >
                 <img
-                  src="/assets/img/compressedImages/office.JPG"
+                  src="/assets/img/compressedImages/ourstory2.JPG"
                   alt="Our Office"
                   style={{
                     width: '100%',

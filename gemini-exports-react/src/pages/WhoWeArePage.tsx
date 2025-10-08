@@ -206,7 +206,7 @@ const WhoWeArePage = () => {
                   boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)'
                 }}>
                   <img
-                    src="/assets/img/compressedImages/group.jpg"
+                    src="/assets/img/compressedImages/ourstory1.JPG"
                     alt="Our Story"
                     style={{
                       width: '100%',
@@ -252,7 +252,7 @@ const WhoWeArePage = () => {
                 style={{ order: window.innerWidth >= 768 ? 1 : 2 }}
               >
                 <img
-                  src="/assets/img/compressedImages/office.JPG"
+                  src="/assets/img/compressedImages/ourstory2.JPG"
                   alt="Our Story"
                   style={{
                     width: '100%',
@@ -380,7 +380,7 @@ const WhoWeArePage = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src="/assets/img/compressedImages/people1.JPG"
+                  src="/assets/img/compressedImages/ourstory3.JPG"
                   alt="Commitment to Quality"
                   style={{
                     width: '100%',

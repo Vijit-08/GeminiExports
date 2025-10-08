@@ -9,9 +9,9 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const carouselImages = [
-    '/assets/img/compressedImages/office.JPG',
-    '/assets/img/compressedImages/group.jpg',
-    '/assets/img/compressedImages/people2.JPG'
+    '/assets/img/compressedImages/home1.JPG',
+    '/assets/img/compressedImages/home2.JPG',
+    '/assets/img/compressedImages/home3.jpg'
   ]
 
   useEffect(() => {

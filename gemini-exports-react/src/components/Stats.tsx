@@ -72,7 +72,7 @@ const Stats = () => {
     }}>
       <div style={containerStyle}>
         {/* Description Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -102,7 +102,7 @@ const Stats = () => {
           }}>
             Founded in 1996, we are an ISO-certified pharmaceutical trading company based in Mumbai, India. For nearly three decades, we've been the trusted bridge connecting leading pharmaceutical manufacturers with healthcare companies across 30+ countries.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Single Rotating Stat Card */}
         <div ref={ref} style={{
