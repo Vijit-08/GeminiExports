@@ -109,15 +109,15 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
               <a
                 href="#"
                 style={{
-                  color: activeDropdown === 'about' || isActiveDropdownParent(['/who-we-are', '/mission-vision', '/our-values']) ? '#1CAFD8' : '#374151',
-                  fontWeight: isActiveDropdownParent(['/who-we-are', '/mission-vision', '/our-values']) ? '600' : '500',
+                  color: activeDropdown === 'about' || isActiveDropdownParent(['/about-us']) ? '#1CAFD8' : '#374151',
+                  fontWeight: isActiveDropdownParent(['/about-us']) ? '600' : '500',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
                   padding: '8px 0',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
-                  borderBottom: isActiveDropdownParent(['/who-we-are', '/mission-vision', '/our-values']) ? '2px solid #1CAFD8' : 'none',
+                  borderBottom: isActiveDropdownParent(['/about-us']) ? '2px solid #1CAFD8' : 'none',
                   fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}
               >
@@ -148,7 +148,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   animation: 'fadeInDown 0.2s ease-out'
                 }}>
                   <Link
-                    to="/who-we-are"
+                    to="/about-us"
                     style={{
                       display: 'block',
                       padding: '12px 20px',
@@ -167,51 +167,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                       ;(e.target as HTMLElement).style.color = '#374151'
                     }}
                   >
-                    Our Story
-                  </Link>
-                  <Link
-                    to="/mission-vision"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      fontSize: '14px',
-                      transition: 'all 0.2s',
-                      fontFamily: 'system-ui, -apple-system, sans-serif'
-                    }}
-                    onMouseOver={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
-                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
-                    }}
-                    onMouseOut={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
-                      ;(e.target as HTMLElement).style.color = '#374151'
-                    }}
-                  >
-                    Mission & Vision
-                  </Link>
-                  <Link
-                    to="/our-values"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      fontSize: '14px',
-                      transition: 'all 0.2s',
-                      fontFamily: 'system-ui, -apple-system, sans-serif'
-                    }}
-                    onMouseOver={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
-                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
-                    }}
-                    onMouseOut={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
-                      ;(e.target as HTMLElement).style.color = '#374151'
-                    }}
-                  >
-                    Our Values
+                    About Us
                   </Link>
                 </div>
               )}
@@ -452,7 +408,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 About Us
               </div>
               <Link
-                to="/who-we-are"
+                to="/about-us"
                 style={{
                   padding: '12px 16px',
                   color: '#374151',
@@ -472,53 +428,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Our Story
-              </Link>
-              <Link
-                to="/mission-vision"
-                style={{
-                  padding: '12px 16px',
-                  color: '#374151',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s',
-                  display: 'block',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-                onMouseOver={(e) => {
-                  (e.target as HTMLElement).style.color = '#1CAFD8'
-                  ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
-                }}
-                onMouseOut={(e) => {
-                  (e.target as HTMLElement).style.color = '#374151'
-                  ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
-                }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Mission & Vision
-              </Link>
-              <Link
-                to="/our-values"
-                style={{
-                  padding: '12px 16px',
-                  color: '#374151',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s',
-                  display: 'block',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-                onMouseOver={(e) => {
-                  (e.target as HTMLElement).style.color = '#1CAFD8'
-                  ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
-                }}
-                onMouseOut={(e) => {
-                  (e.target as HTMLElement).style.color = '#374151'
-                  ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
-                }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Our Values
+                About Us
               </Link>
             </div>
 

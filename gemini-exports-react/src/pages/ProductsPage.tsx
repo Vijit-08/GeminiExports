@@ -235,7 +235,7 @@ const ProductsPage = () => {
         {/* Product Portfolio Section with Images */}
         <section style={{
           padding: '80px 0',
-          background: 'linear-gradient(180deg, #ffffff 0%, #EFF6FF 30%, #F0F9FF 50%, #EFF6FF 70%, #ffffff 100%)'
+          backgroundColor: '#ffffff'
         }}>
           <div style={containerStyle}>
             <div style={{

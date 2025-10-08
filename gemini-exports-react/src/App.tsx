@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Homepage from './components/Homepage'
-import WhoWeArePage from './pages/WhoWeArePage'
-import MissionVisionPage from './pages/MissionVisionPage'
-import OurValuesPage from './pages/OurValuesPage'
+import AboutUsPage from './pages/AboutUsPage'
 import QualityCertificationsPage from './pages/QualityCertificationsPage'
 import WhyChooseUsPage from './pages/WhyChooseUsPage'
 import ProductsPage from './pages/ProductsPage'
@@ -18,9 +16,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/who-we-are" element={<WhoWeArePage />} />
-        <Route path="/mission-vision" element={<MissionVisionPage />} />
-        <Route path="/our-values" element={<OurValuesPage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/quality-certifications" element={<QualityCertificationsPage />} />
         <Route path="/global-reach" element={<WorldwideClientsPage />} />
         <Route path="/why-choose-us" element={<WhyChooseUsPage />} />

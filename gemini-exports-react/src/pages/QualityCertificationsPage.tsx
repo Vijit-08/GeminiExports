@@ -1,16 +1,66 @@
 import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Shield, CheckCircle, FileText, Building2 } from 'lucide-react'
 
 const QualityCertificationsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const containerStyle = {
     maxWidth: '1280px',
     margin: '0 auto',
     padding: '0 24px'
+  }
+
+  const manufacturers = [
+    {
+      name: 'Zydus Lifesciences',
+      logo: '/assets/img/brands/zydus.png'
+    },
+    {
+      name: 'Aurobindo Pharma',
+      logo: '/assets/img/brands/aurobindo.png'
+    },
+    {
+      name: 'Glenmark Pharmaceuticals',
+      logo: '/assets/img/brands/Glenmark_Pharmaceuticals_logo.png'
+    },
+    {
+      name: 'Cadila Pharmaceuticals',
+      logo: '/assets/img/brands/cadila_pharmaceuticals_logo.png'
+    },
+    {
+      name: 'Kopran Limited',
+      logo: '/assets/img/brands/kopran.png'
+    },
+    {
+      name: 'Divis Laboratories',
+      logo: '/assets/img/brands/divis-laboratories-logo.png'
+    },
+    {
+      name: 'Aarti Drugs',
+      logo: '/assets/img/brands/aarti-drugs.png'
+    },
+    {
+      name: 'Metrochem API',
+      logo: '/assets/img/brands/metrochem.jpg'
+    }
+  ]
+
+  // Auto-slide functionality - 2x2 grid rotation every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % Math.ceil(manufacturers.length / 4))
+    }, 3000)
+    return () => clearInterval(timer)
+  }, [manufacturers.length])
+
+  const getVisibleLogos = () => {
+    const logosPerSlide = 4 // 2x2 grid
+    const start = currentSlide * logosPerSlide
+    return manufacturers.slice(start, start + logosPerSlide)
   }
 
   const certifications = [
@@ -189,6 +239,7 @@ const QualityCertificationsPage = () => {
               gap: '60px',
               alignItems: 'center'
             }}>
+              {/* Manufacturers Grid - 4x4 */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -196,16 +247,74 @@ const QualityCertificationsPage = () => {
                 transition={{ duration: 0.6 }}
                 style={{ order: window.innerWidth >= 768 ? 1 : 2 }}
               >
-                <img
-                  src="/assets/img/compressedImages/ourstory1.JPG"
-                  alt="Manufacturing Partners"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '12px',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                  }}
-                />
+                <div style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '12px',
+                  padding: window.innerWidth >= 768 ? '40px' : '24px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '24px',
+                    minHeight: '300px'
+                  }}>
+                    {getVisibleLogos().map((manufacturer, index) => (
+                      <motion.div
+                        key={`${currentSlide}-${index}`}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: '24px',
+                          borderRadius: '12px',
+                          border: '1px solid #F3F4F6',
+                          backgroundColor: '#FAFBFC',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          const element = e.currentTarget as HTMLElement
+                          element.style.borderColor = '#10B981'
+                          element.style.backgroundColor = '#ffffff'
+                          element.style.transform = 'scale(1.05)'
+                          element.style.boxShadow = '0 8px 16px rgba(16, 185, 129, 0.15)'
+
+                          const img = element.querySelector('img') as HTMLImageElement
+                          if (img) {
+                            img.style.filter = 'grayscale(0%) brightness(1)'
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          const element = e.currentTarget as HTMLElement
+                          element.style.borderColor = '#F3F4F6'
+                          element.style.backgroundColor = '#FAFBFC'
+                          element.style.transform = 'scale(1)'
+                          element.style.boxShadow = 'none'
+
+                          const img = element.querySelector('img') as HTMLImageElement
+                          if (img) {
+                            img.style.filter = 'grayscale(60%) brightness(0.95)'
+                          }
+                        }}
+                      >
+                        <img
+                          src={manufacturer.logo}
+                          alt={manufacturer.name}
+                          style={{
+                            maxWidth: '100%',
+                            maxHeight: '80px',
+                            objectFit: 'contain',
+                            filter: 'grayscale(60%) brightness(0.95)',
+                            transition: 'all 0.3s ease'
+                          }}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
 
               <motion.div
