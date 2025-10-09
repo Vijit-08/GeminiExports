@@ -89,7 +89,7 @@ const Hero = () => {
     const hexagonClipPath = 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'
     const imageUrl = imageNum === 1
       ? '/assets/img/compressedImages/home3.jpg'
-      : '/assets/img/compressedImages/ourstory2.JPG'
+      : '/assets/img/compressedImages/home2.png'
 
     return (
       <div
@@ -347,7 +347,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           style={{
             position: 'absolute',
-            top: window.innerWidth >= 1200 ? '22%' : window.innerWidth >= 1024 ? '22%' : '40%',
+            top: window.innerWidth >= 1200 ? '16%' : window.innerWidth >= 1024 ? '10%' : '40%',
             right: window.innerWidth >= 1200 ? '8%' : window.innerWidth >= 1024 ? '5%' : '3%',
             transform: 'translateY(-50%)',
             zIndex: 2,
@@ -358,10 +358,10 @@ const Hero = () => {
         >
           {/* Stats Hexagon on the left */}
           <div style={{
-            marginRight: window.innerWidth >= 1024 ? '-70px' : '-60px'
+            marginRight: window.innerWidth >= 1024 ? '-80px' : '-70px'
           }}>
             <StatsHexagon
-              size={window.innerWidth >= 1024 ? 280 : 240}
+              size={window.innerWidth >= 1024 ? 320 : 280}
               currentStat={currentStat}
               currentStatIndex={currentStatIndex}
               stats={stats}
@@ -375,9 +375,9 @@ const Hero = () => {
             gap: '0'
           }}>
             <div style={{ marginBottom: '-3px' }}>
-              <ImageHexagon size={window.innerWidth >= 1024 ? 280 : 240} image={true} imageNum={1} />
+              <ImageHexagon size={window.innerWidth >= 1024 ? 320 : 280} image={true} imageNum={1} />
             </div>
-            <ImageHexagon size={window.innerWidth >= 1024 ? 280 : 240} image={true} imageNum={2} />
+            <ImageHexagon size={window.innerWidth >= 1024 ? 320 : 280} image={true} imageNum={2} />
           </div>
         </motion.div>
       )}
@@ -512,10 +512,10 @@ const Hero = () => {
           >
             {/* Stats Hexagon on the left */}
             <div style={{
-              marginRight: '-50px' // 25% of 200px for edge-sharing
+              marginRight: '-60px' // 25% of 240px for edge-sharing
             }}>
               <StatsHexagon
-                size={200}
+                size={240}
                 currentStat={currentStat}
                 currentStatIndex={currentStatIndex}
                 stats={stats}
@@ -529,9 +529,9 @@ const Hero = () => {
               gap: '0'
             }}>
               <div style={{ marginBottom: '-2px' }}>
-                <ImageHexagon size={200} image={true} imageNum={1} />
+                <ImageHexagon size={240} image={true} imageNum={1} />
               </div>
-              <ImageHexagon size={200} image={true} imageNum={2} />
+              <ImageHexagon size={240} image={true} imageNum={2} />
             </div>
           </motion.div>
         )}
