@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react'
-import { Shield, CheckCircle, FileText, Building2 } from 'lucide-react'
+import { Shield, CheckCircle, FileText, Handshake } from 'lucide-react'
 
 const QualityCertificationsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -339,7 +339,7 @@ const QualityCertificationsPage = () => {
                   justifyContent: 'center',
                   marginBottom: '24px'
                 }}>
-                  <Building2 size={32} color="#10B981" />
+                  <Handshake size={32} color="#10B981" />
                 </div>
                 <h2 style={{
                   fontSize: '36px',
