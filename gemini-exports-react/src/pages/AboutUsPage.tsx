@@ -358,14 +358,14 @@ const AboutUsPage = () => {
                 color: '#1F2937',
                 margin: '0 0 16px 0'
               }}>
-                Explore More About Us
+                Get to know us better
               </h3>
               <p style={{
                 fontSize: '16px',
                 color: '#6B7280',
                 margin: 0
               }}>
-                Discover our vision, mission, and the values that drive us forward
+                Explore our vision, mission and values that inspire our journey
               </p>
             </motion.div>
 

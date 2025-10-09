@@ -204,7 +204,7 @@ const Hero = () => {
           }}
         >
           <h1 style={{
-            fontSize: window.innerWidth >= 768 ? '48px' : '32px',
+            fontSize: window.innerWidth >= 768 ? '40px' : '32px',
             fontWeight: '500',
             lineHeight: '1.2',
             margin: '0 0 24px 0',
@@ -237,7 +237,7 @@ const Hero = () => {
               fontFamily: 'system-ui, -apple-system, sans-serif'
             }}
           >
-            We are a Mumbai-based pharmaceutical trading powerhouse connecting industry leading manufacturers with 30+ countries—delivering 150+ premium APIs, excipients, and specialty ingredients with nearly three decades of uncompromising quality.
+            We are a Mumbai-based pharmaceutical trading powerhouse connecting industry-leading manufacturers with 30+ countries—delivering 150+ premium APIs, excipients, and specialty ingredients backed by nearly three decades of uncompromising quality.
           </motion.p>
 
           <motion.div

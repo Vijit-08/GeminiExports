@@ -18,7 +18,7 @@ const WorldwideClientsPage = () => {
 
   const regions = [
     {
-      name: 'South America & Central America',
+      name: 'Central & South America',
       icon: '🌎',
       countries: [
         'Argentina', 'Bolivia', 'Brazil', 'Ecuador', 'Paraguay', 'Peru', 'Uruguay', 'Venezuela',
@@ -31,7 +31,7 @@ const WorldwideClientsPage = () => {
       countries: ['Egypt', 'Israel', 'Lebanon', 'Turkey', 'Kenya', 'South Africa']
     },
     {
-      name: 'South-East Asia & Europe',
+      name: 'Europe &  Southeast Asia ',
       icon: '🌏',
       countries: [
         'Hong Kong', 'Indonesia', 'Japan', 'Malaysia', 'Philippines', 'Singapore', 'Taiwan', 'Thailand', 'Vietnam',
@@ -184,7 +184,7 @@ const WorldwideClientsPage = () => {
                 margin: '0 0 20px 0',
                 color: '#1F2937'
               }}>
-                Regions we serve
+                Our reach
               </h2>
             </motion.div>
 

@@ -372,7 +372,7 @@ const ProductsPage = () => {
                   color: '#6B7280',
                   marginBottom: '20px'
                 }}>
-                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, Pellets, Direct Compression, Excipients, Probiotic Blends.
+                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, pellets, direct compression, excipients, probiotic blends.
                 </p>
                 <p style={{
                   fontSize: '17px',

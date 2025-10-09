@@ -204,7 +204,7 @@ const GlobalReachPage = () => {
                 margin: '0 0 20px 0',
                 color: '#1F2937'
               }}>
-                Regions we serve
+                Our reach
               </h2>
             </motion.div>
 

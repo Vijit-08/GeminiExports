@@ -68,7 +68,7 @@ const ExportPortfolio = () => {
           viewport={{ once: true }}
           style={{ textAlign: 'center', marginBottom: '60px' }}
         >
-          <div style={{
+          {/* <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             padding: '6px 14px',
@@ -87,7 +87,7 @@ const ExportPortfolio = () => {
             }}>
               Export Portfolio
             </span>
-          </div>
+          </div> */}
 
           <h2 style={{
             fontSize: isMd ? '36px' : '28px',
@@ -96,7 +96,7 @@ const ExportPortfolio = () => {
             margin: '0 0 16px 0',
             color: '#1F2937'
           }}>
-            Comprehensive Product Range
+            Export Portfolio
           </h2>
 
           <p style={{
