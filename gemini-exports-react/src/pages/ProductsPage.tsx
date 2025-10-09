@@ -226,7 +226,7 @@ const ProductsPage = () => {
                 margin: 0,
                 fontWeight: '400'
               }}>
-                Our portfolio of products including 150+ APIs, pellets, direct compression, excipients and probiotic blends.
+                Our portfolio of products include 150+ APIs, pellets, direct compression, excipients, and probiotic blends.
               </p>
             </motion.div>
           </div>
@@ -388,7 +388,7 @@ const ProductsPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  From cardiovascular to neurological treatments, our comprehensive portfolio includes over 300 active pharmaceutical ingredients, 150+ types of pellets, and essential excipients. We pride ourselves on delivering products that meet rigorous international standards with complete documentation and regulatory support.
+                  From cardiovascular to neurological treatments, our comprehensive portfolio includes over 150 active pharmaceutical ingredients, 150+ types of pellets, and essential excipients. We pride ourselves on delivering products that meet rigorous international standards with complete documentation and regulatory support.
                 </p>
               </motion.div>
             </div>

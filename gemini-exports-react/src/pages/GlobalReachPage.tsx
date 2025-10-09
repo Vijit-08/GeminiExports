@@ -129,7 +129,7 @@ const GlobalReachPage = () => {
                 margin: 0,
                 fontWeight: '400'
               }}>
-                We serve healthcare markets across South and Central America, the Middle East, South-East Asia, Europe, and Africa—delivering to over 30 countries where quality pharmaceutical ingredients matter most. Our established distribution network ensures your products reach you reliably, no matter where you are.
+                We serve healthcare markets across South and Central America, the Middle East, Southeast Asia, Europe, and Africa—delivering to over 30 countries where quality pharmaceutical ingredients matter most. Our established distribution network ensures your products reach you reliably, no matter where you are.
               </p>
             </motion.div>
           </div>

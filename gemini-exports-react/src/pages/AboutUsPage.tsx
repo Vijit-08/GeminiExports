@@ -764,7 +764,7 @@ const AboutUsPage = () => {
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                The 4 C's that define who we are
+                The 4 C's that define us
               </p>
             </motion.div>
 
