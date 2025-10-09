@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Header from './Header'
 import Hero from './Hero'
-import Stats from './Stats'
 import Footer from './Footer'
 
 const Homepage = () => {
@@ -19,7 +18,6 @@ const Homepage = () => {
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main style={{ margin: 0, padding: 0 }}>
         <Hero />
-        <Stats />
       </main>
       <Footer />
     </div>
