@@ -277,14 +277,14 @@ const ContactInformationPage = () => {
                   margin: '0 0 8px 0',
                   color: '#1F2937'
                 }}>
-                  Send us a Message
+                  Send us a message
                 </h2>
                 <p style={{
                   fontSize: '16px',
                   color: '#6B7280',
                   marginBottom: '32px'
                 }}>
-                  Fill out the form below and we'll get back to you within 24 hours.
+                  Fill out the form below and we will get back to you shortly.
                 </p>
 
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>

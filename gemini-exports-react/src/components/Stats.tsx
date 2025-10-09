@@ -14,7 +14,7 @@ const Stats = () => {
   }
 
   const stats = [
-    { number: 30, label: "Years of Experience", suffix: "", displayText: "Nearly 30 Years", icon: Calendar, iconColor: '#1CAFD8', animate: false },
+    { number: 30, label: "Years of Experience", suffix: "", displayText: " 30", icon: Calendar, iconColor: '#1CAFD8', animate: false },
     { number: 30, label: "Countries Served", suffix: "+", icon: Globe, iconColor: '#10B981', animate: true },
     { number: 150, label: "Premium Products", suffix: "+", icon: Package, iconColor: '#0891B2', animate: true },
     { number: 180, label: "ISO-Certified Manufacturers", suffix: "+", icon: Award, iconColor: '#14B8A6', animate: true }

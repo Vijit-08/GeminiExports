@@ -264,7 +264,7 @@ const ContactUs = () => {
               margin: '0 0 24px 0',
               color: '#1F2937'
             }}>
-              Send us a Message
+              Send us a message
             </h3>
 
             <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>

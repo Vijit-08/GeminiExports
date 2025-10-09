@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Building2, Shield, Target, Eye, Heart, Users, Award, Globe } from 'lucide-react'
+import { Shield, Target, Eye, Heart, Users, Award, Globe } from 'lucide-react'
 
 const AboutUsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,7 +38,7 @@ const AboutUsPage = () => {
       <main style={{ paddingTop: '80px' }}>
         {/* Hero Section - Our Story */}
         <section style={{
-          padding: '80px 0 60px',
+          padding: window.innerWidth >= 768 ? '80px 0 60px' : '60px 0 40px',
           background: 'linear-gradient(135deg, #EBF8FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
           position: 'relative' as const,
           overflow: 'hidden'
@@ -168,7 +168,7 @@ const AboutUsPage = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  minHeight: window.innerWidth >= 768 ? '400px' : '280px'
+                  minHeight: window.innerWidth >= 768 ? '500px' : '350px'
                 }}
               >
                 {/* Dotted Grid Pattern - Top Left */}
@@ -230,8 +230,8 @@ const AboutUsPage = () => {
                   position: 'relative',
                   zIndex: 2,
                   width: window.innerWidth >= 768 ? '100%' : '100%',
-                  maxWidth: '500px',
-                  height: window.innerWidth >= 768 ? '350px' : '250px',
+                  maxWidth: '600px',
+                  height: window.innerWidth >= 768 ? '450px' : '320px',
                   borderRadius: '20px',
                   overflow: 'hidden',
                   border: '6px solid rgba(255, 255, 255, 0.9)',
@@ -461,7 +461,7 @@ const AboutUsPage = () => {
 
         {/* Commitment to Quality Section */}
         <section style={{
-          padding: '80px 0',
+          padding: window.innerWidth >= 768 ? '80px 0' : '60px 0',
           backgroundColor: '#F9FAFB',
           position: 'relative' as const,
           overflow: 'hidden'
@@ -551,7 +551,7 @@ const AboutUsPage = () => {
 
         {/* Mission & Vision Section */}
         <section id="mission-vision" style={{
-          padding: '80px 0',
+          padding: window.innerWidth >= 768 ? '80px 0' : '60px 0',
           scrollMarginTop: '100px'
         }}>
           <div style={containerStyle}>
@@ -626,7 +626,23 @@ const AboutUsPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  To deliver consistent, high-quality results that ensure customer satisfaction and trust. We source and supply reliable active pharmaceutical ingredients and excipients by upholding the highest standards of quality and compliance. Our aim is clear: to be the trusted partner for healthcare providers, pharmacies, and institutions worldwide connecting them with the pharmaceutical ingredients that make a difference in patient care.
+                  To deliver <b>consistent, high-quality</b> results that <b>ensure customer satisfaction</b> and <b>trust</b>. 
+                </p>
+                <p style={{
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  color: '#6B7280',
+                  marginTop: 15
+                }}>
+                  We source and supply reliable active pharma ingredients & excipients by upholding the highest standards of quality and compliance.
+                </p>
+                <p style={{
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  color: '#6B7280',
+                  marginTop: 15
+                }}>
+                  We aim to be the trusted partner forhealthcare providers, pharmacies, and other institutions.
                 </p>
               </motion.div>
 
@@ -635,7 +651,6 @@ const AboutUsPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                style={{ display: window.innerWidth < 768 ? 'none' : 'block' }}
               >
                 <img
                   src="/assets/img/compressedImages/visionmission1.JPG"
@@ -662,7 +677,7 @@ const AboutUsPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                style={{ display: window.innerWidth < 768 ? 'none' : 'block', order: window.innerWidth >= 768 ? 0 : 1 }}
+                style={{ order: window.innerWidth >= 768 ? 0 : 1 }}
               >
                 <img
                   src="/assets/img/compressedImages/visionmission2.JPG"
@@ -708,7 +723,7 @@ const AboutUsPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  As we evolve, our vision focuses on expanding our global footprint by forging stronger partnerships, advancing our sourcing strategies, and broadening our product range.
+                  We aim to extend our global reach by building strong partnerships, improving how we source products and diversifying our product offerings.
                 </p>
               </motion.div>
             </div>
@@ -717,7 +732,7 @@ const AboutUsPage = () => {
 
         {/* Our Values Section */}
         <section id="our-values" style={{
-          padding: '80px 0',
+          padding: window.innerWidth >= 768 ? '80px 0' : '60px 0',
           backgroundColor: '#F9FAFB',
           scrollMarginTop: '100px'
         }}>
@@ -749,7 +764,7 @@ const AboutUsPage = () => {
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                The principles that guide everything we do
+                Our guiding principles
               </p>
             </motion.div>
 

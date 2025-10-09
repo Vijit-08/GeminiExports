@@ -136,7 +136,7 @@ const WhoWeArePage = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  minHeight: window.innerWidth >= 768 ? '400px' : '280px'
+                  minHeight: window.innerWidth >= 768 ? '500px' : '350px'
                 }}
               >
                 {/* Dotted Grid Pattern - Top Left */}
@@ -198,8 +198,8 @@ const WhoWeArePage = () => {
                   position: 'relative',
                   zIndex: 2,
                   width: window.innerWidth >= 768 ? '100%' : '100%',
-                  maxWidth: '500px',
-                  height: window.innerWidth >= 768 ? '350px' : '250px',
+                  maxWidth: '600px',
+                  height: window.innerWidth >= 768 ? '450px' : '320px',
                   borderRadius: '20px',
                   overflow: 'hidden',
                   border: '6px solid rgba(255, 255, 255, 0.9)',

@@ -128,10 +128,11 @@ const Footer = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
                     { label: 'Home', href: '/' },
-                    { label: 'Who We Are', href: '/who-we-are' },
+                    { label: 'About Us', href: '/about-us' },
                     { label: 'Products', href: '/products' },
-                    { label: 'Manufacturers', href: '/manufacturers' },
-                    { label: 'Worldwide Clients', href: '/worldwide-clients' },
+                    { label: 'Quality & Certifications', href: '/quality-certifications' },
+                    { label: 'Global Reach', href: '/global-reach' },
+                    { label: 'Why Choose Us', href: '/why-choose-us' },
                     { label: 'Careers', href: '/careers' },
                     { label: 'Contact', href: '/contact' }
                   ].map((link, index) => (

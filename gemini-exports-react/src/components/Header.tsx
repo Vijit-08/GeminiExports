@@ -312,7 +312,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
         <div style={{
           backgroundColor: 'white',
           borderTop: '1px solid #f3f4f6',
-          padding: '16px 24px'
+          padding: '16px 24px',
+          animation: 'slideDown 0.3s ease-out'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <Link
@@ -529,6 +530,16 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
           @keyframes fadeInDown {
             0% {
               transform: translateY(-10px);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+          @keyframes slideDown {
+            0% {
+              transform: translateY(-20px);
               opacity: 0;
             }
             100% {

@@ -65,27 +65,27 @@ const QualityCertificationsPage = () => {
 
   const certifications = [
     {
-      image: '/assets/img/credentials/FDA.png',
+      images: ['/assets/img/credentials/FDA.png'],
       title: 'FDA license issued by the Government of India',
       validity: 'Validity – May 31, 2028'
     },
     {
-      image: '/assets/img/credentials/EXPORT.png',
+      images: ['/assets/img/credentials/EXPORT.png'],
       title: 'Export certificate issued by Government of India',
       validity: 'Validity – March 31, 2028'
     },
     {
-      image: '/assets/img/credentials/ISO.png',
+      images: ['/assets/img/credentials/ISO.png'],
       title: 'ISO certificate',
       validity: 'Validity – May 31, 2025, renewed until May 31, 2028'
     },
     {
-      image: '/assets/img/credentials/WAREHOUSE1.png',
+      images: ['/assets/img/credentials/WAREHOUSE1.png', '/assets/img/credentials/WAREHOUSE2.png'],
       title: 'FDA license issued by the Government of India for both our warehouses',
       validity: 'Validity – March 30, 2029'
     },
     {
-      image: '/assets/img/credentials/CUSTOMS.png',
+      images: ['/assets/img/credentials/CUSTOMS.png'],
       title: 'Certificate issued by the Custom Authorities of India',
       validity: 'Validity – April 16, 2026'
     }
@@ -102,7 +102,7 @@ const QualityCertificationsPage = () => {
       <main style={{ paddingTop: '80px' }}>
         {/* Hero Section */}
         <section style={{
-          padding: '80px 0 60px',
+          padding: window.innerWidth >= 768 ? '80px 0 60px' : '60px 0 40px',
           background: 'linear-gradient(135deg, #EBF8FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
           position: 'relative' as const,
           overflow: 'hidden'
@@ -162,7 +162,7 @@ const QualityCertificationsPage = () => {
         </section>
 
         {/* Quality Standards Section */}
-        <section style={{ padding: '80px 0' }}>
+        <section style={{ padding: window.innerWidth >= 768 ? '80px 0' : '60px 0' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -221,7 +221,7 @@ const QualityCertificationsPage = () => {
                 transition={{ duration: 0.6 }}
               >
                 <img
-                  src="/assets/img/compressedImages/ourstory2.JPG"
+                  src="/assets/img/compressedImages/isobanner.jpg"
                   alt="ISO Certification"
                   style={{
                     width: '100%',
@@ -236,7 +236,7 @@ const QualityCertificationsPage = () => {
         </section>
 
         {/* Manufacturing Partners Section */}
-        <section style={{ padding: '80px 0', backgroundColor: '#F9FAFB' }}>
+        <section style={{ padding: window.innerWidth >= 768 ? '80px 0' : '60px 0', backgroundColor: '#F9FAFB' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -261,8 +261,8 @@ const QualityCertificationsPage = () => {
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '24px',
-                    minHeight: '300px'
+                    gap: window.innerWidth >= 768 ? '24px' : '16px',
+                    minHeight: window.innerWidth >= 768 ? '300px' : '250px'
                   }}>
                     {getVisibleLogos().map((manufacturer, index) => (
                       <motion.div
@@ -274,7 +274,7 @@ const QualityCertificationsPage = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          padding: '24px',
+                          padding: window.innerWidth >= 768 ? '24px' : '16px',
                           borderRadius: '12px',
                           border: '1px solid #F3F4F6',
                           backgroundColor: '#FAFBFC',
@@ -310,7 +310,7 @@ const QualityCertificationsPage = () => {
                           alt={manufacturer.name}
                           style={{
                             maxWidth: '100%',
-                            maxHeight: '80px',
+                            maxHeight: window.innerWidth >= 768 ? '80px' : '60px',
                             objectFit: 'contain',
                             filter: 'grayscale(60%) brightness(0.95)',
                             transition: 'all 0.3s ease'
@@ -363,7 +363,7 @@ const QualityCertificationsPage = () => {
         </section>
 
         {/* Certifications Grid */}
-        <section style={{ padding: '80px 0' }}>
+        <section style={{ padding: window.innerWidth >= 768 ? '80px 0' : '60px 0' }}>
           <div style={containerStyle}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -414,22 +414,31 @@ const QualityCertificationsPage = () => {
                   }}
                 >
                   <div style={{
-                    height: '300px',
+                    height: window.innerWidth >= 768 ? '300px' : cert.images.length > 1 ? '400px' : '250px',
                     backgroundColor: '#F9FAFB',
                     display: 'flex',
+                    flexDirection: window.innerWidth >= 768 || cert.images.length === 1 ? 'row' : 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: '20px'
+                    padding: '20px',
+                    gap: cert.images.length > 1 ? (window.innerWidth >= 768 ? '20px' : '12px') : '0'
                   }}>
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'contain'
-                      }}
-                    />
+                    {cert.images.map((image, imgIndex) => (
+                      <img
+                        key={imgIndex}
+                        src={image}
+                        alt={`${cert.title} ${imgIndex + 1}`}
+                        style={{
+                          maxWidth: cert.images.length > 1
+                            ? (window.innerWidth >= 768 ? `${100 / cert.images.length - 2}%` : '90%')
+                            : '100%',
+                          maxHeight: cert.images.length > 1
+                            ? (window.innerWidth >= 768 ? '100%' : '48%')
+                            : '100%',
+                          objectFit: 'contain'
+                        }}
+                      />
+                    ))}
                   </div>
                   <div style={{ padding: '24px' }}>
                     <h3 style={{

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef, CSSProperties } from 'react'
+import { useRef, type CSSProperties } from 'react'
 
 interface HeroImageProps {
   src: string

@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
-import { Package, Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity } from 'lucide-react'
+import { Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ProductsPage = () => {
@@ -226,7 +226,7 @@ const ProductsPage = () => {
                 margin: 0,
                 fontWeight: '400'
               }}>
-                Comprehensive portfolio of high-quality pharmaceutical ingredients and formulations
+                Our portfolio of products including 150+ APIs, pellets, direct compression, excipients and probiotic blends.
               </p>
             </motion.div>
           </div>
@@ -254,7 +254,7 @@ const ProductsPage = () => {
                   display: !isMd ? 'none' : 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  minHeight: '450px'
+                  minHeight: '550px'
                 }}
               >
                 {/* Dotted Grid Pattern - Top Left */}
@@ -319,8 +319,8 @@ const ProductsPage = () => {
                   style={{
                     position: 'relative',
                     zIndex: 2,
-                    width: '420px',
-                    height: '320px',
+                    width: '520px',
+                    height: '420px',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     border: '6px solid rgba(255, 255, 255, 0.9)',
@@ -357,23 +357,23 @@ const ProductsPage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                <h2 style={{
+                {/* <h2 style={{
                   fontSize: isMd ? '42px' : '32px',
                   fontWeight: '700',
                   lineHeight: '1.2',
                   margin: '0 0 24px 0',
                   color: '#1F2937'
                 }}>
-                  Comprehensive product range
-                </h2>
-                <p style={{
+                  
+                </h2> */}
+                {/* <p style={{
                   fontSize: '17px',
                   lineHeight: '1.8',
                   color: '#6B7280',
                   marginBottom: '20px'
                 }}>
-                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, pellets, direct compression, excipients, probiotic blends.
-                </p>
+                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, pellets, direct compression, excipients and probiotic blends.
+                </p> */}
                 <p style={{
                   fontSize: '17px',
                   lineHeight: '1.8',
@@ -433,6 +433,44 @@ const ProductsPage = () => {
               }}>
                 For a comprehensive list of products please contact us for more information.
               </p>
+
+              {/* Contact Us Button */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                style={{
+                  marginBottom: '40px'
+                }}
+              >
+                <a
+                  href="/contact"
+                  style={{
+                    display: 'inline-block',
+                    padding: '14px 28px',
+                    backgroundColor: '#1CAFD8',
+                    color: 'white',
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    boxShadow: '0 4px 6px -1px rgba(28, 175, 216, 0.3)'
+                  }}
+                  onMouseOver={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = '#1599BB'
+                    ;(e.target as HTMLElement).style.transform = 'translateY(-2px)'
+                    ;(e.target as HTMLElement).style.boxShadow = '0 6px 10px -1px rgba(28, 175, 216, 0.4)'
+                  }}
+                  onMouseOut={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = '#1CAFD8'
+                    ;(e.target as HTMLElement).style.transform = 'translateY(0)'
+                    ;(e.target as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(28, 175, 216, 0.3)'
+                  }}
+                >
+                  Contact Us
+                </a>
+              </motion.div>
 
               {/* Request Catalog Button */}
               {/* <motion.div

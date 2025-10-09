@@ -24,7 +24,7 @@ const MissionVisionPage = () => {
       <main style={{ paddingTop: '80px' }}>
         {/* Hero Section */}
         <section style={{
-          padding: '80px 0 60px',
+          padding: window.innerWidth >= 768 ? '80px 0 60px' : '60px 0 40px',
           background: 'linear-gradient(135deg, #EBF8FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
           position: 'relative' as const,
           overflow: 'hidden'
@@ -84,7 +84,7 @@ const MissionVisionPage = () => {
         </section>
 
         {/* Mission Section */}
-        <section style={{ padding: '80px 0' }}>
+        <section style={{ padding: window.innerWidth >= 768 ? '80px 0' : '60px 0' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -124,7 +124,7 @@ const MissionVisionPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  To deliver consistent, high-quality results that ensure customer satisfaction and trust. We source and supply reliable active pharmaceutical ingredients and excipients by upholding the highest standards of quality and compliance. Our aim is clear: to be the trusted partner for healthcare providers, pharmacies, and institutions worldwide connecting them with the pharmaceutical ingredients that make a difference in patient care.
+                  To deliver consistent, high-quality results that ensure customer satisfaction and trust. We source and supply reliable active pharma ingredients & excipients by upholding the highest standards of quality and compliance. We aim to be the trusted partner for healthcare providers, pharmacies, and other institutions.
                 </p>
               </motion.div>
 
@@ -133,7 +133,6 @@ const MissionVisionPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                style={{ display: window.innerWidth < 768 ? 'none' : 'block' }}
               >
                 <img
                   src="/assets/img/compressedImages/visionmission1.JPG"
@@ -151,7 +150,7 @@ const MissionVisionPage = () => {
         </section>
 
         {/* Vision Section */}
-        <section style={{ padding: '80px 0', backgroundColor: '#F9FAFB' }}>
+        <section style={{ padding: window.innerWidth >= 768 ? '80px 0' : '60px 0', backgroundColor: '#F9FAFB' }}>
           <div style={containerStyle}>
             <div style={{
               display: 'grid',
@@ -164,7 +163,7 @@ const MissionVisionPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                style={{ display: window.innerWidth < 768 ? 'none' : 'block', order: window.innerWidth >= 768 ? 0 : 1 }}
+                style={{ order: window.innerWidth >= 768 ? 0 : 1 }}
               >
                 <img
                   src="/assets/img/compressedImages/visionmission2.JPG"
@@ -210,7 +209,7 @@ const MissionVisionPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  As we evolve, our vision focuses on expanding our global footprint by forging stronger partnerships, advancing our sourcing strategies, and broadening our product range.
+                  We aim to extend our global reach by building strong partnerships, improving how we source products and diversifying our product offerings.
                 </p>
               </motion.div>
             </div>
