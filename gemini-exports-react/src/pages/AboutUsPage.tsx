@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Shield, Target, Eye, Heart, Users, Award, Globe } from 'lucide-react'
+import { Shield, Target, Eye, Heart, Award } from 'lucide-react'
 
 const AboutUsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -764,23 +764,23 @@ const AboutUsPage = () => {
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                Our guiding principles
+                The 4 C's that define who we are
               </p>
             </motion.div>
 
             {/* Values Grid */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: window.innerWidth >= 768 ? 'repeat(3, 1fr)' : '1fr',
-              gap: '32px'
+              gridTemplateColumns: window.innerWidth >= 768 ? 'repeat(2, 1fr)' : '1fr',
+              gap: '32px',
+              maxWidth: '900px',
+              margin: '0 auto'
             }}>
               {[
-                { icon: Heart, title: 'Integrity', description: 'We conduct business with honesty, transparency, and ethical practices in every transaction.', color: '#1CAFD8' },
-                { icon: Award, title: 'Excellence', description: 'We are committed to delivering the highest quality products and services that exceed expectations.', color: '#10B981' },
-                { icon: Users, title: 'Collaboration', description: 'We build strong partnerships with manufacturers, clients, and stakeholders through mutual trust.', color: '#0891B2' },
-                { icon: Shield, title: 'Reliability', description: 'We ensure consistent, on-time delivery and dependable service you can count on.', color: '#14B8A6' },
-                { icon: Globe, title: 'Global Perspective', description: 'We maintain a worldwide outlook while understanding local market needs and regulations.', color: '#0E7490' },
-                { icon: Target, title: 'Customer Focus', description: 'Your success is our priority. We tailor our services to meet your specific requirements.', color: '#06B6D4' }
+                { icon: Heart, title: 'Commitment', description: 'We stand behind every shipment, every partnership, and every promise. Our clients rely on us, and we deliver—without exception.', color: '#1CAFD8' },
+                { icon: Award, title: 'Competence', description: 'Three decades of pharmaceutical trading expertise means we know the markets, understand regulatory landscapes, and navigate complexities with precision.', color: '#10B981' },
+                { icon: Shield, title: 'Completeness', description: 'From sourcing to delivery, we manage the entire supply chain. Our 150+ product portfolio ensures our clients find everything they need under one trusted roof.', color: '#0891B2' },
+                { icon: Target, title: 'Consistency', description: 'Quality isn\'t a one-time achievement—it\'s our standard. We deliver the same excellence, order after order, year after year, because we understand that healthcare can\'t afford anything less.', color: '#14B8A6' }
               ].map((value, index) => (
                 <motion.div
                   key={value.title}
