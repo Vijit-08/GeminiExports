@@ -355,7 +355,7 @@ const QualityCertificationsPage = () => {
                   color: '#6B7280',
                   margin: 0
                 }}>
-                  We work with over 180 ISO-certified and GMP-licensed manufacturers across India, primarily located in Gujarat, Andhra Pradesh, and Telangana. Every partnership is built on proven experience and rigorous evaluation protocols. Our manufacturers provide comprehensive DMF support upon request, ensuring regulatory compliance and transparency for markets worldwide.
+                  We work with over 180 ISO-certified and GMP-approved manufacturers across India, primarily located in Gujarat, Andhra Pradesh, and Telangana. Every partnership is built on proven experience and rigorous evaluation protocols. Our manufacturers provide comprehensive DMF support upon request, ensuring regulatory compliance and transparency for markets worldwide.
                 </p>
               </motion.div>
             </div>

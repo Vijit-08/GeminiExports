@@ -145,9 +145,9 @@ const AboutUsPage = () => {
                   marginTop: 15,
                   fontWeight: '400'
                 }}>
-                  For nearly three decades, we've been the trusted bridge connecting leading pharmaceutical manufacturers with healthcare companies across 30+ countries, sourcing, quality-checking, and delivering 150+ premium APIs and specialty ingredients that power better health outcomes worldwide.
+                  For nearly 30 years, we've been the trusted bridge connecting leading pharmaceutical manufacturers with healthcare companies across 30+ countries, sourcing, quality-checking, and delivering 150+ premium APIs and specialty ingredients that power better health outcomes worldwide.
                 </p>
-                <p style={{
+                {/* <p style={{
                   fontSize: window.innerWidth >= 768 ? '18px' : '17px',
                   lineHeight: '1.7',
                   color: '#4B5563',
@@ -155,7 +155,7 @@ const AboutUsPage = () => {
                   fontWeight: '400'
                 }}>
                   From cardiovascular care to gastrointestinal solutions, we do not just trade pharmaceuticals, we collaborate with healthcare institutions and industry players, ensuring quality ingredients reach those who need them most.
-                </p>
+                </p> */}
               </motion.div>
 
               {/* Hero Image */}
@@ -516,16 +516,16 @@ const AboutUsPage = () => {
                   color: '#6B7280',
                   margin: '0 0 20px 0'
                 }}>
-                  We collaborate exclusively with ISO-certified manufacturers to ensure every product we supply meets the highest quality standards. Our mission is simple: promote holistic well-being and healthier lives through reliable access to premium pharmaceutical ingredients.
+                  We collaborate exclusively with GMP-certified manufacturers to ensure every product we supply meets the highest quality standards. Our mission is simple: promote holistic well-being and healthier lives through reliable access to premium pharmaceutical ingredients.
                 </p>
-                <p style={{
+                {/* <p style={{
                   fontSize: '17px',
                   lineHeight: '1.8',
                   color: '#6B7280',
                   margin: 0
                 }}>
                   The APIs and specialty products we supply add critical value to the finished formulations and health solutions that ultimately reach patients worldwide.
-                </p>
+                </p> */}
               </motion.div>
 
               <motion.div
@@ -779,7 +779,7 @@ const AboutUsPage = () => {
               {[
                 { icon: Heart, title: 'Commitment', description: 'We stand behind every shipment, every partnership, and every promise. Our clients rely on us, and we deliver—without exception.', color: '#1CAFD8' },
                 { icon: Award, title: 'Competence', description: 'Three decades of pharmaceutical trading expertise means we know the markets, understand regulatory landscapes, and navigate complexities with precision.', color: '#10B981' },
-                { icon: Shield, title: 'Completeness', description: 'From sourcing to delivery, we manage the entire supply chain. Our 150+ product portfolio ensures our clients find everything they need under one trusted roof.', color: '#0891B2' },
+                { icon: Shield, title: 'Completeness', description: 'From sourcing to delivery, we manage the entire supply chain. Our product portfolio ensures our clients find everything they need under one trusted roof.', color: '#0891B2' },
                 { icon: Target, title: 'Consistency', description: 'Quality isn\'t a one-time achievement—it\'s our standard. We deliver the same excellence, order after order, year after year, because we understand that healthcare can\'t afford anything less.', color: '#14B8A6' }
               ].map((value, index) => (
                 <motion.div

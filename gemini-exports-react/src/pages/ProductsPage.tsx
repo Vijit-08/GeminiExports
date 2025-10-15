@@ -201,43 +201,6 @@ const ProductsPage = () => {
           }} />
 
           <div style={{ ...containerStyle, position: 'relative' as const, zIndex: 2 }}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}
-            >
-              <h1 style={{
-                fontSize: isMd ? '56px' : '40px',
-                fontWeight: '700',
-                margin: '0 0 24px 0',
-                background: 'linear-gradient(135deg, #1CAFD8 0%, #10B981 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                lineHeight: '1.2'
-              }}>
-                Our Products
-              </h1>
-              <p style={{
-                fontSize: isMd ? '18px' : '17px',
-                lineHeight: '1.7',
-                color: '#4B5563',
-                margin: 0,
-                fontWeight: '400'
-              }}>
-                Our portfolio of products include 150+ APIs, pellets, direct compression, excipients, and probiotic blends.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Product Portfolio Section with Images */}
-        <section style={{
-          padding: '80px 0',
-          backgroundColor: '#ffffff'
-        }}>
-          <div style={containerStyle}>
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMd ? '1fr 1fr' : '1fr',
@@ -357,38 +320,26 @@ const ProductsPage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                {/* <h2 style={{
-                  fontSize: isMd ? '42px' : '32px',
+                <h1 style={{
+                  fontSize: isMd ? '56px' : '40px',
                   fontWeight: '700',
-                  lineHeight: '1.2',
                   margin: '0 0 24px 0',
-                  color: '#1F2937'
+                  background: 'linear-gradient(135deg, #1CAFD8 0%, #10B981 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  lineHeight: '1.2'
                 }}>
-                  
-                </h2> */}
-                {/* <p style={{
-                  fontSize: '17px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  marginBottom: '20px'
-                }}>
-                  With years of knowledge and multiple export licenses and certificates - Gemini offers a portfolio of products including 300+ API's, pellets, direct compression, excipients and probiotic blends.
-                </p> */}
+                  Our Products
+                </h1>
                 <p style={{
-                  fontSize: '17px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  marginBottom: '20px'
+                  fontSize: isMd ? '18px' : '17px',
+                  lineHeight: '1.7',
+                  color: '#4B5563',
+                  margin: 0,
+                  fontWeight: '400'
                 }}>
-                  Our extensive product range spans across multiple therapeutic categories, ensuring we meet the diverse needs of pharmaceutical manufacturers and healthcare providers worldwide. Each product is sourced from ISO and GMP-certified facilities, guaranteeing the highest standards of quality and compliance.
-                </p>
-                <p style={{
-                  fontSize: '17px',
-                  lineHeight: '1.8',
-                  color: '#6B7280',
-                  margin: 0
-                }}>
-                  From cardiovascular to neurological treatments, our comprehensive portfolio includes over 150 active pharmaceutical ingredients, 150+ types of pellets, and essential excipients. We pride ourselves on delivering products that meet rigorous international standards with complete documentation and regulatory support.
+                  Our portfolio of products include APIs, pellets, direct compression, excipients, and probiotic blends.
                 </p>
               </motion.div>
             </div>

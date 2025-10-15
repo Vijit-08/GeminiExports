@@ -119,14 +119,14 @@ const ExportPortfolio = () => {
   const portfolioItems = [
     {
       icon: Package,
-      title: '150+',
+      title: '30+',
       subtitle: 'Types of Pellets',
       description: 'Comprehensive range of pharmaceutical pellets for various formulations',
       color: '#1CAFD8'
     },
     {
       icon: Pill,
-      title: '30+',
+      title: '150+',
       subtitle: 'Active Pharmaceutical Ingredients',
       description: 'High-quality APIs across therapeutic categories',
       color: '#10B981'
@@ -147,15 +147,15 @@ const ExportPortfolio = () => {
     },
     {
       icon: Leaf,
-      title: 'Herbal',
-      subtitle: 'Extracts',
+      title: 'Herbal Extracts',
+      subtitle: '',
       description: 'Natural herbal extracts for pharmaceutical applications',
       color: '#059669'
     },
     {
       icon: Droplets,
-      title: 'Essential',
-      subtitle: 'Oils & Probiotic Blends',
+      title: 'Essential Oils & Probiotic Blends',
+      subtitle: '',
       description: 'Specialized oils and probiotic formulations',
       color: '#06B6D4'
     }
