@@ -159,6 +159,7 @@ const CareersPage = () => {
       formDataToSend.append('need', formData.position)
       formDataToSend.append('desc', formData.message)
       formDataToSend.append('filename', formData.resume)
+      formDataToSend.append('referral', formData.referral)
 
       // Use the real PHP endpoint - always try the actual API
       const endpoint = 'https://geminiexports.in/upload-resume.php'
@@ -170,7 +171,7 @@ const CareersPage = () => {
       const response = await fetch(endpoint, {
         method: 'POST',
         body: formDataToSend,
-        mode: 'no-cors' // This allows the request but we can't read the response
+        // mode: 'no-cors' // This allows the request but we can't read the response
       })
 
       console.log("Response for JOB form:", response)

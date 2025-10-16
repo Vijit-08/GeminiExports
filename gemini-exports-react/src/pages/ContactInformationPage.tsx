@@ -62,7 +62,7 @@ const ContactInformationPage = () => {
       await fetch(endpoint, {
         method: 'POST',
         body: formDataToSend,
-        mode: 'no-cors' // This allows the request but we can't read the response
+        // mode: 'no-cors' // This allows the request but we can't read the response
       })
 
       console.log('Contact form request sent successfully')
