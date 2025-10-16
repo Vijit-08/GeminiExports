@@ -66,17 +66,17 @@ const QualityCertificationsPage = () => {
   const certifications = [
     {
       images: ['/assets/img/credentials/FDA.png'],
-      title: 'FDA license issued by the Government of India',
+      title: 'ISO certificate ',
       validity: 'Validity – May 31, 2028'
     },
     {
       images: ['/assets/img/credentials/EXPORT.png'],
-      title: 'Export certificate issued by Government of India',
+      title: 'FDA license issued by the Government of India',
       validity: 'Validity – March 31, 2028'
     },
     {
       images: ['/assets/img/credentials/ISO.png'],
-      title: 'ISO certificate',
+      title: 'Export certificate issued by Government of India ',
       validity: 'Validity – May 31, 2025, renewed until May 31, 2028'
     },
     {

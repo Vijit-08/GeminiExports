@@ -136,7 +136,7 @@ const AboutUsPage = () => {
                   margin: 0,
                   fontWeight: '400'
                 }}>
-                  Founded in 1996, we are an ISO-certified pharmaceutical trading company based in Mumbai, India, with nearly 30 years of trusted experience in global pharmaceutical trade.
+                  Founded in 1996, we are an ISO-certified pharmaceutical trading company with nearly 30 years of trusted experience in global pharmaceutical trade.
                 </p>
                 <p style={{
                   fontSize: window.innerWidth >= 768 ? '18px' : '17px',
