@@ -90,7 +90,7 @@ const QualityCertificationsPage = () => {
     {
       images: ['/assets/img/credentials/WAREHOUSE1.png', '/assets/img/credentials/WAREHOUSE2.png'],
       title: 'FDA license issued by the Government of India for both our warehouses',
-      validity: 'Warehourse 1:Validity – March 30, 2029. Warehourse 1:Validity – March 31, 2030'
+      validity: 'Warehourse 1: Validity – March 30, 2029. Warehourse 2: Validity – March 31, 2030'
     },
     {
       images: ['/assets/img/credentials/CUSTOMS.png'],
