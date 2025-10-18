@@ -139,13 +139,13 @@ const ContactInformationPage = () => {
               </h1>
 
               <p style={{
-                fontSize: '20px',
+                fontSize: '18px',
                 lineHeight: '1.6',
                 color: '#6B7280',
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                Connect with our team for inquiries, quotes, or partnership opportunities. We're here to serve your pharmaceutical needs worldwide.
+                Contact us for product inquiries, quotes, or to discuss your requirements - we are here to support your pharmaceutical needs worldwide.
               </p>
             </motion.div>
 

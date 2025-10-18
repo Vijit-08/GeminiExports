@@ -15,12 +15,12 @@ const WhyChooseUsPage = () => {
   }
 
   const allDifferentiators = [
-    {
-      icon: Award,
-      title: 'Three Decades of Trusted Experience',
-      description: 'Nearly 30 years in pharmaceutical trading means we understand the industry, anticipate challenges, and deliver with confidence.',
-      color: '#1CAFD8'
-    },
+    // {
+    //   icon: Award,
+    //   title: 'Three Decades of Trusted Experience',
+    //   description: 'Nearly 30 years in pharmaceutical trading means we understand the industry, anticipate challenges, and deliver with confidence.',
+    //   color: '#1CAFD8'
+    // },
     {
       icon: Shield,
       title: 'Proven reputation',
@@ -65,10 +65,17 @@ const WhyChooseUsPage = () => {
     }
   ]
 
-  // Auto-rotate carousel every 4 seconds
+  // Auto-rotate carousel every 2.5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 2) % allDifferentiators.length)
+      setCurrentSlide((prev) => {
+        const next = prev + 2
+        // If next slide would go beyond array, restart from beginning
+        if (next >= allDifferentiators.length) {
+          return 0
+        }
+        return next
+      })
     }, 2500)
     return () => clearInterval(interval)
   }, [])
@@ -241,7 +248,10 @@ const WhyChooseUsPage = () => {
                 gap: '32px'
               }}>
                 {[0, 1].map((offset) => {
-                  const index = (currentSlide + offset) % allDifferentiators.length
+                  const index = currentSlide + offset
+                  // Don't render if index is beyond array length
+                  if (index >= allDifferentiators.length) return null
+
                   const item = allDifferentiators[index]
                   return (
                     <motion.div

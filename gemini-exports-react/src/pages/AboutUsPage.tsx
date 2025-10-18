@@ -642,7 +642,7 @@ const AboutUsPage = () => {
                   color: '#6B7280',
                   marginTop: 15
                 }}>
-                  We aim to be the trusted partner forhealthcare providers, pharmacies, and other institutions.
+                  We aim to be the trusted partner for healthcare providers, pharmacies, and other institutions.
                 </p>
               </motion.div>
 

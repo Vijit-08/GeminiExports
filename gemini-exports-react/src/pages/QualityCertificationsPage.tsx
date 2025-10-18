@@ -19,10 +19,10 @@ const QualityCertificationsPage = () => {
       name: 'Zydus Lifesciences',
       logo: '/assets/img/brands/zydus.png'
     },
-    {
-      name: 'Aurobindo Pharma',
-      logo: '/assets/img/brands/aurobindo.png'
-    },
+    // {
+    //   name: 'Aurobindo Pharma',
+    //   logo: '/assets/img/brands/aurobindo.png'
+    // },
     {
       name: 'Glenmark Pharmaceuticals',
       logo: '/assets/img/brands/Glenmark_Pharmaceuticals_logo.png'
@@ -35,17 +35,25 @@ const QualityCertificationsPage = () => {
       name: 'Kopran Limited',
       logo: '/assets/img/brands/kopran.png'
     },
+    // {
+    //   name: 'Divis Laboratories',
+    //   logo: '/assets/img/brands/divis-laboratories-logo.png'
+    // },
+    // {
+    //   name: 'Aarti Drugs',
+    //   logo: '/assets/img/brands/aarti-drugs.png'
+    // },
+    // {
+    //   name: 'Metrochem API',
+    //   logo: '/assets/img/brands/metrochem.jpg'
+    // }
     {
-      name: 'Divis Laboratories',
-      logo: '/assets/img/brands/divis-laboratories-logo.png'
+      name: "Alivus",
+      logo: "/assets/img/brands/alivus.jpeg"
     },
     {
-      name: 'Aarti Drugs',
-      logo: '/assets/img/brands/aarti-drugs.png'
-    },
-    {
-      name: 'Metrochem API',
-      logo: '/assets/img/brands/metrochem.jpg'
+      name:"apitoria",
+      logo:"/assets/img/brands/apitoria.png"
     }
   ]
 
@@ -72,17 +80,17 @@ const QualityCertificationsPage = () => {
     {
       images: ['/assets/img/credentials/EXPORT.png'],
       title: 'FDA license issued by the Government of India',
-      validity: 'Validity – March 31, 2028'
+      validity: 'Validity – March 31, 2029'
     },
     {
       images: ['/assets/img/credentials/ISO.png'],
       title: 'Export certificate issued by Government of India ',
-      validity: 'Validity – May 31, 2025, renewed until May 31, 2028'
+      validity: 'Validity – May 31, 2028'
     },
     {
       images: ['/assets/img/credentials/WAREHOUSE1.png', '/assets/img/credentials/WAREHOUSE2.png'],
       title: 'FDA license issued by the Government of India for both our warehouses',
-      validity: 'Validity – March 30, 2029'
+      validity: 'Warehourse 1:Validity – March 30, 2029. Warehourse 1:Validity – March 31, 2030'
     },
     {
       images: ['/assets/img/credentials/CUSTOMS.png'],

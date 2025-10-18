@@ -7,12 +7,25 @@ import { Calendar, Globe, Package, Award } from 'lucide-react'
 const Hero = () => {
   const navigate = useNavigate()
   const [displayedText, setDisplayedText] = useState('')
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    isMobile: window.innerWidth < 768,
+    isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
+    isDesktop: window.innerWidth >= 1024
+  })
   const [isTypingComplete, setIsTypingComplete] = useState(false)
   const fullText = 'Your Trusted Partner in High Quality Active Pharmaceutical Ingredients (APIs)'
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    const handleResize = () => {
+      const width = window.innerWidth
+      setScreenSize({
+        width,
+        isMobile: width < 768,
+        isTablet: width >= 768 && width < 1024,
+        isDesktop: width >= 1024
+      })
+    }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -84,6 +97,136 @@ const Hero = () => {
 
   const currentStat = stats[currentStatIndex]
 
+  // Smart responsive calculations based on viewport
+  const getResponsiveValues = useMemo(() => {
+    const { width, height, isMobile, isTablet, isDesktop } = screenSize
+    const aspectRatio = width / height
+    const viewportArea = width * height
+
+    // Calculate hexagon size based on viewport dimensions
+    const calculateHexagonSize = () => {
+      if (isMobile) return 240
+      if (isTablet) {
+        // Dynamic sizing for tablets based on both width and height
+        const baseSize = Math.min(width * 0.28, height * 0.34)
+        return Math.max(180, Math.min(baseSize, 230))
+      }
+      if (isDesktop) {
+        // For small desktops (1024-1199), scale based on height
+        if (width < 1200) {
+          const baseSize = Math.min(width * 0.21, height * 0.31)
+          return Math.max(250, Math.min(baseSize, 280))
+        }
+        // Large desktops get full size
+        return 320
+      }
+      return 280
+    }
+
+    // Calculate text container max width
+    const calculateTextMaxWidth = () => {
+      if (isMobile) return '100%'
+      if (isTablet) {
+        // Dynamic width to prevent overlap
+        const hexSize = calculateHexagonSize()
+        const availableWidth = width - (hexSize * 2.3) - 64 // Account for hexagons and padding
+        return `${Math.max(350, Math.min(availableWidth, 450))}px`
+      }
+      if (isDesktop && width < 1200) {
+        const hexSize = calculateHexagonSize()
+        const availableWidth = width - (hexSize * 2.4) - 100
+        return `${Math.max(400, Math.min(availableWidth, 480))}px`
+      }
+      return '580px'
+    }
+
+    // Calculate heading font size
+    const calculateHeadingSize = () => {
+      if (isMobile) return 32
+      if (isTablet) {
+        // Scale between 28-34px based on width and height
+        const scaledSize = Math.min(width * 0.042, height * 0.052)
+        return Math.max(28, Math.min(scaledSize, 34))
+      }
+      if (isDesktop && width < 1200) return 36
+      return 40
+    }
+
+    // Calculate description font size
+    const calculateDescriptionSize = () => {
+      if (isMobile) return 16
+      if (isTablet) return Math.min(width * 0.019, 15.5)
+      return 17
+    }
+
+    // Calculate vertical positioning
+    const calculateMarginTop = () => {
+      if (isMobile) return 0
+      if (isTablet) {
+        // Dynamic margin based on height - shorter screens need less negative margin
+        const marginScale = Math.min(height / 700, 1)
+        return -1 * (140 + (60 * marginScale))
+      }
+      if (isDesktop && width < 1200) {
+        const marginScale = Math.min(height / 850, 1)
+        return -1 * (60 + (40 * marginScale))
+      }
+      return 0
+    }
+
+    // Calculate hexagon top position
+    const calculateHexagonTop = () => {
+      if (isTablet) return '50%'
+      if (isDesktop) {
+        if (width >= 1200) return '16%'
+        if (width >= 1024) return '50%'
+        return '10%'
+      }
+      return '50%'
+    }
+
+    // Calculate hexagon top margin adjustment
+    const calculateHexagonMarginTop = () => {
+      if (isDesktop && width >= 1024 && width < 1200) {
+        // Scale based on available vertical space
+        const heightScale = Math.min(height / 900, 1)
+        return -1 * (200 + (100 * heightScale))
+      }
+      return 0
+    }
+
+    // Calculate overlap margin between hexagons
+    const calculateOverlapMargin = () => {
+      const hexSize = calculateHexagonSize()
+      return -1 * (hexSize * 0.25) // 25% overlap
+    }
+
+    // Calculate right positioning
+    const calculateRightPosition = () => {
+      if (isTablet) return '1%'
+      if (isDesktop) {
+        if (width >= 1200) return '8%'
+        return '4%'
+      }
+      return '2%'
+    }
+
+    return {
+      hexagonSize: calculateHexagonSize(),
+      textMaxWidth: calculateTextMaxWidth(),
+      headingSize: calculateHeadingSize(),
+      descriptionSize: calculateDescriptionSize(),
+      marginTop: calculateMarginTop(),
+      hexagonTop: calculateHexagonTop(),
+      hexagonMarginTop: calculateHexagonMarginTop(),
+      overlapMargin: calculateOverlapMargin(),
+      rightPosition: calculateRightPosition(),
+      headingMinHeight: isMobile ? 77 : isTablet ? Math.max(85, height * 0.13) : 116,
+      descriptionMargin: isTablet ? 20 : 32,
+      lineHeight: isTablet ? 1.55 : 1.7
+    }
+  }, [screenSize])
+
   const ImageHexagon = memo(({ size, image, imageNum }: { size: number; image?: boolean; imageNum?: number }) => {
     // Flat-top hexagon clip path
     const hexagonClipPath = 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'
@@ -107,21 +250,24 @@ const Hero = () => {
             border: image ? '4px solid #dff9ffff' : 'none',
             position: 'relative',
             overflow: 'hidden',
-            backgroundColor: '#0891B2'
+            backgroundColor: image ? 'transparent' : '#0891B2'
           }}
         >
           {image && (
-            <div
+            <img
+              src={imageUrl}
+              alt={`Hexagon ${imageNum}`}
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: `url('${imageUrl}')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block'
               }}
+              loading="eager"
             />
           )}
         </div>
@@ -288,9 +434,9 @@ const Hero = () => {
     <section style={{
       position: 'relative',
       background: 'linear-gradient(135deg, #EBF8FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
-      paddingTop: isMobile ? '100px' : '140px',
-      paddingBottom: isMobile ? '60px' : '80px',
-      minHeight: isMobile ? 'auto' : '95vh',
+      paddingTop: screenSize.isMobile ? '100px' : '140px',
+      paddingBottom: screenSize.isMobile ? '60px' : screenSize.isTablet ? '100px' : '80px',
+      minHeight: screenSize.isMobile ? 'auto' : '95vh',
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden'
@@ -307,7 +453,7 @@ const Hero = () => {
         pointerEvents: 'none'
       }}>
         <ResponsiveHoneycomb
-          defaultWidth={isMobile ? 768 : 1920}
+          defaultWidth={screenSize.isMobile ? 768 : 1920}
           size={sideLength}
           items={items}
           renderItem={(item: any) => (
@@ -333,35 +479,36 @@ const Hero = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: isMobile
+        background: screenSize.isMobile
           ? 'linear-gradient(to bottom, rgba(235, 248, 255, 0.75) 0%, rgba(240, 249, 255, 0.65) 40%, rgba(236, 253, 245, 0.4) 100%)'
           : 'linear-gradient(to right, rgba(235, 248, 255, 1) 0%, rgba(240, 249, 255, 0.95) 25%, rgba(236, 253, 245, 0.5) 45%, transparent 65%)',
         zIndex: 1
       }} />
 
-      {/* Desktop Hexagons Layout */}
-      {!isMobile && isTypingComplete && (
+      {/* Desktop/Tablet Hexagons Layout */}
+      {!screenSize.isMobile && isTypingComplete && (
         <motion.div
           initial={{ opacity: 0, scale: 0.9, x: 50 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           style={{
             position: 'absolute',
-            top: window.innerWidth >= 1200 ? '16%' : window.innerWidth >= 1024 ? '10%' : '40%',
-            right: window.innerWidth >= 1200 ? '8%' : window.innerWidth >= 1024 ? '5%' : '3%',
+            top: getResponsiveValues.hexagonTop,
+            right: getResponsiveValues.rightPosition,
             transform: 'translateY(-50%)',
             zIndex: 2,
             display: 'flex',
             alignItems: 'center',
-            gap: '0'
+            gap: '0',
+            marginTop: `${getResponsiveValues.hexagonMarginTop}px`
           }}
         >
           {/* Stats Hexagon on the left */}
           <div style={{
-            marginRight: window.innerWidth >= 1024 ? '-80px' : '-70px'
+            marginRight: `${getResponsiveValues.overlapMargin}px`
           }}>
             <StatsHexagon
-              size={window.innerWidth >= 1024 ? 320 : 280}
+              size={getResponsiveValues.hexagonSize}
               currentStat={currentStat}
               currentStatIndex={currentStatIndex}
               stats={stats}
@@ -375,9 +522,17 @@ const Hero = () => {
             gap: '0'
           }}>
             <div style={{ marginBottom: '-3px' }}>
-              <ImageHexagon size={window.innerWidth >= 1024 ? 320 : 280} image={true} imageNum={1} />
+              <ImageHexagon
+                size={getResponsiveValues.hexagonSize}
+                image={true}
+                imageNum={1}
+              />
             </div>
-            <ImageHexagon size={window.innerWidth >= 1024 ? 320 : 280} image={true} imageNum={2} />
+            <ImageHexagon
+              size={getResponsiveValues.hexagonSize}
+              image={true}
+              imageNum={2}
+            />
           </div>
         </motion.div>
       )}
@@ -385,31 +540,32 @@ const Hero = () => {
       {/* Content Container */}
       <div style={{
         width: '100%',
-        padding: isMobile ? '0 24px' : '0 24px 0 80px',
+        padding: screenSize.isMobile ? '0 24px' : screenSize.isTablet ? '0 32px' : '0 20px 0 80px',
         position: 'relative',
-        zIndex: 3
+        zIndex: 3,
+        marginTop: `${getResponsiveValues.marginTop}px`
       }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           style={{
-            maxWidth: isMobile ? '100%' : '580px'
+            maxWidth: getResponsiveValues.textMaxWidth
           }}
         >
           {/* Animated Heading */}
           <h1 style={{
-            fontSize: isMobile ? '32px' : '40px',
+            fontSize: `${getResponsiveValues.headingSize}px`,
             fontWeight: '500',
             lineHeight: '1.2',
-            margin: '0 0 24px 0',
+            margin: '0 0 20px 0',
             background: 'linear-gradient(135deg, #1CAFD8 0%, #10B981 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             letterSpacing: '-0.01em',
             fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
-            minHeight: isMobile ? '77px' : '116px'
+            minHeight: `${getResponsiveValues.headingMinHeight}px`
           }}>
             {displayedText}
             <motion.span
@@ -428,15 +584,15 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5, duration: 0.8 }}
             style={{
-              fontSize: isMobile ? '16px' : '17px',
-              lineHeight: '1.7',
-              margin: '0 0 32px 0',
+              fontSize: `${getResponsiveValues.descriptionSize}px`,
+              lineHeight: getResponsiveValues.lineHeight,
+              margin: `0 0 ${getResponsiveValues.descriptionMargin}px 0`,
               color: '#4B5563',
               fontWeight: '400',
               fontFamily: 'system-ui, -apple-system, sans-serif'
             }}
           >
-            We are a Mumbai-based pharmaceutical trading powerhouse connecting industry-leading manufacturers with 30+ countries—delivering 150+ premium APIs, excipients, and specialty ingredients backed by nearly three decades of uncompromising quality.
+            We are a Mumbai-based pharmaceutical trading powerhouse with nearly three decades of exprience, connecting industry-leading manufacturers with 30+ countries—delivering 150+ premium APIs, excipients, and specialty ingredients with uncompromising quality.
           </motion.p>
 
           {/* Call-to-Action Buttons */}
@@ -497,7 +653,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Mobile Hexagons */}
-        {isMobile && isTypingComplete && (
+        {screenSize.isMobile && isTypingComplete && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

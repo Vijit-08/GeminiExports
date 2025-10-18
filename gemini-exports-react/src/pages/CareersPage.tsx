@@ -55,51 +55,51 @@ const CareersPage = () => {
         'Understand importance of acknowledgement.'
       ]
     },
-    {
-      id: 'job2',
-      title: 'ACCOUNTS ASSISTANT',
-      responsibilities: [
-        'Accounting in Tally (with Good Speed)',
-        'Banking Transaction, Payments etc',
-        'Basic Knowledge of GST/TDS & TCS (basic knowledge of PF/ESIC/PT etc)',
-        'Knowledge of MS Office & well versed with EXCEL SHEET',
-        'Person should fluently speak in English (Overall Good communication Skill)',
-        'Minimum Experience – 2 to 5 years'
-      ],
-      requirements: [
-        'A graduate in commerce is mandatory.',
-        'Well versed with Tally Prime (Good Speed) – Accounting in Tally.',
-        'Knowledge of MS office. Advance excel knowledge a must.',
-        'Versatility in learning.'
-      ]
-    },
-    {
-      id: 'job3',
-      title: 'DATA ANALYST',
-      responsibilities: [
-        'The role would include extraction, cleaning, reporting, analysis and visualization of data.',
-        'Create and manage MIS reports to be shared with different stakeholders in the organization.',
-        'Provide support to the marketing team in conducting quantitative analysis of data in enabling business decisions.',
-        'Being the custodian of the various primary and secondary market research data, provide regular inputs to the marketing team on the market trends and product performance.',
-        'Support in strategic planning and brand plan exercises by conducting competitor analysis, portfolio analysis, pricing analysis, profitability analysis etc.',
-        'Data validation and attention to detail is required as the individual will be accountable for quality of all the numbers delivered through dashboards or otherwise.',
-        'Present the findings from the analyses to the stakeholders in an effective and structured fashion.',
-        'Able to multi task and work across teams.',
-        'Prioritization of tasks, organised work ethics, high work efficiency are expected.',
-        'Generate qualitative / quantitative reports that communicate the key takeaways in an easy to understand manner.',
-        'Being the custodian of the various primary and secondary market research data, provide regular inputs to the marketing team on the market trends and product performance.'
-      ],
-      requirements: [
-        'Experience working with complex data set and in creating insights.',
-        'Experience in analyzing with Pharma market data would be preferred.',
-        'Experience in marketing analytics.',
-        'Prior experience of working on CRM applications.',
-        'Proficient in excel include pivot table, look ups and general analysis of data.',
-        'Structured thought process and problem solving skills are a must have.',
-        'Ability to take complete ownership and work with minimal guidance to add value in a dynamic environment.',
-        'Highly motivated, learning oriented and quality focused individuals would be preferred.'
-      ]
-    }
+    // {
+    //   id: 'job2',
+    //   title: 'ACCOUNTS ASSISTANT',
+    //   responsibilities: [
+    //     'Accounting in Tally (with Good Speed)',
+    //     'Banking Transaction, Payments etc',
+    //     'Basic Knowledge of GST/TDS & TCS (basic knowledge of PF/ESIC/PT etc)',
+    //     'Knowledge of MS Office & well versed with EXCEL SHEET',
+    //     'Person should fluently speak in English (Overall Good communication Skill)',
+    //     'Minimum Experience – 2 to 5 years'
+    //   ],
+    //   requirements: [
+    //     'A graduate in commerce is mandatory.',
+    //     'Well versed with Tally Prime (Good Speed) – Accounting in Tally.',
+    //     'Knowledge of MS office. Advance excel knowledge a must.',
+    //     'Versatility in learning.'
+    //   ]
+    // },
+    // {
+    //   id: 'job3',
+    //   title: 'DATA ANALYST',
+    //   responsibilities: [
+    //     'The role would include extraction, cleaning, reporting, analysis and visualization of data.',
+    //     'Create and manage MIS reports to be shared with different stakeholders in the organization.',
+    //     'Provide support to the marketing team in conducting quantitative analysis of data in enabling business decisions.',
+    //     'Being the custodian of the various primary and secondary market research data, provide regular inputs to the marketing team on the market trends and product performance.',
+    //     'Support in strategic planning and brand plan exercises by conducting competitor analysis, portfolio analysis, pricing analysis, profitability analysis etc.',
+    //     'Data validation and attention to detail is required as the individual will be accountable for quality of all the numbers delivered through dashboards or otherwise.',
+    //     'Present the findings from the analyses to the stakeholders in an effective and structured fashion.',
+    //     'Able to multi task and work across teams.',
+    //     'Prioritization of tasks, organised work ethics, high work efficiency are expected.',
+    //     'Generate qualitative / quantitative reports that communicate the key takeaways in an easy to understand manner.',
+    //     'Being the custodian of the various primary and secondary market research data, provide regular inputs to the marketing team on the market trends and product performance.'
+    //   ],
+    //   requirements: [
+    //     'Experience working with complex data set and in creating insights.',
+    //     'Experience in analyzing with Pharma market data would be preferred.',
+    //     'Experience in marketing analytics.',
+    //     'Prior experience of working on CRM applications.',
+    //     'Proficient in excel include pivot table, look ups and general analysis of data.',
+    //     'Structured thought process and problem solving skills are a must have.',
+    //     'Ability to take complete ownership and work with minimal guidance to add value in a dynamic environment.',
+    //     'Highly motivated, learning oriented and quality focused individuals would be preferred.'
+    //   ]
+    // }
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
