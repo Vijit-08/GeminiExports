@@ -4,8 +4,10 @@ import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
+import { useNavigate } from 'react-router-dom'
 
 const ProductsPage = () => {
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isMd } = useBreakpoint()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -267,7 +269,7 @@ const ProductsPage = () => {
                 }}
               >
                 <a
-                  href="/contact"
+                  // href="/contact"
                   style={{
                     display: 'inline-block',
                     padding: '14px 28px',
@@ -290,6 +292,7 @@ const ProductsPage = () => {
                     ;(e.target as HTMLElement).style.transform = 'translateY(0)'
                     ;(e.target as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(28, 175, 216, 0.3)'
                   }}
+                  onClick={() => navigate('/contact')}
                 >
                   Contact Us
                 </a>

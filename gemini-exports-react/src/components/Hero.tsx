@@ -382,7 +382,7 @@ const Hero = () => {
         padding: isMobile ? '0 24px' : isTablet ? '0 32px' : '0 20px 0 80px',
         position: 'relative',
         zIndex: 3,
-        marginTop: isTablet ? '-80px' : windowWidth < 1200 ? '-80px' : '0'
+        marginTop: isMobile ? '20px' : isTablet ? '-80px' : windowWidth < 1200 ? '-80px' : '0'
       }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -395,8 +395,9 @@ const Hero = () => {
           <h1 style={{
             fontSize: isMobile ? '32px' : isTablet ? '28px' : windowWidth < 1200 ? '36px' : '40px',
             fontWeight: '500',
-            lineHeight: '1.2',
+            lineHeight: '1.3',
             margin: '0 0 16px 0',
+            paddingBottom: '4px',
             background: 'linear-gradient(135deg, #1CAFD8 0%, #10B981 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
