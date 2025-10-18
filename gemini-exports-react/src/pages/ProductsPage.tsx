@@ -3,14 +3,12 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ExportPortfolio from '../components/ExportPortfolio'
 import { useState, useEffect } from 'react'
-import { Beaker, Heart, Brain, Eye, Shield, Stethoscope, Activity } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ProductsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { isMd } = useBreakpoint()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const searchQuery: string = '' // Placeholder for future search functionality
 
   const carouselImages = [
     '/assets/img/compressedImages/products1.jpg',
@@ -32,132 +30,6 @@ const ProductsPage = () => {
     margin: '0 auto',
     padding: '0 24px'
   }
-
-  // Filter products based on search query
-  const filterProducts = (drugs: any[]) => {
-    if (!searchQuery) return drugs
-    return drugs.filter(drug =>
-      drug.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      drug.cas.includes(searchQuery)
-    )
-  }
-
-  const therapeuticAreas = [
-    {
-      name: 'CARDIOVASCULAR',
-      icon: Heart,
-      color: '#1CAFD8',
-      bgColor: '#EBF8FF',
-      drugs: [
-        { name: 'Atorvastatin / Atorvastatin Calcium Trihydrate', cas: '344423-98-9' },
-        { name: 'Fenofibrate', cas: '49562-28-9' },
-        { name: 'Losartan/ Losartan Potassium', cas: '124750-99-8' },
-        { name: 'Metoprolol/ Metoprolol Tartrate', cas: '56392-17' },
-        { name: 'Olmesartan/ Olmesartan Medoxomil', cas: '144689-63-4' }
-      ]
-    },
-    {
-      name: 'RESPIRATORY',
-      icon: Activity,
-      color: '#10B981',
-      bgColor: '#ECFDF5',
-      drugs: [
-        { name: 'Budesonide', cas: '51333-22-3' },
-        { name: 'Montelukast/ Montelukast Sodium', cas: '151767-02-1' }
-      ]
-    },
-    {
-      name: 'GASTROINTESTINAL',
-      icon: Stethoscope,
-      color: '#0891B2',
-      bgColor: '#CFFAFE',
-      drugs: [
-        { name: 'Esomeprazole/ Esomeprazole Magnesium Trihydrate', cas: '217087-09-7' },
-        { name: 'Famotidine', cas: '76824-35-6' },
-        { name: 'Lansoprazole', cas: '103577-45-3' },
-        { name: 'Omeprazole', cas: '73590-58-6' }
-      ]
-    },
-    {
-      name: 'NEUROLOGIC',
-      icon: Brain,
-      color: '#0E7490',
-      bgColor: '#E0F2FE',
-      drugs: [
-        { name: 'Lamotrigine', cas: '84057-84-1' },
-        { name: 'Meloxicam', cas: '71125-38-7' },
-        { name: 'Tramadol/ Tramadol Hydrochloride', cas: '36282-47-0' }
-      ]
-    },
-    {
-      name: 'PSYCHIATRIC',
-      icon: Brain,
-      color: '#14B8A6',
-      bgColor: '#CCFBF1',
-      drugs: [
-        { name: 'Amitriptyline/ Amitriptyline Hydrochloride', cas: '549-18-8' },
-        { name: 'Olanzapine', cas: '132539-06-1' },
-        { name: 'Risperidone', cas: '106266-06-2' }
-      ]
-    },
-    {
-      name: 'ENDOCRINOLOGY',
-      icon: Beaker,
-      color: '#34D399',
-      bgColor: '#D1FAE5',
-      drugs: [
-        { name: 'Glimeperide', cas: '93479-97-1' },
-        { name: 'Metformin/ Metformin Hydrochloride', cas: '1115-70-4' },
-        { name: 'Sitagliptin/ Sitagliptin Phosphate Monohydrate', cas: '654671-77-9' }
-      ]
-    },
-    {
-      name: 'UROLOGIC',
-      icon: Shield,
-      color: '#06B6D4',
-      bgColor: '#CFFAFE',
-      drugs: [
-        { name: 'Sildenafil/ Sildenafil Citrate', cas: '171599-83-0' },
-        { name: 'Tadalafil', cas: '171596-29-5' },
-        { name: 'Tamsulosin/ Tamsulosin Hydrochloride', cas: '106463-17-6' }
-      ]
-    },
-    {
-      name: 'RHEUMATOLOGIC',
-      icon: Activity,
-      color: '#059669',
-      bgColor: '#D1FAE5',
-      drugs: [
-        { name: 'Alendronate/ Sodium Alendronate Trihydrate', cas: '121268-17-5' },
-        { name: 'Allopurinol', cas: '315-30-0' },
-        { name: 'Raloxifene/ Raloxifene Hydrochloride', cas: '82640-04-8' }
-      ]
-    },
-    {
-      name: 'OPHTHALMIC',
-      icon: Eye,
-      color: '#0284C7',
-      bgColor: '#E0F2FE',
-      drugs: [
-        { name: 'Brimonidine/ Brimonidine Tartrate', cas: '70359-46-5' },
-        { name: 'Dorzolamide/ Dorzolamide Hydrochloride', cas: '130693-82-2' },
-        { name: 'Loratadine', cas: '79794-75-5' }
-      ]
-    },
-    {
-      name: 'INFECTIOUS DISEASE',
-      icon: Shield,
-      color: '#2DD4BF',
-      bgColor: '#F0FDFA',
-      drugs: [
-        { name: 'Amoxicillin/ Amoxicillin Trihydrate', cas: '61336-70-7' },
-        { name: 'Fluconazole', cas: '86386-73-4' },
-        { name: 'Itraconazole', cas: '84625-61-6' },
-        { name: 'Levofloxacin / Levofloxacin Hemihydrate', cas: '138199-71-0' },
-        { name: 'Oseltamivir / Oseltamivir Phosphate', cas: '204255-11-8' }
-      ]
-    }
-  ]
 
   return (
     <div style={{
