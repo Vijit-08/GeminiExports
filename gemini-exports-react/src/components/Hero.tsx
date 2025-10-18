@@ -87,7 +87,7 @@ const Hero = () => {
   const isDesktop = windowWidth >= 1024
 
   // Simple hexagon size
-  const hexSize = isMobile ? 240 : isTablet ? 180 : isDesktop && windowWidth < 1200 ? 270 : 320
+  const hexSize = isMobile ? 160 : isTablet ? 180 : isDesktop && windowWidth < 1200 ? 270 : 320
 
   const ImageHexagon = memo(({ size, imageNum }: { size: number; imageNum?: number }) => {
     const hexagonClipPath = 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'
@@ -134,7 +134,7 @@ const Hero = () => {
     )
   })
 
-  const StatsHexagon = memo(({ size, currentStat, currentStatIndex, stats, isTablet }: { size: number; currentStat: any; currentStatIndex: number; stats: any[]; isTablet?: boolean }) => {
+  const StatsHexagon = memo(({ size, currentStat, currentStatIndex, stats, isTablet, isMobile }: { size: number; currentStat: any; currentStatIndex: number; stats: any[]; isTablet?: boolean; isMobile?: boolean }) => {
     const hexagonClipPath = 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'
     const CurrentIcon = currentStat.icon
     const [animatedCount, setAnimatedCount] = useState(0)
@@ -188,7 +188,7 @@ const Hero = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '20px'
+            padding: isMobile ? '12px' : '20px'
           }}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -213,25 +213,25 @@ const Hero = () => {
               >
                 <div
                   style={{
-                    width: isTablet ? '40px' : '50px',
-                    height: isTablet ? '40px' : '50px',
+                    width: isMobile ? '32px' : isTablet ? '40px' : '50px',
+                    height: isMobile ? '32px' : isTablet ? '40px' : '50px',
                     backgroundColor: `${currentStat.iconColor}15`,
-                    borderRadius: isTablet ? '10px' : '12px',
+                    borderRadius: isMobile ? '8px' : isTablet ? '10px' : '12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: isTablet ? '12px' : '16px'
+                    marginBottom: isMobile ? '8px' : isTablet ? '12px' : '16px'
                   }}
                 >
-                  <CurrentIcon size={isTablet ? 22 : 28} color={currentStat.iconColor} strokeWidth={2} />
+                  <CurrentIcon size={isMobile ? 18 : isTablet ? 22 : 28} color={currentStat.iconColor} strokeWidth={2} />
                 </div>
 
                 <div
                   style={{
-                    fontSize: isTablet ? '28px' : '36px',
+                    fontSize: isMobile ? '22px' : isTablet ? '28px' : '36px',
                     fontWeight: '700',
                     color: currentStat.iconColor,
-                    marginBottom: isTablet ? '6px' : '8px',
+                    marginBottom: isMobile ? '4px' : isTablet ? '6px' : '8px',
                     lineHeight: '1'
                   }}
                 >
@@ -242,10 +242,14 @@ const Hero = () => {
                   style={{
                     color: '#1F2937',
                     fontWeight: '500',
-                    fontSize: isTablet ? '11px' : '13px',
+                    fontSize: isMobile ? '8px' : isTablet ? '11px' : '13px',
                     textAlign: 'center',
-                    lineHeight: '1.3',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
+                    lineHeight: isMobile ? '1.4' : '1.3',
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    maxWidth: isMobile ? '85%' : '100%',
+                    overflow: 'hidden',
+                    whiteSpace: isMobile ? 'normal' : 'normal',
+                    wordBreak: 'break-word'
                   }}
                 >
                   {currentStat.label}
@@ -255,18 +259,18 @@ const Hero = () => {
 
             <div style={{
               display: 'flex',
-              gap: isTablet ? '4px' : '6px',
+              gap: isMobile ? '3px' : isTablet ? '4px' : '6px',
               justifyContent: 'center',
-              marginTop: isTablet ? '16px' : '16px',
+              marginTop: isMobile ? '12px' : isTablet ? '16px' : '16px',
               position: 'absolute',
-              bottom: isTablet ? '10px' : '20px'
+              bottom: isMobile ? '8px' : isTablet ? '10px' : '20px'
             }}>
               {stats.map((_: any, index: number) => (
                 <div
                   key={index}
                   style={{
-                    width: isTablet ? '5px' : '6px',
-                    height: isTablet ? '5px' : '6px',
+                    width: isMobile ? '4px' : isTablet ? '5px' : '6px',
+                    height: isMobile ? '4px' : isTablet ? '5px' : '6px',
                     borderRadius: '50%',
                     backgroundColor: currentStatIndex === index ? currentStat.iconColor : '#D1D5DB',
                     transition: 'all 0.3s'
@@ -360,6 +364,7 @@ const Hero = () => {
               currentStatIndex={currentStatIndex}
               stats={stats}
               isTablet={isTablet}
+              isMobile={isMobile}
             />
           </div>
 
@@ -503,12 +508,13 @@ const Hero = () => {
               justifyContent: 'center'
             }}
           >
-            <div style={{ marginRight: '-60px' }}>
+            <div style={{ marginRight: '-40px' }}>
               <StatsHexagon
-                size={240}
+                size={hexSize}
                 currentStat={currentStat}
                 currentStatIndex={currentStatIndex}
                 stats={stats}
+                isMobile={isMobile}
               />
             </div>
 
@@ -518,9 +524,9 @@ const Hero = () => {
               gap: '0'
             }}>
               <div style={{ marginBottom: '-2px' }}>
-                <ImageHexagon size={240} imageNum={1} />
+                <ImageHexagon size={hexSize} imageNum={1} />
               </div>
-              <ImageHexagon size={240} imageNum={2} />
+              <ImageHexagon size={hexSize} imageNum={2} />
             </div>
           </motion.div>
         )}
