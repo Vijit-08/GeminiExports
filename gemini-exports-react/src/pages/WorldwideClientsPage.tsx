@@ -156,7 +156,7 @@ const WorldwideClientsPage = () => {
                 Our Global Presence
               </h1>
               <p style={{
-                fontSize: '19px',
+                fontSize: '18px',
                 lineHeight: '1.7',
                 color: '#4B5563',
                 margin: 0,

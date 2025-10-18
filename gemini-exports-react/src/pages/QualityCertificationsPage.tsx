@@ -85,7 +85,7 @@ const QualityCertificationsPage = () => {
     {
       images: ['/assets/img/credentials/ISO.png'],
       title: 'Export certificate issued by Government of India ',
-      validity: 'Validity – May 31, 2028'
+      validity: 'Validity – March 31, 2028'
     },
     {
       images: ['/assets/img/credentials/WAREHOUSE1.png', '/assets/img/credentials/WAREHOUSE2.png'],
@@ -94,7 +94,7 @@ const QualityCertificationsPage = () => {
     },
     {
       images: ['/assets/img/credentials/CUSTOMS.png'],
-      title: 'Certificate issued by the Custom Authorities of India',
+      title: 'AEO Certificate issued by the Custom Authorities of India',
       validity: 'Validity – April 16, 2026'
     }
   ]

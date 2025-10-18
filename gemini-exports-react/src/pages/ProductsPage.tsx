@@ -231,14 +231,14 @@ const ProductsPage = () => {
               style={{ textAlign: 'center', marginBottom: '40px' }}
             >
               <h2 style={{
-                fontSize: '36px',
-                fontWeight: '700',
+                fontSize: '20px',
+                fontWeight: '600',
                 margin: '0 0 16px 0',
                 color: '#1F2937'
               }}>
-                Therapeutic areas
+                For a comprehensive list of products, please contact us for more information.
               </h2>
-              <p style={{
+              {/* <p style={{
                 fontSize: '16px',
                 color: '#6B7280',
                 maxWidth: '600px',
@@ -254,8 +254,8 @@ const ProductsPage = () => {
                 maxWidth: '600px',
                 margin: '0 auto 16px'
               }}>
-                For a comprehensive list of products please contact us for more information.
-              </p>
+                For a comprehensive list of products, please contact us for more information.
+              </p> */}
 
               {/* Contact Us Button */}
               <motion.div

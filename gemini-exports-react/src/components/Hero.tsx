@@ -429,7 +429,7 @@ const Hero = () => {
               fontFamily: 'system-ui, -apple-system, sans-serif'
             }}
           >
-            We are a Mumbai-based pharmaceutical trading powerhouse with nearly three decades of experience, connecting industry-leading manufacturers with 30+ countries—delivering 150+ premium APIs, excipients, and specialty ingredients with uncompromising quality.
+            We are a Mumbai-based pharmaceutical trading powerhouse with nearly three decades of experience. We connect industry-leading manufacturers with 30+ countries, delivering 150+ premium APIs, excipients, and specialty ingredients with uncompromising quality.
           </motion.p>
 
           <motion.div
