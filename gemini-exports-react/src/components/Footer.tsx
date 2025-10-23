@@ -78,7 +78,7 @@ const Footer = () => {
                   marginBottom: '24px',
                   maxWidth: '400px'
                 }}>
-                  ISO certified pharmaceutical trading company with 150+ premium products and global delivery to 30+ countries worldwide.
+                  ISO certified pharmaceutical trading company with nearly 30 years of excellence in quality products and global delivery to 30+ countries worldwide.
                 </p>
 
                 <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -100,7 +100,7 @@ const Footer = () => {
                     borderRadius: '20px',
                     border: '1px solid rgba(28, 175, 216, 0.3)'
                   }}>
-                    <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>Nearly 30 Years</span>
+                    <span style={{ fontSize: '14px', color: '#1CAFD8', fontWeight: '600' }}>150+ Premium Products</span>
                   </div>
                   <div style={{
                     display: 'flex',

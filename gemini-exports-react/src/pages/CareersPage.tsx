@@ -266,13 +266,13 @@ const CareersPage = () => {
               </h1>
 
               <p style={{
-                fontSize: '20px',
+                fontSize: '19px',
                 lineHeight: '1.6',
                 color: '#6B7280',
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                Join our dynamic team of pharmaceutical professionals and be part of our mission to serve healthcare providers worldwide with quality products.
+                Join our dynamic team of pharmaceutical trading professionals and be part of our mission to serve clients worldwide with quality products.
               </p>
             </motion.div>
 
