@@ -353,7 +353,7 @@ const ContactInformationPage = () => {
                     </div>
                     <div>
                       <label style={{ fontSize: '14px', fontWeight: '500', color: '#1F2937', marginBottom: '6px', display: 'block' }}>
-                        Company
+                        Company *
                       </label>
                       <input
                         type="text"

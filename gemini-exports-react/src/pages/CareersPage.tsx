@@ -598,7 +598,7 @@ const CareersPage = () => {
                     Application Received!
                   </h3>
                   <p style={{
-                    fontSize: '16px',
+                    fontSize: '15px',
                     color: '#047857',
                     lineHeight: '1.6',
                     maxWidth: '500px',
@@ -702,8 +702,8 @@ const CareersPage = () => {
                       >
                         <option value="">Please specify which post you want to apply for:</option>
                         <option value="International Marketing Co-ordinator">International Marketing Co-ordinator</option>
-                        <option value="Accounts Assistant">Accounts Assistant</option>
-                        <option value="Data Analyst">Data Analyst</option>
+                        {/* <option value="Accounts Assistant">Accounts Assistant</option>
+                        <option value="Data Analyst">Data Analyst</option> */}
                       </select>
                     </div>
                     <div>

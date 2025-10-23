@@ -144,7 +144,7 @@ const WhyChooseUsPage = () => {
                 margin: 0,
                 fontWeight: '400'
               }}>
-                Three decades of pharmaceutical trading excellence, backed by unwavering commitment to quality and customer success.
+                Three decades of pharmaceutical trading excellence - driven by quality, trust, and customer success.
               </p>
             </motion.div>
           </div>
