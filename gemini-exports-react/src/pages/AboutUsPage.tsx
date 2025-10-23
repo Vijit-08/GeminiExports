@@ -136,7 +136,7 @@ const AboutUsPage = () => {
                   margin: 0,
                   fontWeight: '400'
                 }}>
-                  Founded in 1996, we are an ISO-certified pharmaceutical trading company with nearly 30 years of trusted experience in global pharmaceutical trade.
+                  Since 1996, we have been the trusted bridge between pharmaceutical manufacturers and healthcare companies across 30+ countries.
                 </p>
                 <p style={{
                   fontSize: window.innerWidth >= 768 ? '18px' : '17px',
@@ -145,7 +145,7 @@ const AboutUsPage = () => {
                   marginTop: 15,
                   fontWeight: '400'
                 }}>
-                  For nearly 30 years, we've been the trusted bridge connecting leading pharmaceutical manufacturers with healthcare companies across 30+ countries, sourcing, quality-checking, and delivering 150+ premium APIs and specialty ingredients that power better health outcomes worldwide.
+                  As an ISO-certified, globally recognized partner, we source, quality-check, and deliver 150+ premium APIs and specialty ingredients that power better health outcomes worldwide.
                 </p>
                 {/* <p style={{
                   fontSize: window.innerWidth >= 768 ? '18px' : '17px',
