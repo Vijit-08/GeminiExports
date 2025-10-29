@@ -234,30 +234,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   animation: 'fadeInDown 0.2s ease-out'
                 }}>
                   <Link
-                    to="/careers"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      padding: '12px 20px',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      fontSize: '14px',
-                      transition: 'all 0.2s'
-                    }}
-                    onMouseOver={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
-                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
-                    }}
-                    onMouseOut={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
-                      ;(e.target as HTMLElement).style.color = '#374151'
-                    }}
-                  >
-                    <Users style={{ height: '16px', width: '16px' }} />
-                    Job Openings
-                  </Link>
-                  <Link
                     to="/contact"
                     style={{
                       display: 'flex',
@@ -280,6 +256,30 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                   >
                     <Phone style={{ height: '16px', width: '16px' }} />
                     Contact Information
+                  </Link>
+                  <Link
+                    to="/careers"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      padding: '12px 20px',
+                      color: '#374151',
+                      textDecoration: 'none',
+                      fontSize: '14px',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => {
+                      (e.target as HTMLElement).style.backgroundColor = '#f8fafc'
+                      ;(e.target as HTMLElement).style.color = '#1CAFD8'
+                    }}
+                    onMouseOut={(e) => {
+                      (e.target as HTMLElement).style.backgroundColor = 'transparent'
+                      ;(e.target as HTMLElement).style.color = '#374151'
+                    }}
+                  >
+                    <Users style={{ height: '16px', width: '16px' }} />
+                    Job Openings
                   </Link>
                 </div>
               )}
@@ -474,29 +474,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 Contact Us
               </div>
               <Link
-                to="/careers"
-                style={{
-                  padding: '12px 16px',
-                  color: '#374151',
-                  textDecoration: 'none',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s',
-                  display: 'block',
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-                onMouseOver={(e) => {
-                  (e.target as HTMLElement).style.color = '#1CAFD8'
-                  ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
-                }}
-                onMouseOut={(e) => {
-                  (e.target as HTMLElement).style.color = '#374151'
-                  ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
-                }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Job Openings
-              </Link>
-              <Link
                 to="/contact"
                 style={{
                   padding: '12px 16px',
@@ -518,6 +495,29 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact Information
+              </Link>
+              <Link
+                to="/careers"
+                style={{
+                  padding: '12px 16px',
+                  color: '#374151',
+                  textDecoration: 'none',
+                  borderRadius: '8px',
+                  transition: 'all 0.2s',
+                  display: 'block',
+                  fontFamily: 'system-ui, -apple-system, sans-serif'
+                }}
+                onMouseOver={(e) => {
+                  (e.target as HTMLElement).style.color = '#1CAFD8'
+                  ;(e.target as HTMLElement).style.backgroundColor = '#f9fafb'
+                }}
+                onMouseOut={(e) => {
+                  (e.target as HTMLElement).style.color = '#374151'
+                  ;(e.target as HTMLElement).style.backgroundColor = 'transparent'
+                }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Job Openings
               </Link>
             </div>
           </div>

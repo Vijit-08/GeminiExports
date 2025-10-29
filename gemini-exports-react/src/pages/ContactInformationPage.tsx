@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import { Send, MessageCircle } from 'lucide-react'
+import { Send, MessageCircle, Mail, Phone } from 'lucide-react'
 import { useBreakpoint } from '../hooks/useMediaQuery'
 
 const ContactInformationPage = () => {
@@ -259,6 +259,113 @@ const ContactInformationPage = () => {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
+              {/* Contact Information Cards */}
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMd ? 'repeat(2, 1fr)' : '1fr',
+                  gap: '24px',
+                  marginBottom: '40px'
+                }}
+              >
+                {/* Email Card */}
+                <div style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '16px',
+                  padding: '32px',
+                  border: '1px solid #E5E7EB',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '20px'
+                }}>
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Mail style={{ height: '28px', width: '28px', color: '#1CAFD8' }} />
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      margin: '0 0 8px 0',
+                      color: '#1F2937'
+                    }}>
+                      Email Address
+                    </h3>
+                    <a
+                      href="mailto:gemini@geminiexports.in"
+                      style={{
+                        fontSize: '14px',
+                        color: '#1CAFD8',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s'
+                      }}
+                      onMouseOver={(e) => (e.target as HTMLElement).style.color = '#0EA5E9'}
+                      onMouseOut={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
+                    >
+                      gemini@geminiexports.in
+                    </a>
+                  </div>
+                </div>
+
+                {/* Phone Card */}
+                <div style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '16px',
+                  padding: '32px',
+                  border: '1px solid #E5E7EB',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '20px'
+                }}>
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    backgroundColor: 'rgba(28, 175, 216, 0.15)',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Phone style={{ height: '28px', width: '28px', color: '#1CAFD8' }} />
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      margin: '0 0 8px 0',
+                      color: '#1F2937'
+                    }}>
+                      Phone Number
+                    </h3>
+                    <a
+                      href="tel:+912240508080"
+                      style={{
+                        fontSize: '14px',
+                        color: '#1CAFD8',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s'
+                      }}
+                      onMouseOver={(e) => (e.target as HTMLElement).style.color = '#0EA5E9'}
+                      onMouseOut={(e) => (e.target as HTMLElement).style.color = '#1CAFD8'}
+                    >
+                      +91-022-49798100
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
               {/* Contact Form */}
               <motion.div
                 initial={{ y: -30, opacity: 0 }}

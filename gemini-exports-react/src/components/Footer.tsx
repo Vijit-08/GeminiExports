@@ -178,8 +178,7 @@ const Footer = () => {
                         Address
                       </p>
                       <p style={{ color: '#CBD5E1', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
-                        Tower A-704, Marathon Future X<br />
-                        Mumbai, Maharashtra, India
+                        Tower A-704, Mafatlal Mills, Marathon Futurex, NM Joshi Marg, Compound, Lower Parel, Mumbai, Maharashtra 400013
                       </p>
                     </div>
                   </div>
@@ -207,7 +206,7 @@ const Footer = () => {
                         onMouseOver={(e) => (e.target as HTMLElement).style.color = linkHoverStyle.color}
                         onMouseOut={(e) => (e.target as HTMLElement).style.color = '#CBD5E1'}
                       >
-                        +91 22 4050 8080
+                        +91-022-49798100
                       </a>
                     </div>
                   </div>
