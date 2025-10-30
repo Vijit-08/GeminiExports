@@ -169,9 +169,9 @@ const WorldwideClientsPage = () => {
         </section>
 
         {/* Globe and Regions Section */}
-        <section style={{ padding: '80px 0' }}>
+        <section style={{ padding: '20px 0' }}>
           <div style={containerStyle}>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -186,7 +186,7 @@ const WorldwideClientsPage = () => {
               }}>
                 Our reach
               </h2>
-            </motion.div>
+            </motion.div> */}
 
             <div style={{
               display: 'grid',

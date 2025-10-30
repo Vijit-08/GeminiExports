@@ -134,7 +134,7 @@ const Footer = () => {
                     { label: 'Global Reach', href: '/global-reach' },
                     { label: 'Why Choose Us', href: '/why-choose-us' },
                     { label: 'Careers', href: '/careers' },
-                    { label: 'Contact', href: '/contact' }
+                    { label: 'Contact Info', href: '/contact' }
                   ].map((link, index) => (
                     <Link
                       key={index}

@@ -365,7 +365,7 @@ const AboutUsPage = () => {
                 color: '#6B7280',
                 margin: 0
               }}>
-                Explore our vision, mission and values that inspire our journey
+                Explore our vision, mission, and values that inspire our journey
               </p>
             </motion.div>
 
